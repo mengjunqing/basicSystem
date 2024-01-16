@@ -18,7 +18,7 @@ import com.ruoyi.quartz.util.CronUtils;
 import com.ruoyi.quartz.util.ScheduleUtils;
 
 /**
- * 定时任务调度信息 服务层
+ * タイミングタスクスケジューリング情報 サービスレイヤー
  * 
  * @author ruoyi
  */
@@ -32,7 +32,7 @@ public class SysJobServiceImpl implements ISysJobService
     private SysJobMapper jobMapper;
 
     /**
-     * 项目启动时，初始化定时器 主要是防止手动修改数据库导致未同步到定时任务处理（注：不能手动修改数据库ID和任务组名，否则会导致脏数据）
+     * プロジェクトが開始されたとき，初期化されたタイマー 主にデータベースの手動の変更を防ぐために、タイミングタスク処理のために無担保を引き起こす（注記：データベースを手動で変更できませんIDタスクグループ名，それ以外の場合は、汚れたデータを引き起こします）
      */
     @PostConstruct
     public void init() throws SchedulerException, TaskException
@@ -46,9 +46,9 @@ public class SysJobServiceImpl implements ISysJobService
     }
 
     /**
-     * 获取quartz调度器的计划任务列表
+     * 得るquartzスケジュールの計画タスクのリスト
      * 
-     * @param job 调度信息
+     * @param job 情報のスケジューリング
      * @return
      */
     @Override
@@ -58,10 +58,10 @@ public class SysJobServiceImpl implements ISysJobService
     }
 
     /**
-     * 通过调度任务ID查询调度信息
+     * タスクをスケジュールしますID查询情報のスケジューリング
      * 
-     * @param jobId 调度任务ID
-     * @return 调度任务对象信息
+     * @param jobId スケジューリングタスクID
+     * @return スケジューリングタスク对象信息
      */
     @Override
     public SysJob selectJobById(Long jobId)
@@ -70,9 +70,9 @@ public class SysJobServiceImpl implements ISysJobService
     }
 
     /**
-     * 暂停任务
+     * 一時停止タスク
      * 
-     * @param job 调度信息
+     * @param job 情報のスケジューリング
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -90,9 +90,9 @@ public class SysJobServiceImpl implements ISysJobService
     }
 
     /**
-     * 恢复任务
+     * タスクを復元します
      * 
-     * @param job 调度信息
+     * @param job 情報のスケジューリング
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -110,9 +110,9 @@ public class SysJobServiceImpl implements ISysJobService
     }
 
     /**
-     * 删除任务后，所对应的trigger也将被删除
+     * タスクを削除した後，対応するtrigger削除も削除されます
      * 
-     * @param job 调度信息
+     * @param job 情報のスケジューリング
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -129,10 +129,10 @@ public class SysJobServiceImpl implements ISysJobService
     }
 
     /**
-     * 批量删除调度信息
+     * 批量删除情報のスケジューリング
      * 
-     * @param jobIds 需要删除的任务ID
-     * @return 结果
+     * @param jobIds 削除する必要があるタスクID
+     * @return 結果
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -146,9 +146,9 @@ public class SysJobServiceImpl implements ISysJobService
     }
 
     /**
-     * 任务调度状态修改
+     * タスクスケジューリングステータスの変更
      * 
-     * @param job 调度信息
+     * @param job 情報のスケジューリング
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -168,9 +168,9 @@ public class SysJobServiceImpl implements ISysJobService
     }
 
     /**
-     * 立即运行任务
+     * すぐにタスクを実行します
      * 
-     * @param job 调度信息
+     * @param job 情報のスケジューリング
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -180,7 +180,7 @@ public class SysJobServiceImpl implements ISysJobService
         Long jobId = job.getJobId();
         String jobGroup = job.getJobGroup();
         SysJob properties = selectJobById(job.getJobId());
-        // 参数
+        // パラメーター
         JobDataMap dataMap = new JobDataMap();
         dataMap.put(ScheduleConstants.TASK_PROPERTIES, properties);
         JobKey jobKey = ScheduleUtils.getJobKey(jobId, jobGroup);
@@ -193,9 +193,9 @@ public class SysJobServiceImpl implements ISysJobService
     }
 
     /**
-     * 新增任务
+     * 新しい仕事
      * 
-     * @param job 调度信息 调度信息
+     * @param job 情報のスケジューリング 情報のスケジューリング
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -211,9 +211,9 @@ public class SysJobServiceImpl implements ISysJobService
     }
 
     /**
-     * 更新任务的时间表达式
+     * タスク時間式を更新します
      * 
-     * @param job 调度信息
+     * @param job 情報のスケジューリング
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -229,29 +229,29 @@ public class SysJobServiceImpl implements ISysJobService
     }
 
     /**
-     * 更新任务
+     * タスクを更新します
      * 
-     * @param job 任务对象
-     * @param jobGroup 任务组名
+     * @param job ミッションオブジェクト
+     * @param jobGroup タスクグループ名
      */
     public void updateSchedulerJob(SysJob job, String jobGroup) throws SchedulerException, TaskException
     {
         Long jobId = job.getJobId();
-        // 判断是否存在
+        // かどうかを判断します
         JobKey jobKey = ScheduleUtils.getJobKey(jobId, jobGroup);
         if (scheduler.checkExists(jobKey))
         {
-            // 防止创建时存在数据问题 先移除，然后在执行创建操作
+            // 作成中のデータの問題を防ぎます 最初に削除します，次に、作成操作を実行します
             scheduler.deleteJob(jobKey);
         }
         ScheduleUtils.createScheduleJob(scheduler, job);
     }
 
     /**
-     * 校验cron表达式是否有效
+     * チェックcronパフォーマンスが効果的かどうか
      * 
-     * @param cronExpression 表达式
-     * @return 结果
+     * @param cronExpression パフォーマンス
+     * @return 結果
      */
     @Override
     public boolean checkCronExpressionIsValid(String cronExpression)

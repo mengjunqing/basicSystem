@@ -10,7 +10,7 @@ import com.ruoyi.common.annotation.Excel.ColumnType;
 import com.ruoyi.common.core.domain.BaseEntity;
 
 /**
- * 岗位表 sys_post
+ * 位置テーブル sys_post
  * 
  * @author ruoyi
  */
@@ -18,27 +18,27 @@ public class SysPost extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
-    /** 岗位序号 */
-    @Excel(name = "岗位序号", cellType = ColumnType.NUMERIC)
+    /** ジョブ番号 */
+    @Excel(name = "ジョブ番号", cellType = ColumnType.NUMERIC)
     private Long postId;
 
-    /** 岗位编码 */
-    @Excel(name = "岗位编码")
+    /** ジョブコード */
+    @Excel(name = "ジョブコード")
     private String postCode;
 
-    /** 岗位名称 */
-    @Excel(name = "岗位名称")
+    /** ポジションタイトル */
+    @Excel(name = "ポジションタイトル")
     private String postName;
 
-    /** 岗位排序 */
-    @Excel(name = "岗位排序")
+    /** ジョブソート */
+    @Excel(name = "ジョブソート")
     private Integer postSort;
 
-    /** 状态（0正常 1停用） */
-    @Excel(name = "状态", readConverterExp = "0=正常,1=停用")
+    /** 州（0普通 1停止） */
+    @Excel(name = "州", readConverterExp = "0=普通,1=停止")
     private String status;
 
-    /** 用户是否存在此岗位标识 默认不存在 */
+    /** ユーザーがこの投稿ロゴに存在するかどうか デフォルトはありません */
     private boolean flag = false;
 
     public Long getPostId()
@@ -51,8 +51,8 @@ public class SysPost extends BaseEntity
         this.postId = postId;
     }
 
-    @NotBlank(message = "岗位编码不能为空")
-    @Size(min = 0, max = 64, message = "岗位编码长度不能超过64个字符")
+    @NotBlank(message = "ジョブコード不能为空")
+    @Size(min = 0, max = 64, message = "ジョブコード长度不能超过64個々々々のキャラクター")
     public String getPostCode()
     {
         return postCode;
@@ -63,8 +63,8 @@ public class SysPost extends BaseEntity
         this.postCode = postCode;
     }
 
-    @NotBlank(message = "岗位名称不能为空")
-    @Size(min = 0, max = 50, message = "岗位名称长度不能超过50个字符")
+    @NotBlank(message = "ポジションタイトル不能为空")
+    @Size(min = 0, max = 50, message = "ポジションタイトル长度不能超过50個々々々のキャラクター")
     public String getPostName()
     {
         return postName;
@@ -75,7 +75,7 @@ public class SysPost extends BaseEntity
         this.postName = postName;
     }
 
-    @NotNull(message = "显示顺序不能为空")
+    @NotNull(message = "注文が空になることができないことを示します")
     public Integer getPostSort()
     {
         return postSort;

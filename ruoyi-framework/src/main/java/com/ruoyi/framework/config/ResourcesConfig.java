@@ -16,7 +16,7 @@ import com.ruoyi.common.constant.Constants;
 import com.ruoyi.framework.interceptor.RepeatSubmitInterceptor;
 
 /**
- * 通用配置
+ * 通用構成
  * 
  * @author ruoyi
  */
@@ -29,18 +29,18 @@ public class ResourcesConfig implements WebMvcConfigurer
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry)
     {
-        /** 本地文件上传路径 */
+        /** ローカルファイルのアップロードパス */
         registry.addResourceHandler(Constants.RESOURCE_PREFIX + "/**")
                 .addResourceLocations("file:" + RuoYiConfig.getProfile() + "/");
 
-        /** swagger配置 */
+        /** swagger構成 */
         registry.addResourceHandler("/swagger-ui/**")
                 .addResourceLocations("classpath:/META-INF/resources/webjars/springfox-swagger-ui/")
                 .setCacheControl(CacheControl.maxAge(5, TimeUnit.HOURS).cachePublic());;
     }
 
     /**
-     * 自定义拦截规则
+     * カスタムインターセプトルール
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry)
@@ -49,25 +49,25 @@ public class ResourcesConfig implements WebMvcConfigurer
     }
 
     /**
-     * 跨域配置
+     * クロスドメインの組成
      */
     @Bean
     public CorsFilter corsFilter()
     {
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
-        // 设置访问源地址
+        // アクセスソースアドレスを設定します
         config.addAllowedOriginPattern("*");
-        // 设置访问源请求头
+        // アクセスソースのアクセスソースを設定します
         config.addAllowedHeader("*");
-        // 设置访问源请求方法
+        // アクセスソースリクエストメソッドを設定します
         config.addAllowedMethod("*");
-        // 有效期 1800秒
+        // 有効期間 18002番
         config.setMaxAge(1800L);
-        // 添加映射路径，拦截一切请求
+        // マッピングパスを追加します，すべてのリクエストをブロックします
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);
-        // 返回新的CorsFilter
+        // 新しく戻りますCorsFilter
         return new CorsFilter(source);
     }
 }

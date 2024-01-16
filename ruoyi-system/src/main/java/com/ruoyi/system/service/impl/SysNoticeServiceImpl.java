@@ -8,7 +8,7 @@ import com.ruoyi.system.mapper.SysNoticeMapper;
 import com.ruoyi.system.service.ISysNoticeService;
 
 /**
- * 公告 服务层实现
+ * 発表 サービスレイヤーの実装
  * 
  * @author ruoyi
  */
@@ -19,10 +19,10 @@ public class SysNoticeServiceImpl implements ISysNoticeService
     private SysNoticeMapper noticeMapper;
 
     /**
-     * 查询公告信息
+     * クエリ発発発発
      * 
-     * @param noticeId 公告ID
-     * @return 公告信息
+     * @param noticeId 発表ID
+     * @return 発表信息
      */
     @Override
     public SysNotice selectNoticeById(Long noticeId)
@@ -31,10 +31,10 @@ public class SysNoticeServiceImpl implements ISysNoticeService
     }
 
     /**
-     * 查询公告列表
+     * クエリテーブルリスト
      * 
-     * @param notice 公告信息
-     * @return 公告集合
+     * @param notice 発表信息
+     * @return 発表集合
      */
     @Override
     public List<SysNotice> selectNoticeList(SysNotice notice)
@@ -43,10 +43,10 @@ public class SysNoticeServiceImpl implements ISysNoticeService
     }
 
     /**
-     * 新增公告
+     * 新增発表
      * 
-     * @param notice 公告信息
-     * @return 结果
+     * @param notice 発表信息
+     * @return 結果
      */
     @Override
     public int insertNotice(SysNotice notice)
@@ -55,10 +55,10 @@ public class SysNoticeServiceImpl implements ISysNoticeService
     }
 
     /**
-     * 修改公告
+     * 修改発表
      * 
-     * @param notice 公告信息
-     * @return 结果
+     * @param notice 発表信息
+     * @return 結果
      */
     @Override
     public int updateNotice(SysNotice notice)
@@ -67,10 +67,10 @@ public class SysNoticeServiceImpl implements ISysNoticeService
     }
 
     /**
-     * 删除公告对象
+     * 对オブジェクトを削除します
      * 
-     * @param noticeId 公告ID
-     * @return 结果
+     * @param noticeId 発表ID
+     * @return 結果
      */
     @Override
     public int deleteNoticeById(Long noticeId)
@@ -79,10 +79,10 @@ public class SysNoticeServiceImpl implements ISysNoticeService
     }
 
     /**
-     * 批量删除公告信息
+     * Batch Delete
      * 
-     * @param noticeIds 需要删除的公告ID
-     * @return 结果
+     * @param noticeIds 削除する必要があるテーブルID
+     * @return 結果
      */
     @Override
     public int deleteNoticeByIds(Long[] noticeIds)

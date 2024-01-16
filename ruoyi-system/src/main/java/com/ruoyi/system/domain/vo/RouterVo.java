@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.List;
 
 /**
- * 路由配置信息
+ * ルーティング構成情報
  * 
  * @author ruoyi
  */
@@ -12,47 +12,47 @@ import java.util.List;
 public class RouterVo
 {
     /**
-     * 路由名字
+     * ルーティング名
      */
     private String name;
 
     /**
-     * 路由地址
+     * ルーティングアドレス
      */
     private String path;
 
     /**
-     * 是否隐藏路由，当设置 true 的时候该路由不会再侧边栏出现
+     * ルーティングを隠すかどうか，悩ませる true ルートがルートのサイドバーに表示されなくなったら
      */
     private boolean hidden;
 
     /**
-     * 重定向地址，当设置 noRedirect 的时候该路由在面包屑导航中不可被点击
+     * アドレスをリダイレクトします，悩ませる noRedirect それがそうである場合、パンのふけナビゲーションでルートをクリックしてはいけません
      */
     private String redirect;
 
     /**
-     * 组件地址
+     * コンポーネントアドレス
      */
     private String component;
 
     /**
-     * 路由参数：如 {"id": 1, "name": "ry"}
+     * ルーティングパラメーター：のように {"id": 1, "name": "ry"}
      */
     private String query;
 
     /**
-     * 当你一个路由下面的 children 声明的路由大于1个时，自动会变成嵌套的模式--如组件页面
+     * 以下のルーティングがあるとき children ステートメントのルーティングはより大きくなります1時間，自動的にネストされたパターンになります--のように组件页面
      */
     private Boolean alwaysShow;
 
     /**
-     * 其他元素
+     * その他の要素
      */
     private MetaVo meta;
 
     /**
-     * 子路由
+     * sub -route
      */
     private List<RouterVo> children;
 

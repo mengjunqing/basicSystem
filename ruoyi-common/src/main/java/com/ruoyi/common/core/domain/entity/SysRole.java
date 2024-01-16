@@ -11,7 +11,7 @@ import com.ruoyi.common.annotation.Excel.ColumnType;
 import com.ruoyi.common.core.domain.BaseEntity;
 
 /**
- * 角色表 sys_role
+ * キャラクターテーブル sys_role
  * 
  * @author ruoyi
  */
@@ -19,49 +19,49 @@ public class SysRole extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
-    /** 角色ID */
-    @Excel(name = "角色序号", cellType = ColumnType.NUMERIC)
+    /** 役割ID */
+    @Excel(name = "役割序号", cellType = ColumnType.NUMERIC)
     private Long roleId;
 
-    /** 角色名称 */
-    @Excel(name = "角色名称")
+    /** 役割名称 */
+    @Excel(name = "役割名称")
     private String roleName;
 
-    /** 角色权限 */
-    @Excel(name = "角色权限")
+    /** 役割权限 */
+    @Excel(name = "役割权限")
     private String roleKey;
 
-    /** 角色排序 */
-    @Excel(name = "角色排序")
+    /** 役割排序 */
+    @Excel(name = "役割排序")
     private Integer roleSort;
 
-    /** 数据范围（1：所有数据权限；2：自定义数据权限；3：本部门数据权限；4：本部门及以下数据权限；5：仅本人数据权限） */
-    @Excel(name = "数据范围", readConverterExp = "1=所有数据权限,2=自定义数据权限,3=本部门数据权限,4=本部门及以下数据权限,5=仅本人数据权限")
+    /** データ範囲（1：すべてのデータ権限；2：カスタムデータアクセス許可；3：本部のデータ許可；4：この部門および以下のデータ権限；5：データ権限のみ） */
+    @Excel(name = "データ範囲", readConverterExp = "1=すべてのデータ権限,2=カスタムデータアクセス許可,3=本部のデータ許可,4=この部門および以下のデータ権限,5=データ権限のみ")
     private String dataScope;
 
-    /** 菜单树选择项是否关联显示（ 0：父子不互相关联显示 1：父子互相关联显示） */
+    /** メニューツリー選択アイテムが関連付けられているかどうか（ 0：父と息子は相互接続されて表示されていません 1：父と息子の相互接続ディスプレイディスプレイ） */
     private boolean menuCheckStrictly;
 
-    /** 部门树选择项是否关联显示（0：父子不互相关联显示 1：父子互相关联显示 ） */
+    /** 部門のツリー選択アイテムが表示に関連しているかどうか（0：父と息子は相互接続されて表示されていません 1：父と息子の相互接続ディスプレイディスプレイ ） */
     private boolean deptCheckStrictly;
 
-    /** 角色状态（0正常 1停用） */
-    @Excel(name = "角色状态", readConverterExp = "0=正常,1=停用")
+    /** 役割状态（0普通 1停止） */
+    @Excel(name = "役割状态", readConverterExp = "0=普通,1=停止")
     private String status;
 
-    /** 删除标志（0代表存在 2代表删除） */
+    /** 消去（0代表する 2消去） */
     private String delFlag;
 
-    /** 用户是否存在此角色标识 默认不存在 */
+    /** 用户是否存在此役割标识 デフォルトはありません */
     private boolean flag = false;
 
-    /** 菜单组 */
+    /** メニュー */
     private Long[] menuIds;
 
-    /** 部门组（数据权限） */
+    /** 部門グループ（データ許可） */
     private Long[] deptIds;
 
-    /** 角色菜单权限 */
+    /** 役割菜单权限 */
     private Set<String> permissions;
 
     public SysRole()
@@ -94,8 +94,8 @@ public class SysRole extends BaseEntity
         return roleId != null && 1L == roleId;
     }
 
-    @NotBlank(message = "角色名称不能为空")
-    @Size(min = 0, max = 30, message = "角色名称长度不能超过30个字符")
+    @NotBlank(message = "役割名称不能为空")
+    @Size(min = 0, max = 30, message = "役割名称长度不能超过30個々のキャラクター")
     public String getRoleName()
     {
         return roleName;
@@ -106,8 +106,8 @@ public class SysRole extends BaseEntity
         this.roleName = roleName;
     }
 
-    @NotBlank(message = "权限字符不能为空")
-    @Size(min = 0, max = 100, message = "权限字符长度不能超过100个字符")
+    @NotBlank(message = "永続的なキャラクターは空にすることはできません")
+    @Size(min = 0, max = 100, message = "許可文字の長さを超えることはできません100個々のキャラクター")
     public String getRoleKey()
     {
         return roleKey;
@@ -118,7 +118,7 @@ public class SysRole extends BaseEntity
         this.roleKey = roleKey;
     }
 
-    @NotNull(message = "显示顺序不能为空")
+    @NotNull(message = "注文が空になることができないことを示します")
     public Integer getRoleSort()
     {
         return roleSort;

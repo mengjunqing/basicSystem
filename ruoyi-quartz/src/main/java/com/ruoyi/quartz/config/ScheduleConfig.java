@@ -7,7 +7,7 @@
 //import java.util.Properties;
 //
 ///**
-// * 定时任务配置（单机部署建议删除此类和qrtz数据库表，默认走内存会最高效）
+// * タイミングタスク構成（単一マチン展開の提案は、これとこのカテゴリを削除しますqrtzデータベーステーブル，デフォルトはメモリで最も効率的です）
 // * 
 // * @author ruoyi
 // */
@@ -20,36 +20,36 @@
 //        SchedulerFactoryBean factory = new SchedulerFactoryBean();
 //        factory.setDataSource(dataSource);
 //
-//        // quartz参数
+//        // quartzパラメーター
 //        Properties prop = new Properties();
 //        prop.put("org.quartz.scheduler.instanceName", "RuoyiScheduler");
 //        prop.put("org.quartz.scheduler.instanceId", "AUTO");
-//        // 线程池配置
+//        // スレッドプール構成
 //        prop.put("org.quartz.threadPool.class", "org.quartz.simpl.SimpleThreadPool");
 //        prop.put("org.quartz.threadPool.threadCount", "20");
 //        prop.put("org.quartz.threadPool.threadPriority", "5");
-//        // JobStore配置
+//        // JobStore構成
 //        prop.put("org.quartz.jobStore.class", "org.springframework.scheduling.quartz.LocalDataSourceJobStore");
-//        // 集群配置
+//        // 集まる
 //        prop.put("org.quartz.jobStore.isClustered", "true");
 //        prop.put("org.quartz.jobStore.clusterCheckinInterval", "15000");
 //        prop.put("org.quartz.jobStore.maxMisfiresToHandleAtATime", "10");
 //        prop.put("org.quartz.jobStore.txIsolationLevelSerializable", "true");
 //
-//        // sqlserver 启用
+//        // sqlserver 開いてください
 //        // prop.put("org.quartz.jobStore.selectWithLockSQL", "SELECT * FROM {0}LOCKS UPDLOCK WHERE LOCK_NAME = ?");
 //        prop.put("org.quartz.jobStore.misfireThreshold", "12000");
 //        prop.put("org.quartz.jobStore.tablePrefix", "QRTZ_");
 //        factory.setQuartzProperties(prop);
 //
 //        factory.setSchedulerName("RuoyiScheduler");
-//        // 延时启动
+//        // 遅れ
 //        factory.setStartupDelay(1);
 //        factory.setApplicationContextSchedulerContextKey("applicationContextKey");
-//        // 可选，QuartzScheduler
-//        // 启动时更新己存在的Job，这样就不用每次修改targetObject后删除qrtz_job_details表对应记录了
+//        // オプション，QuartzScheduler
+//        // 開始時に自分の存在を更新してくださいJob，そのため、毎回変更する必要はありませんtargetObject消去qrtz_job_details対応するレコード
 //        factory.setOverwriteExistingJobs(true);
-//        // 设置自动启动，默认为true
+//        // 自動起動を設定します，デフォルトはですtrue
 //        factory.setAutoStartup(true);
 //
 //        return factory;

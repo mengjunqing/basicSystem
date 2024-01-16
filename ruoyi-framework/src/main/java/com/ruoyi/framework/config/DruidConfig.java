@@ -25,7 +25,7 @@ import com.ruoyi.framework.config.properties.DruidProperties;
 import com.ruoyi.framework.datasource.DynamicDataSource;
 
 /**
- * druid 配置多数据源
+ * druid マルチデータソースを構成します
  * 
  * @author ruoyi
  */
@@ -60,11 +60,11 @@ public class DruidConfig
     }
     
     /**
-     * 设置数据源
+     * データソースを設定します
      * 
-     * @param targetDataSources 备选数据源集合
-     * @param sourceName 数据源名称
-     * @param beanName bean名称
+     * @param targetDataSources 代替データソースの収集
+     * @param sourceName データソース名
+     * @param beanName bean名前
      */
     public void setDataSource(Map<Object, Object> targetDataSources, String sourceName, String beanName)
     {
@@ -79,20 +79,20 @@ public class DruidConfig
     }
 
     /**
-     * 去除监控页面底部的广告
+     * 監視ページの下部にある広告を削除します
      */
     @SuppressWarnings({ "rawtypes", "unchecked" })
     @Bean
     @ConditionalOnProperty(name = "spring.datasource.druid.statViewServlet.enabled", havingValue = "true")
     public FilterRegistrationBean removeDruidFilterRegistrationBean(DruidStatProperties properties)
     {
-        // 获取web监控页面的参数
+        // 得るweb監視ページパラメーター
         DruidStatProperties.StatViewServlet config = properties.getStatViewServlet();
-        // 提取common.js的配置路径
+        // 抽出するcommon.js構成パス
         String pattern = config.getUrlPattern() != null ? config.getUrlPattern() : "/druid/*";
         String commonJsPattern = pattern.replaceAll("\\*", "js/common.js");
         final String filePath = "support/http/resources/js/common.js";
-        // 创建filter进行过滤
+        // 作成するfilterフィルター
         Filter filter = new Filter()
         {
             @Override
@@ -104,11 +104,11 @@ public class DruidConfig
                     throws IOException, ServletException
             {
                 chain.doFilter(request, response);
-                // 重置缓冲区，响应头不会被重置
+                // バッファをリセットします，応答ヘッドはリセットされません
                 response.resetBuffer();
-                // 获取common.js
+                // 得るcommon.js
                 String text = Utils.readFromResource(filePath);
-                // 正则替换banner, 除去底部的广告信息
+                // 定期的な交換banner, 下部の広告情報を除きます
                 text = text.replaceAll("<a.*?banner\"></a><br/>", "");
                 text = text.replaceAll("powered.*?shrek.wang</a>", "");
                 response.getWriter().write(text);

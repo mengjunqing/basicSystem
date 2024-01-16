@@ -5,7 +5,7 @@ import org.quartz.JobExecutionContext;
 import com.ruoyi.quartz.domain.SysJob;
 
 /**
- * 定时任务处理（禁止并发执行）
+ * タイミングタスク処理（同時実行を禁止します）
  * 
  * @author ruoyi
  *

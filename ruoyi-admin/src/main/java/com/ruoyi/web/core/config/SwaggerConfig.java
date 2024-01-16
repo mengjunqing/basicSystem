@@ -23,53 +23,53 @@ import springfox.documentation.spi.service.contexts.SecurityContext;
 import springfox.documentation.spring.web.plugins.Docket;
 
 /**
- * Swagger2的接口配置
+ * Swagger2インターフェイス構成
  * 
  * @author ruoyi
  */
 @Configuration
 public class SwaggerConfig
 {
-    /** 系统基础配置 */
+    /** システムの基本構成 */
     @Autowired
     private RuoYiConfig ruoyiConfig;
 
-    /** 是否开启swagger */
+    /** 開くかどうかswagger */
     @Value("${swagger.enabled}")
     private boolean enabled;
 
-    /** 设置请求的统一前缀 */
+    /** リクエストの統一プレフィックスを設定します */
     @Value("${swagger.pathMapping}")
     private String pathMapping;
 
     /**
-     * 创建API
+     * 作成するAPI
      */
     @Bean
     public Docket createRestApi()
     {
         return new Docket(DocumentationType.OAS_30)
-                // 是否启用Swagger
+                // 有効にするかどうかSwagger
                 .enable(enabled)
-                // 用来创建该API的基本信息，展示在文档的页面中（自定义展示的信息）
+                // 使用来作成する该API基本情報，ドキュメントのページに表示します（カスタマイズされた情報）
                 .apiInfo(apiInfo())
-                // 设置哪些接口暴露给Swagger展示
+                // どのインターフェイスにさらされるかSwagger展示する
                 .select()
-                // 扫描所有有注解的api，用这种方式更灵活
+                // すべてのコメントをスキャンしますapi，この方法を使用する方が柔軟です
                 .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
-                // 扫描指定包中的swagger注解
+                // 指定されたパッケージをスキャンしますswagger注釈
                 // .apis(RequestHandlerSelectors.basePackage("com.ruoyi.project.tool.swagger"))
-                // 扫描所有 .apis(RequestHandlerSelectors.any())
+                // すべてスキャンします .apis(RequestHandlerSelectors.any())
                 .paths(PathSelectors.any())
                 .build()
-                /* 设置安全模式，swagger可以设置访问token */
+                /* セキュリティモードを設定します，swaggerアクセスを設定できますtoken */
                 .securitySchemes(securitySchemes())
                 .securityContexts(securityContexts())
                 .pathMapping(pathMapping);
     }
 
     /**
-     * 安全模式，这里指定token通过Authorization头请求头传递
+     * セキュリティモード，ここで指定してくださいtoken合格Authorizationヘッダーヘッド転送
      */
     private List<SecurityScheme> securitySchemes()
     {
@@ -79,7 +79,7 @@ public class SwaggerConfig
     }
 
     /**
-     * 安全上下文
+     * 安全コンテキスト
      */
     private List<SecurityContext> securityContexts()
     {
@@ -93,7 +93,7 @@ public class SwaggerConfig
     }
 
     /**
-     * 默认的安全上引用
+     * デフォルトでは、安全見積もり
      */
     private List<SecurityReference> defaultAuth()
     {
@@ -106,20 +106,20 @@ public class SwaggerConfig
     }
 
     /**
-     * 添加摘要信息
+     * 抽象情報を追加します
      */
     private ApiInfo apiInfo()
     {
-        // 用ApiInfoBuilder进行定制
+        // 使用ApiInfoBuilderカスタマイズ
         return new ApiInfoBuilder()
-                // 设置标题
-                .title("标题：若依管理系统_接口文档")
-                // 描述
-                .description("描述：用于管理集团旗下公司的人员信息,具体包括XXX,XXX模块...")
-                // 作者信息
+                // タイトルを設定します
+                .title("タイトル：Ruo Yi管理システム_インターフェイスドキュメント")
+                // 説明する
+                .description("説明する：使会社の会社を管理するための情報,具体的に含めますXXX,XXXモジュール...")
+                // 著者情報
                 .contact(new Contact(ruoyiConfig.getName(), null, null))
-                // 版本
-                .version("版本号:" + ruoyiConfig.getVersion())
+                // バージョン
+                .version("バージョン号:" + ruoyiConfig.getVersion())
                 .build();
     }
 }

@@ -3,7 +3,7 @@ package com.ruoyi.common.exception.file;
 import com.ruoyi.common.exception.base.BaseException;
 
 /**
- * 文件信息异常类
+ * ファイル情報異常クラス
  * 
  * @author ruoyi
  */

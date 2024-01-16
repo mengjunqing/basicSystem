@@ -7,7 +7,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * 自定义xss校验注解实现
+ * カスタマイズxss検証注釈の実装
  * 
  * @author ruoyi
  */

@@ -3,7 +3,7 @@ package com.ruoyi.common.utils.html;
 import com.ruoyi.common.utils.StringUtils;
 
 /**
- * 转义和反转义工具类
+ * 転送および反転ツール
  * 
  * @author ruoyi
  */
@@ -21,18 +21,18 @@ public class EscapeUtil
         }
 
         // special HTML characters
-        TEXT['\''] = "&#039;".toCharArray(); // 单引号
-        TEXT['"'] = "&#34;".toCharArray(); // 双引号
-        TEXT['&'] = "&#38;".toCharArray(); // &符
-        TEXT['<'] = "&#60;".toCharArray(); // 小于号
-        TEXT['>'] = "&#62;".toCharArray(); // 大于号
+        TEXT['\''] = "&#039;".toCharArray(); // アポストロフィ
+        TEXT['"'] = "&#34;".toCharArray(); // 二重引用シンボル
+        TEXT['&'] = "&#38;".toCharArray(); // &シンボル
+        TEXT['<'] = "&#60;".toCharArray(); // サインよりも少ない
+        TEXT['>'] = "&#62;".toCharArray(); // より大きい
     }
 
     /**
-     * 转义文本中的HTML字符为安全的字符
+     * 正しいテキストHTML字シンボル为安全的字シンボル
      * 
-     * @param text 被转义的文本
-     * @return 转义后的文本
+     * @param text 転送されたテキスト
+     * @return 回した後のテキスト
      */
     public static String escape(String text)
     {
@@ -40,10 +40,10 @@ public class EscapeUtil
     }
 
     /**
-     * 还原被转义的HTML特殊字符
+     * 転送されるように復元されましたHTML特殊字シンボル
      * 
-     * @param content 包含转义符的HTML内容
-     * @return 转换后的字符串
+     * @param content 包含转义シンボル的HTMLコンテンツ
+     * @return 转换后的字シンボル串
      */
     public static String unescape(String content)
     {
@@ -51,10 +51,10 @@ public class EscapeUtil
     }
 
     /**
-     * 清除所有HTML标签，但是不删除标签内的内容
+     * すべてクリアHTMLラベル，但是不删除ラベル内的コンテンツ
      * 
-     * @param content 文本
-     * @return 清除标签后的文本
+     * @param content 文章
+     * @return 清除ラベル后的文章
      */
     public static String clean(String content)
     {
@@ -62,10 +62,10 @@ public class EscapeUtil
     }
 
     /**
-     * Escape编码
+     * Escapeコーディング
      * 
-     * @param text 被编码的文本
-     * @return 编码后的字符
+     * @param text 被コーディング的文章
+     * @return コーディング后的字シンボル
      */
     private static String encode(String text)
     {
@@ -103,10 +103,10 @@ public class EscapeUtil
     }
 
     /**
-     * Escape解码
+     * Escapeデコード
      * 
-     * @param content 被转义的内容
-     * @return 解码后的字符串
+     * @param content 被转义的コンテンツ
+     * @return デコード后的字シンボル串
      */
     public static String decode(String content)
     {

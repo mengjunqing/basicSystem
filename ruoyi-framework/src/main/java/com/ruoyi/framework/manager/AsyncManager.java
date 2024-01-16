@@ -7,24 +7,24 @@ import com.ruoyi.common.utils.Threads;
 import com.ruoyi.common.utils.spring.SpringUtils;
 
 /**
- * 异步任务管理器
+ * 非同期タスクマネージャー
  * 
  * @author ruoyi
  */
 public class AsyncManager
 {
     /**
-     * 操作延迟10毫秒
+     * 遅れ10ミリ秒
      */
     private final int OPERATE_DELAY_TIME = 10;
 
     /**
-     * 异步操作任务调度线程池
+     * 非同期操作タスクスレッドプールのスケジューリング
      */
     private ScheduledExecutorService executor = SpringUtils.getBean("scheduledExecutorService");
 
     /**
-     * 单例模式
+     * 特異な
      */
     private AsyncManager(){}
 
@@ -36,9 +36,9 @@ public class AsyncManager
     }
 
     /**
-     * 执行任务
+     * タスクを実行します
      * 
-     * @param task 任务
+     * @param task タスク
      */
     public void execute(TimerTask task)
     {
@@ -46,7 +46,7 @@ public class AsyncManager
     }
 
     /**
-     * 停止任务线程池
+     * 停止タスク线程池
      */
     public void shutdown()
     {

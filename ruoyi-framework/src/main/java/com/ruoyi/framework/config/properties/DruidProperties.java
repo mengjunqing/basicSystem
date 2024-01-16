@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import com.alibaba.druid.pool.DruidDataSource;
 
 /**
- * druid 配置属性
+ * druid 構成属性
  * 
  * @author ruoyi
  */
@@ -53,36 +53,36 @@ public class DruidProperties
 
     public DruidDataSource dataSource(DruidDataSource datasource)
     {
-        /** 配置初始化大小、最小、最大 */
+        /** 早い時期、最小、最大 */
         datasource.setInitialSize(initialSize);
         datasource.setMaxActive(maxActive);
         datasource.setMinIdle(minIdle);
 
-        /** 配置获取连接等待超时的时间 */
+        /** 接続待機タイムアウト時間を取得する構成 */
         datasource.setMaxWait(maxWait);
         
-        /** 配置驱动连接超时时间，检测数据库建立连接的超时时间，单位是毫秒 */
+        /** ドライバー接続タイムアウト時間を構成します，データベースを検出して、接続タイムアウト時間を確立します，ユニットはミリ秒です */
         datasource.setConnectTimeout(connectTimeout);
         
-        /** 配置网络超时时间，等待数据库操作完成的网络超时时间，单位是毫秒 */
+        /** ネットワークタイムアウト時間を構成します，データベース操作がネットワークタイムアウト時間を完了するのを待っています，ユニットはミリ秒です */
         datasource.setSocketTimeout(socketTimeout);
 
-        /** 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 */
+        /** テスト前の構成間隔はどのくらいですか，閉じる必要があるアイドル接続をテストします，ユニットはミリ秒です */
         datasource.setTimeBetweenEvictionRunsMillis(timeBetweenEvictionRunsMillis);
 
-        /** 配置一个连接在池中最小、最大生存的时间，单位是毫秒 */
+        /** プール内の最小接続を構成します、生き残るための最大時間，ユニットはミリ秒です */
         datasource.setMinEvictableIdleTimeMillis(minEvictableIdleTimeMillis);
         datasource.setMaxEvictableIdleTimeMillis(maxEvictableIdleTimeMillis);
 
         /**
-         * 用来检测连接是否有效的sql，要求是一个查询语句，常用select 'x'。如果validationQuery为null，testOnBorrow、testOnReturn、testWhileIdle都不会起作用。
+         * 接続が効果的かどうかを検出するために使用されますsql，リクエストはクエリステートメントです，一般的に使用されますselect 'x'。もしvalidationQueryのためにnull，testOnBorrow、testOnReturn、testWhileIdle何も機能しません。
          */
         datasource.setValidationQuery(validationQuery);
-        /** 建议配置为true，不影响性能，并且保证安全性。申请连接的时候检测，如果空闲时间大于timeBetweenEvictionRunsMillis，执行validationQuery检测连接是否有效。 */
+        /** 建议配置のためにtrue，パフォーマンスに影響を与えません，安全を確保します。接続を申請するときにテストします，もし空闲时间大于timeBetweenEvictionRunsMillis，埋め込むvalidationQuery接続が効果的かどうかを検出します。 */
         datasource.setTestWhileIdle(testWhileIdle);
-        /** 申请连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能。 */
+        /** 申请连接时埋め込むvalidationQuery接続が効果的かどうかを検出します，この構成を行うと、パフォーマンスが低下します。 */
         datasource.setTestOnBorrow(testOnBorrow);
-        /** 归还连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能。 */
+        /** 归还连接时埋め込むvalidationQuery接続が効果的かどうかを検出します，この構成を行うと、パフォーマンスが低下します。 */
         datasource.setTestOnReturn(testOnReturn);
         return datasource;
     }

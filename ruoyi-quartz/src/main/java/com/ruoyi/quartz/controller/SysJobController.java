@@ -28,7 +28,7 @@ import com.ruoyi.quartz.util.CronUtils;
 import com.ruoyi.quartz.util.ScheduleUtils;
 
 /**
- * 调度任务信息操作处理
+ * タスク情報の操作処理をスケジュールします
  * 
  * @author ruoyi
  */
@@ -40,7 +40,7 @@ public class SysJobController extends BaseController
     private ISysJobService jobService;
 
     /**
-     * 查询定时任务列表
+     * クエリタイミングタスクリスト
      */
     @PreAuthorize("@ss.hasPermi('monitor:job:list')")
     @GetMapping("/list")
@@ -52,20 +52,20 @@ public class SysJobController extends BaseController
     }
 
     /**
-     * 导出定时任务列表
+     * エクスポートタイムタスクリスト
      */
     @PreAuthorize("@ss.hasPermi('monitor:job:export')")
-    @Log(title = "定时任务", businessType = BusinessType.EXPORT)
+    @Log(title = "タイミングタスク", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
     public void export(HttpServletResponse response, SysJob sysJob)
     {
         List<SysJob> list = jobService.selectJobList(sysJob);
         ExcelUtil<SysJob> util = new ExcelUtil<SysJob>(SysJob.class);
-        util.exportExcel(response, list, "定时任务");
+        util.exportExcel(response, list, "タイミングタスク");
     }
 
     /**
-     * 获取定时任务详细信息
+     * 获取タイミングタスク详细信息
      */
     @PreAuthorize("@ss.hasPermi('monitor:job:query')")
     @GetMapping(value = "/{jobId}")
@@ -75,82 +75,82 @@ public class SysJobController extends BaseController
     }
 
     /**
-     * 新增定时任务
+     * 新增タイミングタスク
      */
     @PreAuthorize("@ss.hasPermi('monitor:job:add')")
-    @Log(title = "定时任务", businessType = BusinessType.INSERT)
+    @Log(title = "タイミングタスク", businessType = BusinessType.INSERT)
     @PostMapping
     public AjaxResult add(@RequestBody SysJob job) throws SchedulerException, TaskException
     {
         if (!CronUtils.isValid(job.getCronExpression()))
         {
-            return error("新增任务'" + job.getJobName() + "'失败，Cron表达式不正确");
+            return error("新しい仕事'" + job.getJobName() + "'失敗，Cron誤った式");
         }
         else if (StringUtils.containsIgnoreCase(job.getInvokeTarget(), Constants.LOOKUP_RMI))
         {
-            return error("新增任务'" + job.getJobName() + "'失败，目标字符串不允许'rmi'调用");
+            return error("新しい仕事'" + job.getJobName() + "'失敗，ターゲット文字列は許可されていません'rmi'移行");
         }
         else if (StringUtils.containsAnyIgnoreCase(job.getInvokeTarget(), new String[] { Constants.LOOKUP_LDAP, Constants.LOOKUP_LDAPS }))
         {
-            return error("新增任务'" + job.getJobName() + "'失败，目标字符串不允许'ldap(s)'调用");
+            return error("新しい仕事'" + job.getJobName() + "'失敗，ターゲット文字列は許可されていません'ldap(s)'移行");
         }
         else if (StringUtils.containsAnyIgnoreCase(job.getInvokeTarget(), new String[] { Constants.HTTP, Constants.HTTPS }))
         {
-            return error("新增任务'" + job.getJobName() + "'失败，目标字符串不允许'http(s)'调用");
+            return error("新しい仕事'" + job.getJobName() + "'失敗，ターゲット文字列は許可されていません'http(s)'移行");
         }
         else if (StringUtils.containsAnyIgnoreCase(job.getInvokeTarget(), Constants.JOB_ERROR_STR))
         {
-            return error("新增任务'" + job.getJobName() + "'失败，目标字符串存在违规");
+            return error("新しい仕事'" + job.getJobName() + "'失敗，ターゲット文字列の違反があります");
         }
         else if (!ScheduleUtils.whiteList(job.getInvokeTarget()))
         {
-            return error("新增任务'" + job.getJobName() + "'失败，目标字符串不在白名单内");
+            return error("新しい仕事'" + job.getJobName() + "'失敗，ターゲット文字列は白いリストにありません");
         }
         job.setCreateBy(getUsername());
         return toAjax(jobService.insertJob(job));
     }
 
     /**
-     * 修改定时任务
+     * 修改タイミングタスク
      */
     @PreAuthorize("@ss.hasPermi('monitor:job:edit')")
-    @Log(title = "定时任务", businessType = BusinessType.UPDATE)
+    @Log(title = "タイミングタスク", businessType = BusinessType.UPDATE)
     @PutMapping
     public AjaxResult edit(@RequestBody SysJob job) throws SchedulerException, TaskException
     {
         if (!CronUtils.isValid(job.getCronExpression()))
         {
-            return error("修改任务'" + job.getJobName() + "'失败，Cron表达式不正确");
+            return error("タスクを変更します'" + job.getJobName() + "'失敗，Cron誤った式");
         }
         else if (StringUtils.containsIgnoreCase(job.getInvokeTarget(), Constants.LOOKUP_RMI))
         {
-            return error("修改任务'" + job.getJobName() + "'失败，目标字符串不允许'rmi'调用");
+            return error("タスクを変更します'" + job.getJobName() + "'失敗，ターゲット文字列は許可されていません'rmi'移行");
         }
         else if (StringUtils.containsAnyIgnoreCase(job.getInvokeTarget(), new String[] { Constants.LOOKUP_LDAP, Constants.LOOKUP_LDAPS }))
         {
-            return error("修改任务'" + job.getJobName() + "'失败，目标字符串不允许'ldap(s)'调用");
+            return error("タスクを変更します'" + job.getJobName() + "'失敗，ターゲット文字列は許可されていません'ldap(s)'移行");
         }
         else if (StringUtils.containsAnyIgnoreCase(job.getInvokeTarget(), new String[] { Constants.HTTP, Constants.HTTPS }))
         {
-            return error("修改任务'" + job.getJobName() + "'失败，目标字符串不允许'http(s)'调用");
+            return error("タスクを変更します'" + job.getJobName() + "'失敗，ターゲット文字列は許可されていません'http(s)'移行");
         }
         else if (StringUtils.containsAnyIgnoreCase(job.getInvokeTarget(), Constants.JOB_ERROR_STR))
         {
-            return error("修改任务'" + job.getJobName() + "'失败，目标字符串存在违规");
+            return error("タスクを変更します'" + job.getJobName() + "'失敗，ターゲット文字列の違反があります");
         }
         else if (!ScheduleUtils.whiteList(job.getInvokeTarget()))
         {
-            return error("修改任务'" + job.getJobName() + "'失败，目标字符串不在白名单内");
+            return error("タスクを変更します'" + job.getJobName() + "'失敗，ターゲット文字列は白いリストにありません");
         }
         job.setUpdateBy(getUsername());
         return toAjax(jobService.updateJob(job));
     }
 
     /**
-     * 定时任务状态修改
+     * タイミングタスク状态修改
      */
     @PreAuthorize("@ss.hasPermi('monitor:job:changeStatus')")
-    @Log(title = "定时任务", businessType = BusinessType.UPDATE)
+    @Log(title = "タイミングタスク", businessType = BusinessType.UPDATE)
     @PutMapping("/changeStatus")
     public AjaxResult changeStatus(@RequestBody SysJob job) throws SchedulerException
     {
@@ -160,22 +160,22 @@ public class SysJobController extends BaseController
     }
 
     /**
-     * 定时任务立即执行一次
+     * タイミングタスク立即执行一次
      */
     @PreAuthorize("@ss.hasPermi('monitor:job:changeStatus')")
-    @Log(title = "定时任务", businessType = BusinessType.UPDATE)
+    @Log(title = "タイミングタスク", businessType = BusinessType.UPDATE)
     @PutMapping("/run")
     public AjaxResult run(@RequestBody SysJob job) throws SchedulerException
     {
         boolean result = jobService.run(job);
-        return result ? success() : error("任务不存在或已过期！");
+        return result ? success() : error("タスクは存在しないか、期限切れになりません！");
     }
 
     /**
-     * 删除定时任务
+     * 删除タイミングタスク
      */
     @PreAuthorize("@ss.hasPermi('monitor:job:remove')")
-    @Log(title = "定时任务", businessType = BusinessType.DELETE)
+    @Log(title = "タイミングタスク", businessType = BusinessType.DELETE)
     @DeleteMapping("/{jobIds}")
     public AjaxResult remove(@PathVariable Long[] jobIds) throws SchedulerException, TaskException
     {

@@ -5,7 +5,7 @@ import java.util.Map;
 import org.springframework.lang.Nullable;
 
 /**
- * 请求方式
+ * リクエスト方法
  *
  * @author ruoyi
  */

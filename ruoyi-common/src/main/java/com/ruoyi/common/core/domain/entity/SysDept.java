@@ -11,7 +11,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 import com.ruoyi.common.core.domain.BaseEntity;
 
 /**
- * 部门表 sys_dept
+ * 部門テーブル sys_dept
  * 
  * @author ruoyi
  */
@@ -19,40 +19,40 @@ public class SysDept extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
-    /** 部门ID */
+    /** 部門ID */
     private Long deptId;
 
-    /** 父部门ID */
+    /** 親部門ID */
     private Long parentId;
 
-    /** 祖级列表 */
+    /** 先祖のリスト */
     private String ancestors;
 
-    /** 部门名称 */
+    /** 部署名 */
     private String deptName;
 
-    /** 显示顺序 */
+    /** 表示順 */
     private Integer orderNum;
 
-    /** 负责人 */
+    /** 主要 */
     private String leader;
 
-    /** 联系电话 */
+    /** 連絡先番号 */
     private String phone;
 
-    /** 邮箱 */
+    /** 郵便 */
     private String email;
 
-    /** 部门状态:0正常,1停用 */
+    /** 部門のステータス:0普通,1停止 */
     private String status;
 
-    /** 删除标志（0代表存在 2代表删除） */
+    /** 消去（0代表する 2消去） */
     private String delFlag;
 
-    /** 父部门名称 */
+    /** 親部署名 */
     private String parentName;
     
-    /** 子部门 */
+    /** サブ部門 */
     private List<SysDept> children = new ArrayList<SysDept>();
 
     public Long getDeptId()
@@ -85,8 +85,8 @@ public class SysDept extends BaseEntity
         this.ancestors = ancestors;
     }
 
-    @NotBlank(message = "部门名称不能为空")
-    @Size(min = 0, max = 30, message = "部门名称长度不能超过30个字符")
+    @NotBlank(message = "部門名称不能为空")
+    @Size(min = 0, max = 30, message = "部門名称长度不能超过30個々のキャラクター")
     public String getDeptName()
     {
         return deptName;
@@ -97,7 +97,7 @@ public class SysDept extends BaseEntity
         this.deptName = deptName;
     }
 
-    @NotNull(message = "显示顺序不能为空")
+    @NotNull(message = "表示順不能为空")
     public Integer getOrderNum()
     {
         return orderNum;
@@ -118,7 +118,7 @@ public class SysDept extends BaseEntity
         this.leader = leader;
     }
 
-    @Size(min = 0, max = 11, message = "联系电话长度不能超过11个字符")
+    @Size(min = 0, max = 11, message = "最初の数の長さを超えることはできません11個のキャラクター")
     public String getPhone()
     {
         return phone;
@@ -129,8 +129,8 @@ public class SysDept extends BaseEntity
         this.phone = phone;
     }
 
-    @Email(message = "邮箱格式不正确")
-    @Size(min = 0, max = 50, message = "邮箱长度不能超过50个字符")
+    @Email(message = "郵便形式は正しくありません")
+    @Size(min = 0, max = 50, message = "投稿の長さを超えることはできません50個々のキャラクター")
     public String getEmail()
     {
         return email;

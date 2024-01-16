@@ -17,7 +17,7 @@ import com.ruoyi.common.utils.StringUtils;
 import com.ruoyi.framework.security.context.PermissionContextHolder;
 
 /**
- * 数据过滤处理
+ * Data filtering processing
  *
  * @author ruoyi
  */
@@ -26,32 +26,32 @@ import com.ruoyi.framework.security.context.PermissionContextHolder;
 public class DataScopeAspect
 {
     /**
-     * 全部数据权限
+     * すべてのデータ権限
      */
     public static final String DATA_SCOPE_ALL = "1";
 
     /**
-     * 自定数据权限
+     * クレジットデータ許可
      */
     public static final String DATA_SCOPE_CUSTOM = "2";
 
     /**
-     * 部门数据权限
+     * 部門のデータ権限
      */
     public static final String DATA_SCOPE_DEPT = "3";
 
     /**
-     * 部门及以下数据权限
+     * 部門および以下のデータ権限
      */
     public static final String DATA_SCOPE_DEPT_AND_CHILD = "4";
 
     /**
-     * 仅本人数据权限
+     * データ権限のみ
      */
     public static final String DATA_SCOPE_SELF = "5";
 
     /**
-     * 数据权限过滤关键字
+     * データ許可フィルターキーワード
      */
     public static final String DATA_SCOPE = "dataScope";
 
@@ -64,12 +64,12 @@ public class DataScopeAspect
 
     protected void handleDataScope(final JoinPoint joinPoint, DataScope controllerDataScope)
     {
-        // 获取当前的用户
+        // 現在のユーザーを取得します
         LoginUser loginUser = SecurityUtils.getLoginUser();
         if (StringUtils.isNotNull(loginUser))
         {
             SysUser currentUser = loginUser.getUser();
-            // 如果是超级管理员，则不过滤数据
+            // スーパー管理者の場合，しかし、データをフィルターします
             if (StringUtils.isNotNull(currentUser) && !currentUser.isAdmin())
             {
                 String permission = StringUtils.defaultIfEmpty(controllerDataScope.permission(), PermissionContextHolder.getContext());
@@ -80,13 +80,13 @@ public class DataScopeAspect
     }
 
     /**
-     * 数据范围过滤
+     * データ範囲フィルター
      *
-     * @param joinPoint 切点
-     * @param user 用户
-     * @param deptAlias 部门别名
-     * @param userAlias 用户别名
-     * @param permission 权限字符
+     * @param joinPoint カットオフポイント
+     * @param user ユーザー
+     * @param deptAlias エイリアス
+     * @param userAlias ユーザー别名
+     * @param permission 寛容な性格
      */
     public static void dataScopeFilter(JoinPoint joinPoint, SysUser user, String deptAlias, String userAlias, String permission)
     {
@@ -135,14 +135,14 @@ public class DataScopeAspect
                 }
                 else
                 {
-                    // 数据权限为仅本人且没有userAlias别名不查询任何数据
+                    // データの権限は私だけであり、userAliasデータを照会せずにエイリアス
                     sqlString.append(StringUtils.format(" OR {}.dept_id = 0 ", deptAlias));
                 }
             }
             conditions.add(dataScope);
         }
 
-        // 多角色情况下，所有角色都不包含传递过来的权限字符，这个时候sqlString也会为空，所以要限制一下,不查询任何数据
+        // マルチキャラクターで，所有角色都不包含传递过来的寛容な性格，現時点ではsqlStringまた空です，だからそれを制限します,データを照会しないでください
         if (StringUtils.isEmpty(conditions))
         {
             sqlString.append(StringUtils.format(" OR {}.dept_id = 0 ", deptAlias));
@@ -160,7 +160,7 @@ public class DataScopeAspect
     }
 
     /**
-     * 拼接权限sql前先清空params.dataScope参数防止注入
+     * スプライシングオーソリティsql前にクリアparams.dataScopeパラメーターは噴射を防ぎます
      */
     private void clearDataScope(final JoinPoint joinPoint)
     {

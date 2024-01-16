@@ -4,80 +4,80 @@ import java.util.List;
 import com.ruoyi.common.core.domain.entity.SysDictType;
 
 /**
- * 字典表 数据层
+ * 辞書 データレイヤー
  * 
  * @author ruoyi
  */
 public interface SysDictTypeMapper
 {
     /**
-     * 根据条件分页查询字典类型
+     * 条件のページネーションに従って辞書タイプを確認してください
      * 
-     * @param dictType 字典类型信息
-     * @return 字典类型集合信息
+     * @param dictType 辞書タイプ情報
+     * @return 辞書タイプの収集情報
      */
     public List<SysDictType> selectDictTypeList(SysDictType dictType);
 
     /**
-     * 根据所有字典类型
+     * すべての辞書タイプに応じて
      * 
-     * @return 字典类型集合信息
+     * @return 辞書タイプの収集情報
      */
     public List<SysDictType> selectDictTypeAll();
 
     /**
-     * 根据字典类型ID查询信息
+     * 辞書タイプに応じてID検索情報
      * 
-     * @param dictId 字典类型ID
-     * @return 字典类型
+     * @param dictId 辞書ID
+     * @return 辞書
      */
     public SysDictType selectDictTypeById(Long dictId);
 
     /**
-     * 根据字典类型查询信息
+     * 辞書タイプに応じて検索情報
      * 
-     * @param dictType 字典类型
-     * @return 字典类型
+     * @param dictType 辞書
+     * @return 辞書
      */
     public SysDictType selectDictTypeByType(String dictType);
 
     /**
-     * 通过字典ID删除字典信息
+     * 辞書ID辞書情報を削除します
      * 
-     * @param dictId 字典ID
-     * @return 结果
+     * @param dictId 辞書ID
+     * @return 結果
      */
     public int deleteDictTypeById(Long dictId);
 
     /**
-     * 批量删除字典类型信息
+     * 批量删除辞書タイプ情報
      * 
-     * @param dictIds 需要删除的字典ID
-     * @return 结果
+     * @param dictIds 削除される辞書ID
+     * @return 結果
      */
     public int deleteDictTypeByIds(Long[] dictIds);
 
     /**
-     * 新增字典类型信息
+     * 新增辞書タイプ情報
      * 
-     * @param dictType 字典类型信息
-     * @return 结果
+     * @param dictType 辞書タイプ情報
+     * @return 結果
      */
     public int insertDictType(SysDictType dictType);
 
     /**
-     * 修改字典类型信息
+     * 修改辞書タイプ情報
      * 
-     * @param dictType 字典类型信息
-     * @return 结果
+     * @param dictType 辞書タイプ情報
+     * @return 結果
      */
     public int updateDictType(SysDictType dictType);
 
     /**
-     * 校验字典类型称是否唯一
+     * 検証タイトルは、それがユニークかどうかを示しています
      * 
-     * @param dictType 字典类型
-     * @return 结果
+     * @param dictType 辞書
+     * @return 結果
      */
     public SysDictType checkDictTypeUnique(String dictType);
 }

@@ -1,7 +1,7 @@
 package com.ruoyi.common.enums;
 
 /**
- * 操作状态
+ * 動作ステータス
  * 
  * @author ruoyi
  *
@@ -14,7 +14,7 @@ public enum BusinessStatus
     SUCCESS,
 
     /**
-     * 失败
+     * 失敗
      */
     FAIL,
 }

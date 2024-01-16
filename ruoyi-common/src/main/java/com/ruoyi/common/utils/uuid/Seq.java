@@ -5,29 +5,29 @@ import com.ruoyi.common.utils.DateUtils;
 import com.ruoyi.common.utils.StringUtils;
 
 /**
- * @author ruoyi 序列生成类
+ * @author ruoyi シーケンス生成クラス
  */
 public class Seq
 {
-    // 通用序列类型
+    // ユニバーサルシーケンスタイプ
     public static final String commSeqType = "COMMON";
 
-    // 上传序列类型
+    // シーケンスタイプをアップロードします
     public static final String uploadSeqType = "UPLOAD";
 
-    // 通用接口序列数
+    // ユニバーサルインターフェイスシーケンス番号
     private static AtomicInteger commSeq = new AtomicInteger(1);
 
-    // 上传接口序列数
+    // インターフェイスシーケンス番号をアップロードします
     private static AtomicInteger uploadSeq = new AtomicInteger(1);
 
-    // 机器标识
+    // マシンのロゴ
     private static final String machineCode = "A";
 
     /**
-     * 获取通用序列号
+     * 一般のなシリアル番号を取得します
      * 
-     * @return 序列值
+     * @return シリアル値
      */
     public static String getId()
     {
@@ -35,9 +35,9 @@ public class Seq
     }
     
     /**
-     * 默认16位序列号 yyMMddHHmmss + 一位机器标识 + 3长度循环递增字符串
+     * デフォルト16シーケンス番号 yyMMddHHmmss + 一位マシンのロゴ + 3永久にループ文字列
      * 
-     * @return 序列值
+     * @return シリアル値
      */
     public static String getId(String type)
     {
@@ -50,11 +50,11 @@ public class Seq
     }
 
     /**
-     * 通用接口序列号 yyMMddHHmmss + 一位机器标识 + length长度循环递增字符串
+     * ユニバーサルインターフェイスシリアル番号 yyMMddHHmmss + 一位マシンのロゴ + length永久にループ文字列
      * 
      * @param atomicInt 序列数
-     * @param length 数值长度
-     * @return 序列值
+     * @param length 数値
+     * @return シリアル値
      */
     public static String getId(AtomicInteger atomicInt, int length)
     {
@@ -65,22 +65,22 @@ public class Seq
     }
 
     /**
-     * 序列循环递增字符串[1, 10 的 (length)幂次方), 用0左补齐length位数
+     * 文字列を追加するシーケンスサイクル[1, 10 の (length)幂次方), 使使用0Zuo Buqilengthデジタル番号
      * 
-     * @return 序列值
+     * @return シリアル値
      */
     private synchronized static String getSeq(AtomicInteger atomicInt, int length)
     {
-        // 先取值再+1
+        // 最初に値を取ります+1
         int value = atomicInt.getAndIncrement();
 
-        // 如果更新后值>=10 的 (length)幂次方则重置为1
+        // 値の場合>=10 の (length)パワーのパワーがリセットされます1
         int maxSeq = (int) Math.pow(10, length);
         if (atomicInt.get() >= maxSeq)
         {
             atomicInt.set(1);
         }
-        // 转字符串，用0左补齐
+        // ローター文字列，使使用0Zuo Buqi
         return StringUtils.padl(value, length);
     }
 }

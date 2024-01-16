@@ -7,7 +7,7 @@ import com.ruoyi.system.domain.SysUserOnline;
 import com.ruoyi.system.service.ISysUserOnlineService;
 
 /**
- * 在线用户 服务层处理
+ * オンラインユーザー サービスレイヤー処理
  * 
  * @author ruoyi
  */
@@ -15,11 +15,11 @@ import com.ruoyi.system.service.ISysUserOnlineService;
 public class SysUserOnlineServiceImpl implements ISysUserOnlineService
 {
     /**
-     * 通过登录地址查询信息
+     * ログインアドレスによるクエリ情報
      * 
-     * @param ipaddr 登录地址
-     * @param user 用户信息
-     * @return 在线用户信息
+     * @param ipaddr ログインアドレス
+     * @param user ユーザー情報
+     * @return オンラインユーザー信息
      */
     @Override
     public SysUserOnline selectOnlineByIpaddr(String ipaddr, LoginUser user)
@@ -32,11 +32,11 @@ public class SysUserOnlineServiceImpl implements ISysUserOnlineService
     }
 
     /**
-     * 通过用户名称查询信息
+     * ユーザー名を介して情報をクエリします
      * 
-     * @param userName 用户名称
-     * @param user 用户信息
-     * @return 在线用户信息
+     * @param userName ユーザー名
+     * @param user ユーザー情報
+     * @return オンラインユーザー信息
      */
     @Override
     public SysUserOnline selectOnlineByUserName(String userName, LoginUser user)
@@ -49,12 +49,12 @@ public class SysUserOnlineServiceImpl implements ISysUserOnlineService
     }
 
     /**
-     * 通过登录地址/用户名称查询信息
+     * 通过ログインアドレス/ユーザー名查询信息
      * 
-     * @param ipaddr 登录地址
-     * @param userName 用户名称
-     * @param user 用户信息
-     * @return 在线用户信息
+     * @param ipaddr ログインアドレス
+     * @param userName ユーザー名
+     * @param user ユーザー情報
+     * @return オンラインユーザー信息
      */
     @Override
     public SysUserOnline selectOnlineByInfo(String ipaddr, String userName, LoginUser user)
@@ -67,10 +67,10 @@ public class SysUserOnlineServiceImpl implements ISysUserOnlineService
     }
 
     /**
-     * 设置在线用户信息
+     * 设置オンラインユーザー信息
      * 
-     * @param user 用户信息
-     * @return 在线用户
+     * @param user ユーザー情報
+     * @return オンラインユーザー
      */
     @Override
     public SysUserOnline loginUserToUserOnline(LoginUser user)

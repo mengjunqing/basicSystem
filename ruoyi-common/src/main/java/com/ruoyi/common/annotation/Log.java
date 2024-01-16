@@ -9,7 +9,7 @@ import com.ruoyi.common.enums.BusinessType;
 import com.ruoyi.common.enums.OperatorType;
 
 /**
- * 自定义操作日志记录注解
+ * カスタム操作ログ記録注釈
  * 
  * @author ruoyi
  *
@@ -20,32 +20,32 @@ import com.ruoyi.common.enums.OperatorType;
 public @interface Log
 {
     /**
-     * 模块
+     * モジュール
      */
     public String title() default "";
 
     /**
-     * 功能
+     * 関数
      */
     public BusinessType businessType() default BusinessType.OTHER;
 
     /**
-     * 操作人类别
+     * 人間
      */
     public OperatorType operatorType() default OperatorType.MANAGE;
 
     /**
-     * 是否保存请求的参数
+     * リクエストパラメーターを保存するかどうか
      */
     public boolean isSaveRequestData() default true;
 
     /**
-     * 是否保存响应的参数
+     * 応答パラメーターを保存するかどうか
      */
     public boolean isSaveResponseData() default true;
 
     /**
-     * 排除指定的请求参数
+     * 指定された要求パラメーターを除外します
      */
     public String[] excludeParamNames() default {};
 }

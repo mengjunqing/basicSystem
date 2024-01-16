@@ -3,39 +3,39 @@ package com.ruoyi.framework.web.domain.server;
 import com.ruoyi.common.utils.Arith;
 
 /**
- * CPU相关信息
+ * CPU関連情報
  * 
  * @author ruoyi
  */
 public class Cpu
 {
     /**
-     * 核心数
+     * コア番号
      */
     private int cpuNum;
 
     /**
-     * CPU总的使用率
+     * CPU総使用率
      */
     private double total;
 
     /**
-     * CPU系统使用率
+     * CPUシステムの使用率
      */
     private double sys;
 
     /**
-     * CPU用户使用率
+     * CPUユーザーの使用率
      */
     private double used;
 
     /**
-     * CPU当前等待率
+     * CPU現在の待機率
      */
     private double wait;
 
     /**
-     * CPU当前空闲率
+     * CPU現在のレジャー率
      */
     private double free;
 

@@ -21,7 +21,7 @@ import com.ruoyi.framework.security.handle.AuthenticationEntryPointImpl;
 import com.ruoyi.framework.security.handle.LogoutSuccessHandlerImpl;
 
 /**
- * spring security配置
+ * spring security構成
  * 
  * @author ruoyi
  */
@@ -29,43 +29,43 @@ import com.ruoyi.framework.security.handle.LogoutSuccessHandlerImpl;
 public class SecurityConfig extends WebSecurityConfigurerAdapter
 {
     /**
-     * 自定义用户认证逻辑
+     * カスタムユーザー認定ロジック
      */
     @Autowired
     private UserDetailsService userDetailsService;
     
     /**
-     * 认证失败处理类
+     * 認証障害処理クラス
      */
     @Autowired
     private AuthenticationEntryPointImpl unauthorizedHandler;
 
     /**
-     * 退出处理类
+     * 処理クラスを終了します
      */
     @Autowired
     private LogoutSuccessHandlerImpl logoutSuccessHandler;
 
     /**
-     * token认证过滤器
+     * token認定フィルター
      */
     @Autowired
     private JwtAuthenticationTokenFilter authenticationTokenFilter;
     
     /**
-     * 跨域过滤器
+     * クロス - ドメインフィルター
      */
     @Autowired
     private CorsFilter corsFilter;
 
     /**
-     * 允许匿名访问的地址
+     * アドレスは匿名のアクセスを許可しました
      */
     @Autowired
     private PermitAllUrlProperties permitAllUrl;
 
     /**
-     * 解决 无法直接注入 AuthenticationManager
+     * 解決する 直接注入できません AuthenticationManager
      *
      * @return
      * @throws Exception
@@ -78,58 +78,58 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
     }
 
     /**
-     * anyRequest          |   匹配所有请求路径
-     * access              |   SpringEl表达式结果为true时可以访问
-     * anonymous           |   匿名可以访问
-     * denyAll             |   用户不能访问
-     * fullyAuthenticated  |   用户完全认证可以访问（非remember-me下自动登录）
-     * hasAnyAuthority     |   如果有参数，参数表示权限，则其中任何一个权限可以访问
-     * hasAnyRole          |   如果有参数，参数表示角色，则其中任何一个角色可以访问
-     * hasAuthority        |   如果有参数，参数表示权限，则其权限可以访问
-     * hasIpAddress        |   如果有参数，参数表示IP地址，如果用户IP和参数匹配，则可以访问
-     * hasRole             |   如果有参数，参数表示角色，则其角色可以访问
-     * permitAll           |   用户可以任意访问
-     * rememberMe          |   允许通过remember-me登录的用户访问
-     * authenticated       |   用户登录后可访问
+     * anyRequest          |   すべての要求パスに一致します
+     * access              |   SpringEl式の結果はですtrueアクセスできます
+     * anonymous           |   匿名にアクセスできます
+     * denyAll             |   ユーザーはアクセスできません
+     * fullyAuthenticated  |   ユーザーの完全な認証にアクセスできます（いいえremember-me自動的にログインします）
+     * hasAnyAuthority     |   パラメーターがある場合，パラメーター表現権限，次に、いずれかの権限にアクセスできます
+     * hasAnyRole          |   パラメーターがある場合，パラメーターは役割を表します，キャラクターのいずれかにアクセスできます
+     * hasAuthority        |   パラメーターがある場合，パラメーター表現権限，当局にアクセスできます
+     * hasIpAddress        |   パラメーターがある場合，パラメーター表現IP住所，ユーザーの場合IP一致するパラメーター，アクセスできます
+     * hasRole             |   パラメーターがある場合，パラメーターは役割を表します，役割にアクセスできます
+     * permitAll           |   ユーザーは任意にアクセスできます
+     * rememberMe          |   合格しますremember-meユーザーアクセスをログインします
+     * authenticated       |   ユーザーログインにアクセスできます
      */
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception
     {
-        // 注解标记允许匿名访问的url
+        // メモマークでは、匿名アクセスを許可しますurl
         ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry registry = httpSecurity.authorizeRequests();
         permitAllUrl.getUrls().forEach(url -> registry.antMatchers(url).permitAll());
 
         httpSecurity
-                // CSRF禁用，因为不使用session
+                // CSRF無効にします，使用されていないからですsession
                 .csrf().disable()
-                // 禁用HTTP响应标头
+                // 無効にしますHTTP応答ヘッダー
                 .headers().cacheControl().disable().and()
-                // 认证失败处理类
+                // 認証障害処理クラス
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
-                // 基于token，所以不需要session
+                // に基づくtoken，だから必要はありませんsession
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-                // 过滤请求
+                // フィルターリクエスト
                 .authorizeRequests()
-                // 对于登录login 注册register 验证码captchaImage 允许匿名访问
+                // ログイン用login 登録するregister 検証コードcaptchaImage 匿名アクセスを許可します
                 .antMatchers("/login", "/register", "/captchaImage").permitAll()
-                // 静态资源，可匿名访问
+                // 静的リソース，匿名で訪れることができます
                 .antMatchers(HttpMethod.GET, "/", "/*.html", "/**/*.html", "/**/*.css", "/**/*.js", "/profile/**").permitAll()
                 .antMatchers("/swagger-ui.html", "/swagger-resources/**", "/webjars/**", "/*/api-docs", "/druid/**").permitAll()
-                // 除上面外的所有请求全部需要鉴权认证
+                // 上記を除くすべての要求は、認証する必要があります
                 .anyRequest().authenticated()
                 .and()
                 .headers().frameOptions().disable();
-        // 添加Logout filter
+        // に追加Logout filter
         httpSecurity.logout().logoutUrl("/logout").logoutSuccessHandler(logoutSuccessHandler);
-        // 添加JWT filter
+        // に追加JWT filter
         httpSecurity.addFilterBefore(authenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
-        // 添加CORS filter
+        // に追加CORS filter
         httpSecurity.addFilterBefore(corsFilter, JwtAuthenticationTokenFilter.class);
         httpSecurity.addFilterBefore(corsFilter, LogoutFilter.class);
     }
 
     /**
-     * 强散列哈希加密实现
+     * 強いディスディウムハッシュクリプトの実現
      */
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder()
@@ -138,7 +138,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
     }
 
     /**
-     * 身份认证接口
+     * ID認証インターフェイス
      */
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception

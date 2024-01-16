@@ -4,104 +4,104 @@ import java.util.List;
 import com.ruoyi.common.core.domain.entity.SysRole;
 
 /**
- * 角色表 数据层
+ * キャラクターテーブル データレイヤー
  * 
  * @author ruoyi
  */
 public interface SysRoleMapper
 {
     /**
-     * 根据条件分页查询角色数据
+     * 条件のページネーションに従ってロールデータを確認してください
      * 
-     * @param role 角色信息
-     * @return 角色数据集合信息
+     * @param role ロール情報
+     * @return 文字データセット情報
      */
     public List<SysRole> selectRoleList(SysRole role);
 
     /**
-     * 根据用户ID查询角色
+     * ユーザーによるとIDクエリロール
      * 
-     * @param userId 用户ID
-     * @return 角色列表
+     * @param userId ユーザーID
+     * @return コーナーリスト
      */
     public List<SysRole> selectRolePermissionByUserId(Long userId);
 
     /**
-     * 查询所有角色
+     * すべての役割をクエリします
      * 
-     * @return 角色列表
+     * @return コーナーリスト
      */
     public List<SysRole> selectRoleAll();
 
     /**
-     * 根据用户ID获取角色选择框列表
+     * ユーザーによるとIDキャラクター選択ボックスリストを取得します
      * 
-     * @param userId 用户ID
-     * @return 选中角色ID列表
+     * @param userId ユーザーID
+     * @return 役割を選択しましたIDリスト
      */
     public List<Long> selectRoleListByUserId(Long userId);
 
     /**
-     * 通过角色ID查询角色
+     * 役割を通してIDクエリロール
      * 
-     * @param roleId 角色ID
-     * @return 角色对象信息
+     * @param roleId 役割ID
+     * @return スプリングオブジェクト情報
      */
     public SysRole selectRoleById(Long roleId);
 
     /**
-     * 根据用户ID查询角色
+     * ユーザーによるとIDクエリロール
      * 
-     * @param userName 用户名
-     * @return 角色列表
+     * @param userName ユーザー名
+     * @return コーナーリスト
      */
     public List<SysRole> selectRolesByUserName(String userName);
 
     /**
-     * 校验角色名称是否唯一
+     * パッセージの名前が名前を切るかどうかは一意です
      * 
-     * @param roleName 角色名称
-     * @return 角色信息
+     * @param roleName 役割名称
+     * @return ロール情報
      */
     public SysRole checkRoleNameUnique(String roleName);
 
     /**
-     * 校验角色权限是否唯一
+     * 検証ですか？
      * 
-     * @param roleKey 角色权限
-     * @return 角色信息
+     * @param roleKey モルタル
+     * @return ロール情報
      */
     public SysRole checkRoleKeyUnique(String roleKey);
 
     /**
-     * 修改角色信息
+     * 修改ロール情報
      * 
-     * @param role 角色信息
-     * @return 结果
+     * @param role ロール情報
+     * @return 結果
      */
     public int updateRole(SysRole role);
 
     /**
-     * 新增角色信息
+     * 新增ロール情報
      * 
-     * @param role 角色信息
-     * @return 结果
+     * @param role ロール情報
+     * @return 結果
      */
     public int insertRole(SysRole role);
 
     /**
-     * 通过角色ID删除角色
+     * 役割を通してID消去
      * 
-     * @param roleId 角色ID
-     * @return 结果
+     * @param roleId 役割ID
+     * @return 結果
      */
     public int deleteRoleById(Long roleId);
 
     /**
-     * 批量删除角色信息
+     * 批量删除ロール情報
      * 
-     * @param roleIds 需要删除的角色ID
-     * @return 结果
+     * @param roleIds 削除用の切断ID
+     * @return 結果
      */
     public int deleteRoleByIds(Long[] roleIds);
 }

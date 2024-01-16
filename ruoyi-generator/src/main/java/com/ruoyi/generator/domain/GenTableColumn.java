@@ -5,7 +5,7 @@ import com.ruoyi.common.core.domain.BaseEntity;
 import com.ruoyi.common.utils.StringUtils;
 
 /**
- * 代码生成业务字段表 gen_table_column
+ * コード生成ビジネスフィールドテーブル gen_table_column
  * 
  * @author ruoyi
  */
@@ -13,59 +13,59 @@ public class GenTableColumn extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
-    /** 编号 */
+    /** シリアルナンバー */
     private Long columnId;
 
-    /** 归属表编号 */
+    /** 归属表シリアルナンバー */
     private Long tableId;
 
-    /** 列名称 */
+    /** 名前 */
     private String columnName;
 
-    /** 列描述 */
+    /** 説明する */
     private String columnComment;
 
-    /** 列类型 */
+    /** 列タイプ */
     private String columnType;
 
-    /** JAVA类型 */
+    /** JAVAタイプ */
     private String javaType;
 
-    /** JAVA字段名 */
-    @NotBlank(message = "Java属性不能为空")
+    /** JAVAフィールド名 */
+    @NotBlank(message = "Java属性を空にすることはできません")
     private String javaField;
 
-    /** 是否主键（1是） */
+    /** メインキーかどうか（1はい） */
     private String isPk;
 
-    /** 是否自增（1是） */
+    /** はい否自增（1はい） */
     private String isIncrement;
 
-    /** 是否必填（1是） */
+    /** はい否必填（1はい） */
     private String isRequired;
 
-    /** 是否为插入字段（1是） */
+    /** はい否为插入字段（1はい） */
     private String isInsert;
 
-    /** 是否编辑字段（1是） */
+    /** はい否编辑字段（1はい） */
     private String isEdit;
 
-    /** 是否列表字段（1是） */
+    /** はい否列表字段（1はい） */
     private String isList;
 
-    /** 是否查询字段（1是） */
+    /** はい否查询字段（1はい） */
     private String isQuery;
 
-    /** 查询方式（EQ等于、NE不等于、GT大于、LT小于、LIKE模糊、BETWEEN范围） */
+    /** 問い合わせモード（EQ等しい、NE不等しい、GT以上、LT未満、LIKE漠然、BETWEEN範囲） */
     private String queryType;
 
-    /** 显示类型（input文本框、textarea文本域、select下拉框、checkbox复选框、radio单选框、datetime日期控件、image图片上传控件、upload文件上传控件、editor富文本控件） */
+    /** 显示タイプ（inputテキストボックス、textareaテキストドメイン、selectドロップダウンボックス、checkboxチェックボックス、radioシングルボックス、datetime日付制御、image画像アップロードコントロール、uploadファイルアップロード制御、editor豊富なテキストコントロール） */
     private String htmlType;
 
-    /** 字典类型 */
+    /** 字典タイプ */
     private String dictType;
 
-    /** 排序 */
+    /** 選別 */
     private Integer sort;
 
     public void setColumnId(Long columnId)
@@ -344,7 +344,7 @@ public class GenTableColumn extends BaseEntity
 
     public static boolean isUsableColumn(String javaField)
     {
-        // isSuperColumn()中的名单用于避免生成多余Domain属性，若某些属性在生成页面时需要用到不能忽略，则放在此处白名单
+        // isSuperColumn()リストは、削減の生成を避けるために使用されますDomain属性，ページを生成するときにいくつかの属性を使用する必要がある場合、無視することはできません，ここに白いリストを載せます
         return StringUtils.equalsAnyIgnoreCase(javaField, "parentId", "orderNum", "remark");
     }
 

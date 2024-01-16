@@ -5,120 +5,120 @@ import com.ruoyi.common.core.domain.TreeSelect;
 import com.ruoyi.common.core.domain.entity.SysDept;
 
 /**
- * 部门管理 服务层
+ * 部門管理 サービスレイヤー
  * 
  * @author ruoyi
  */
 public interface ISysDeptService
 {
     /**
-     * 查询部门管理数据
+     * 照会部門管理データ
      * 
-     * @param dept 部门信息
-     * @return 部门信息集合
+     * @param dept 部門情報
+     * @return 部門情報コレクション
      */
     public List<SysDept> selectDeptList(SysDept dept);
 
     /**
-     * 查询部门树结构信息
+     * クエリ部門のツリー構造情報
      * 
-     * @param dept 部门信息
-     * @return 部门树信息集合
+     * @param dept 部門情報
+     * @return 部門ツリー情報コレクション
      */
     public List<TreeSelect> selectDeptTreeList(SysDept dept);
 
     /**
-     * 构建前端所需要树结构
+     * フロントエンドに必要なツリー構造を構築します
      * 
-     * @param depts 部门列表
-     * @return 树结构列表
+     * @param depts 部門リスト
+     * @return ツリー構造リスト
      */
     public List<SysDept> buildDeptTree(List<SysDept> depts);
 
     /**
-     * 构建前端所需要下拉树结构
+     * フロントエンドのプルダウンツリー構造を構築する
      * 
-     * @param depts 部门列表
-     * @return 下拉树结构列表
+     * @param depts 部門リスト
+     * @return 下拉ツリー構造リスト
      */
     public List<TreeSelect> buildDeptTreeSelect(List<SysDept> depts);
 
     /**
-     * 根据角色ID查询部门树信息
+     * 役割によるとIDクエリ部門ツリー情報
      * 
-     * @param roleId 角色ID
-     * @return 选中部门列表
+     * @param roleId 役割ID
+     * @return 选中部門リスト
      */
     public List<Long> selectDeptListByRoleId(Long roleId);
 
     /**
-     * 根据部门ID查询信息
+     * 部門によるとID検索情報
      * 
-     * @param deptId 部门ID
-     * @return 部门信息
+     * @param deptId 部門ID
+     * @return 部門情報
      */
     public SysDept selectDeptById(Long deptId);
 
     /**
-     * 根据ID查询所有子部门（正常状态）
+     * によるとIDすべてのサブデパートメントをクエリします（通常のステータス）
      * 
-     * @param deptId 部门ID
-     * @return 子部门数
+     * @param deptId 部門ID
+     * @return 子部門数
      */
     public int selectNormalChildrenDeptById(Long deptId);
 
     /**
-     * 是否存在部门子节点
+     * 是否存在する部門子节点
      * 
-     * @param deptId 部门ID
-     * @return 结果
+     * @param deptId 部門ID
+     * @return 結果
      */
     public boolean hasChildByDeptId(Long deptId);
 
     /**
-     * 查询部门是否存在用户
+     * 查询部門是否存在する用户
      * 
-     * @param deptId 部门ID
-     * @return 结果 true 存在 false 不存在
+     * @param deptId 部門ID
+     * @return 結果 true 存在する false 存在しないする
      */
     public boolean checkDeptExistUser(Long deptId);
 
     /**
-     * 校验部门名称是否唯一
+     * 検証部門の名前はユニークですか？
      * 
-     * @param dept 部门信息
-     * @return 结果
+     * @param dept 部門情報
+     * @return 結果
      */
     public boolean checkDeptNameUnique(SysDept dept);
 
     /**
-     * 校验部门是否有数据权限
+     * 検証部門にデータ権限があるかどうか
      * 
-     * @param deptId 部门id
+     * @param deptId 部門id
      */
     public void checkDeptDataScope(Long deptId);
 
     /**
-     * 新增保存部门信息
+     * 保存部門情報を追加しました
      * 
-     * @param dept 部门信息
-     * @return 结果
+     * @param dept 部門情報
+     * @return 結果
      */
     public int insertDept(SysDept dept);
 
     /**
-     * 修改保存部门信息
+     * 保存部門の情報を変更します
      * 
-     * @param dept 部门信息
-     * @return 结果
+     * @param dept 部門情報
+     * @return 結果
      */
     public int updateDept(SysDept dept);
 
     /**
-     * 删除部门管理信息
+     * 部門管理情報を削除します
      * 
-     * @param deptId 部门ID
-     * @return 结果
+     * @param deptId 部門ID
+     * @return 結果
      */
     public int deleteDeptById(Long deptId);
 }

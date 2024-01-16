@@ -17,7 +17,7 @@ import com.ruoyi.quartz.domain.SysJobLog;
 import com.ruoyi.quartz.service.ISysJobLogService;
 
 /**
- * 抽象quartz调用
+ * 抽象的なquartz移行
  *
  * @author ruoyi
  */
@@ -26,7 +26,7 @@ public abstract class AbstractQuartzJob implements Job
     private static final Logger log = LoggerFactory.getLogger(AbstractQuartzJob.class);
 
     /**
-     * 线程本地变量
+     * ローカル変数スレッド
      */
     private static ThreadLocal<Date> threadLocal = new ThreadLocal<>();
 
@@ -46,16 +46,16 @@ public abstract class AbstractQuartzJob implements Job
         }
         catch (Exception e)
         {
-            log.error("任务执行异常  - ：", e);
+            log.error("ミッションの実行は異常です  - ：", e);
             after(context, sysJob, e);
         }
     }
 
     /**
-     * 执行前
+     * 実行前
      *
-     * @param context 工作执行上下文对象
-     * @param sysJob 系统计划任务
+     * @param context 作業実行コンテキストオブジェクト
+     * @param sysJob システム計画タスク
      */
     protected void before(JobExecutionContext context, SysJob sysJob)
     {
@@ -63,10 +63,10 @@ public abstract class AbstractQuartzJob implements Job
     }
 
     /**
-     * 执行后
+     * 実行後
      *
-     * @param context 工作执行上下文对象
-     * @param sysJob 系统计划任务
+     * @param context 作業実行コンテキストオブジェクト
+     * @param sysJob システム計画タスク
      */
     protected void after(JobExecutionContext context, SysJob sysJob, Exception e)
     {
@@ -80,7 +80,7 @@ public abstract class AbstractQuartzJob implements Job
         sysJobLog.setStartTime(startTime);
         sysJobLog.setStopTime(new Date());
         long runMs = sysJobLog.getStopTime().getTime() - sysJobLog.getStartTime().getTime();
-        sysJobLog.setJobMessage(sysJobLog.getJobName() + " 总共耗时：" + runMs + "毫秒");
+        sysJobLog.setJobMessage(sysJobLog.getJobName() + " 合計時間：" + runMs + "ミリ秒");
         if (e != null)
         {
             sysJobLog.setStatus(Constants.FAIL);
@@ -92,16 +92,16 @@ public abstract class AbstractQuartzJob implements Job
             sysJobLog.setStatus(Constants.SUCCESS);
         }
 
-        // 写入数据库当中
+        // データベースに書き込みます
         SpringUtils.getBean(ISysJobLogService.class).addJobLog(sysJobLog);
     }
 
     /**
-     * 执行方法，由子类重载
+     * 実行方法，サブクラスからの配達
      *
-     * @param context 工作执行上下文对象
-     * @param sysJob 系统计划任务
-     * @throws Exception 执行过程中的异常
+     * @param context 作業実行コンテキストオブジェクト
+     * @param sysJob システム計画タスク
+     * @throws Exception 実行プロセス中の異常
      */
     protected abstract void doExecute(JobExecutionContext context, SysJob sysJob) throws Exception;
 }

@@ -29,7 +29,7 @@ import com.ruoyi.generator.service.IGenTableColumnService;
 import com.ruoyi.generator.service.IGenTableService;
 
 /**
- * 代码生成 操作处理
+ * コード生成する 手術
  * 
  * @author ruoyi
  */
@@ -44,7 +44,7 @@ public class GenController extends BaseController
     private IGenTableColumnService genTableColumnService;
 
     /**
-     * 查询代码生成列表
+     * 查询コード生成する列表
      */
     @PreAuthorize("@ss.hasPermi('tool:gen:list')")
     @GetMapping("/list")
@@ -56,7 +56,7 @@ public class GenController extends BaseController
     }
 
     /**
-     * 修改代码生成业务
+     * 修改コード生成する业务
      */
     @PreAuthorize("@ss.hasPermi('tool:gen:query')")
     @GetMapping(value = "/{tableId}")
@@ -73,7 +73,7 @@ public class GenController extends BaseController
     }
 
     /**
-     * 查询数据库列表
+     * クエリデータベースリスト
      */
     @PreAuthorize("@ss.hasPermi('tool:gen:list')")
     @GetMapping("/db/list")
@@ -85,7 +85,7 @@ public class GenController extends BaseController
     }
 
     /**
-     * 查询数据表字段列表
+     * クエリデータテーブルフィールドリスト
      */
     @PreAuthorize("@ss.hasPermi('tool:gen:list')")
     @GetMapping(value = "/column/{tableId}")
@@ -99,25 +99,25 @@ public class GenController extends BaseController
     }
 
     /**
-     * 导入表结构（保存）
+     * テーブル構造をインポートします（保存）
      */
     @PreAuthorize("@ss.hasPermi('tool:gen:import')")
-    @Log(title = "代码生成", businessType = BusinessType.IMPORT)
+    @Log(title = "コード生成する", businessType = BusinessType.IMPORT)
     @PostMapping("/importTable")
     public AjaxResult importTableSave(String tables)
     {
         String[] tableNames = Convert.toStrArray(tables);
-        // 查询表信息
+        // クエリテーブル情報
         List<GenTable> tableList = genTableService.selectDbTableListByNames(tableNames);
         genTableService.importGenTable(tableList);
         return success();
     }
 
     /**
-     * 修改保存代码生成业务
+     * 修改保存コード生成する业务
      */
     @PreAuthorize("@ss.hasPermi('tool:gen:edit')")
-    @Log(title = "代码生成", businessType = BusinessType.UPDATE)
+    @Log(title = "コード生成する", businessType = BusinessType.UPDATE)
     @PutMapping
     public AjaxResult editSave(@Validated @RequestBody GenTable genTable)
     {
@@ -127,10 +127,10 @@ public class GenController extends BaseController
     }
 
     /**
-     * 删除代码生成
+     * 删除コード生成する
      */
     @PreAuthorize("@ss.hasPermi('tool:gen:remove')")
-    @Log(title = "代码生成", businessType = BusinessType.DELETE)
+    @Log(title = "コード生成する", businessType = BusinessType.DELETE)
     @DeleteMapping("/{tableIds}")
     public AjaxResult remove(@PathVariable Long[] tableIds)
     {
@@ -139,7 +139,7 @@ public class GenController extends BaseController
     }
 
     /**
-     * 预览代码
+     * プレビューコード
      */
     @PreAuthorize("@ss.hasPermi('tool:gen:preview')")
     @GetMapping("/preview/{tableId}")
@@ -150,10 +150,10 @@ public class GenController extends BaseController
     }
 
     /**
-     * 生成代码（下载方式）
+     * コードを生成するします（ダウンロード方法）
      */
     @PreAuthorize("@ss.hasPermi('tool:gen:code')")
-    @Log(title = "代码生成", businessType = BusinessType.GENCODE)
+    @Log(title = "コード生成する", businessType = BusinessType.GENCODE)
     @GetMapping("/download/{tableName}")
     public void download(HttpServletResponse response, @PathVariable("tableName") String tableName) throws IOException
     {
@@ -162,10 +162,10 @@ public class GenController extends BaseController
     }
 
     /**
-     * 生成代码（自定义路径）
+     * コードを生成するします（カスタムパス）
      */
     @PreAuthorize("@ss.hasPermi('tool:gen:code')")
-    @Log(title = "代码生成", businessType = BusinessType.GENCODE)
+    @Log(title = "コード生成する", businessType = BusinessType.GENCODE)
     @GetMapping("/genCode/{tableName}")
     public AjaxResult genCode(@PathVariable("tableName") String tableName)
     {
@@ -174,10 +174,10 @@ public class GenController extends BaseController
     }
 
     /**
-     * 同步数据库
+     * 同期データベース
      */
     @PreAuthorize("@ss.hasPermi('tool:gen:edit')")
-    @Log(title = "代码生成", businessType = BusinessType.UPDATE)
+    @Log(title = "コード生成する", businessType = BusinessType.UPDATE)
     @GetMapping("/synchDb/{tableName}")
     public AjaxResult synchDb(@PathVariable("tableName") String tableName)
     {
@@ -186,10 +186,10 @@ public class GenController extends BaseController
     }
 
     /**
-     * 批量生成代码
+     * 批量コードを生成するします
      */
     @PreAuthorize("@ss.hasPermi('tool:gen:code')")
-    @Log(title = "代码生成", businessType = BusinessType.GENCODE)
+    @Log(title = "コード生成する", businessType = BusinessType.GENCODE)
     @GetMapping("/batchGenCode")
     public void batchGenCode(HttpServletResponse response, String tables) throws IOException
     {
@@ -199,7 +199,7 @@ public class GenController extends BaseController
     }
 
     /**
-     * 生成zip文件
+     * 生成するzip書類
      */
     private void genCode(HttpServletResponse response, byte[] data) throws IOException
     {

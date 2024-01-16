@@ -3,24 +3,24 @@ package com.ruoyi.framework.web.domain.server;
 import com.ruoyi.common.utils.Arith;
 
 /**
- * 內存相关信息
+ * メモリ関連情報
  * 
  * @author ruoyi
  */
 public class Mem
 {
     /**
-     * 内存总量
+     * 総メモリ
      */
     private double total;
 
     /**
-     * 已用内存
+     * メモリ
      */
     private double used;
 
     /**
-     * 剩余内存
+     * 残りのメモリ
      */
     private double free;
 

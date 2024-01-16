@@ -8,7 +8,7 @@ import java.util.Collection;
 import java.util.Set;
 
 /**
- * 登录用户身份权限
+ * ユーザー機関の権限にログインします
  * 
  * @author ruoyi
  */
@@ -17,57 +17,57 @@ public class LoginUser implements UserDetails
     private static final long serialVersionUID = 1L;
 
     /**
-     * 用户ID
+     * ユーザーID
      */
     private Long userId;
 
     /**
-     * 部门ID
+     * 部門ID
      */
     private Long deptId;
 
     /**
-     * 用户唯一标识
+     * ユーザー唯一标识
      */
     private String token;
 
     /**
-     * 登录时间
+     * 時間を記録します
      */
     private Long loginTime;
 
     /**
-     * 过期时间
+     * 有効期限
      */
     private Long expireTime;
 
     /**
-     * 登录IP地址
+     * ログインIP住所
      */
     private String ipaddr;
 
     /**
-     * 登录地点
+     * ログイン地点
      */
     private String loginLocation;
 
     /**
-     * 浏览器类型
+     * ブラウザタイプ
      */
     private String browser;
 
     /**
-     * 操作系统
+     * オペレーティング·システム
      */
     private String os;
 
     /**
-     * 权限列表
+     * 許可リスト
      */
     private Set<String> permissions;
 
     /**
-     * 用户信息
+     * ユーザー信息
      */
     private SysUser user;
 
@@ -133,7 +133,7 @@ public class LoginUser implements UserDetails
     }
 
     /**
-     * 账户是否未过期,过期无法验证
+     * アカウントが期限切れになっていないかどうか,期限切れは検証できません
      */
     @JSONField(serialize = false)
     @Override
@@ -143,7 +143,7 @@ public class LoginUser implements UserDetails
     }
 
     /**
-     * 指定用户是否解锁,锁定的用户无法进行身份验证
+     * 指定ユーザー是否解锁,锁定的ユーザー无法进行身份验证
      * 
      * @return
      */
@@ -155,7 +155,7 @@ public class LoginUser implements UserDetails
     }
 
     /**
-     * 指示是否已过期的用户的凭据(密码),过期的凭据防止认证
+     * 指示是否已过期的ユーザー的凭据(パスワード),期限切れの資格情報は認証を防ぎます
      * 
      * @return
      */
@@ -167,7 +167,7 @@ public class LoginUser implements UserDetails
     }
 
     /**
-     * 是否可用 ,禁用的用户不能身份验证
+     * 使用可能かどうか ,禁用的ユーザー不能身份验证
      * 
      * @return
      */

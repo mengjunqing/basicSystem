@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PreDestroy;
 
 /**
- * 确保应用退出时能关闭后台线程
+ * アプリケーションが終了したら、バックグラウンドスレッドを閉じることができることを確認してください
  *
  * @author ruoyi
  */
@@ -22,13 +22,13 @@ public class ShutdownManager
     }
 
     /**
-     * 停止异步执行任务
+     * 非同期実行タスクを停止します
      */
     private void shutdownAsyncManager()
     {
         try
         {
-            logger.info("====关闭后台任务任务线程池====");
+            logger.info("====バックグラウンドタスクミッションスレッドプールを閉じます====");
             AsyncManager.me().shutdown();
         }
         catch (Exception e)

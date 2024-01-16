@@ -9,7 +9,7 @@ import com.ruoyi.common.constant.CacheConstants;
 import com.ruoyi.common.enums.LimitType;
 
 /**
- * 限流注解
+ * 制限された注釈
  * 
  * @author ruoyi
  */
@@ -19,22 +19,22 @@ import com.ruoyi.common.enums.LimitType;
 public @interface RateLimiter
 {
     /**
-     * 限流key
+     * 制限key
      */
     public String key() default CacheConstants.RATE_LIMIT_KEY;
 
     /**
-     * 限流时间,单位秒
+     * 時間を制限します,ユニットセカンド
      */
     public int time() default 60;
 
     /**
-     * 限流次数
+     * 制限次数
      */
     public int count() default 100;
 
     /**
-     * 限流类型
+     * 制限されたタイプ
      */
     public LimitType limitType() default LimitType.DEFAULT;
 }

@@ -1,7 +1,7 @@
 package com.ruoyi.common.exception.file;
 
 /**
- * 文件名大小限制异常类
+ * ファイル名サイズは異常なクラスを制限します
  * 
  * @author ruoyi
  */

@@ -24,7 +24,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
 /**
- * token验证处理
+ * token検証処理
  *
  * @author ruoyi
  */
@@ -33,15 +33,15 @@ public class TokenService
 {
     private static final Logger log = LoggerFactory.getLogger(TokenService.class);
 
-    // 令牌自定义标识
+    // トークンカスタムロゴ
     @Value("${token.header}")
     private String header;
 
-    // 令牌秘钥
+    // トークンキーキーキー
     @Value("${token.secret}")
     private String secret;
 
-    // 令牌有效期（默认30分钟）
+    // トークン（デフォルト30ポイント）
     @Value("${token.expireTime}")
     private int expireTime;
 
@@ -55,20 +55,20 @@ public class TokenService
     private RedisCache redisCache;
 
     /**
-     * 获取用户身份信息
+     * ユーザーID情報を取得します
      *
-     * @return 用户信息
+     * @return ユーザー情報
      */
     public LoginUser getLoginUser(HttpServletRequest request)
     {
-        // 获取请求携带的令牌
+        // リクエストのトークンを取得します
         String token = getToken(request);
         if (StringUtils.isNotEmpty(token))
         {
             try
             {
                 Claims claims = parseToken(token);
-                // 解析对应的权限以及用户信息
+                // 解析对应的权限以及ユーザー情報
                 String uuid = (String) claims.get(Constants.LOGIN_USER_KEY);
                 String userKey = getTokenKey(uuid);
                 LoginUser user = redisCache.getCacheObject(userKey);
@@ -76,14 +76,14 @@ public class TokenService
             }
             catch (Exception e)
             {
-                log.error("获取用户信息异常'{}'", e.getMessage());
+                log.error("获取ユーザー情報异常'{}'", e.getMessage());
             }
         }
         return null;
     }
 
     /**
-     * 设置用户身份信息
+     * ユーザーID情報を設定します
      */
     public void setLoginUser(LoginUser loginUser)
     {
@@ -94,7 +94,7 @@ public class TokenService
     }
 
     /**
-     * 删除用户身份信息
+     * ユーザーID情報を削除します
      */
     public void delLoginUser(String token)
     {
@@ -106,10 +106,10 @@ public class TokenService
     }
 
     /**
-     * 创建令牌
+     * トークンを作成します
      *
-     * @param loginUser 用户信息
-     * @return 令牌
+     * @param loginUser ユーザー情報
+     * @return トークン
      */
     public String createToken(LoginUser loginUser)
     {
@@ -124,10 +124,10 @@ public class TokenService
     }
 
     /**
-     * 验证令牌有效期，相差不足20分钟，自动刷新缓存
+     * 验证トークン，不十ポイントです20ポイント，自動更新キャッシュ
      *
      * @param loginUser
-     * @return 令牌
+     * @return トークン
      */
     public void verifyToken(LoginUser loginUser)
     {
@@ -140,23 +140,23 @@ public class TokenService
     }
 
     /**
-     * 刷新令牌有效期
+     * 刷新トークン
      *
-     * @param loginUser 登录信息
+     * @param loginUser ログイン情報
      */
     public void refreshToken(LoginUser loginUser)
     {
         loginUser.setLoginTime(System.currentTimeMillis());
         loginUser.setExpireTime(loginUser.getLoginTime() + expireTime * MILLIS_MINUTE);
-        // 根据uuid将loginUser缓存
+        // によるとuuid平均loginUserキャッシュ
         String userKey = getTokenKey(loginUser.getToken());
         redisCache.setCacheObject(userKey, loginUser, expireTime, TimeUnit.MINUTES);
     }
 
     /**
-     * 设置用户代理信息
+     * ユーザーエージェンシー情報を設定します
      *
-     * @param loginUser 登录信息
+     * @param loginUser ログイン情報
      */
     public void setUserAgent(LoginUser loginUser)
     {
@@ -169,10 +169,10 @@ public class TokenService
     }
 
     /**
-     * 从数据声明生成令牌
+     * 从データステートメント生成トークン
      *
-     * @param claims 数据声明
-     * @return 令牌
+     * @param claims データステートメント
+     * @return トークン
      */
     private String createToken(Map<String, Object> claims)
     {
@@ -183,10 +183,10 @@ public class TokenService
     }
 
     /**
-     * 从令牌中获取数据声明
+     * 从トークン中获取データステートメント
      *
-     * @param token 令牌
-     * @return 数据声明
+     * @param token トークン
+     * @return データステートメント
      */
     private Claims parseToken(String token)
     {
@@ -197,10 +197,10 @@ public class TokenService
     }
 
     /**
-     * 从令牌中获取用户名
+     * 从トークン中获取ユーザー名
      *
-     * @param token 令牌
-     * @return 用户名
+     * @param token トークン
+     * @return ユーザー名
      */
     public String getUsernameFromToken(String token)
     {
@@ -209,7 +209,7 @@ public class TokenService
     }
 
     /**
-     * 获取请求token
+     * リクエストを取得しますtoken
      *
      * @param request
      * @return token

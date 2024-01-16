@@ -4,73 +4,73 @@ import java.util.List;
 import com.ruoyi.system.domain.SysConfig;
 
 /**
- * 参数配置 数据层
+ * パラメーター構成 データレイヤー
  * 
  * @author ruoyi
  */
 public interface SysConfigMapper
 {
     /**
-     * 查询参数配置信息
+     * 查询パラメーター構成信息
      * 
-     * @param config 参数配置信息
-     * @return 参数配置信息
+     * @param config パラメーター構成信息
+     * @return パラメーター構成信息
      */
     public SysConfig selectConfig(SysConfig config);
 
     /**
-     * 通过ID查询配置
+     * 合格IDクエリ構成
      * 
-     * @param configId 参数ID
-     * @return 参数配置信息
+     * @param configId パラメーターID
+     * @return パラメーター構成信息
      */
     public SysConfig selectConfigById(Long configId);
 
     /**
-     * 查询参数配置列表
+     * 查询パラメーター構成列表
      * 
-     * @param config 参数配置信息
-     * @return 参数配置集合
+     * @param config パラメーター構成信息
+     * @return パラメーター構成集合
      */
     public List<SysConfig> selectConfigList(SysConfig config);
 
     /**
-     * 根据键名查询参数配置信息
+     * 根据键名查询パラメーター構成信息
      * 
-     * @param configKey 参数键名
-     * @return 参数配置信息
+     * @param configKey パラメーター键名
+     * @return パラメーター構成信息
      */
     public SysConfig checkConfigKeyUnique(String configKey);
 
     /**
-     * 新增参数配置
+     * 新增パラメーター構成
      * 
-     * @param config 参数配置信息
-     * @return 结果
+     * @param config パラメーター構成信息
+     * @return 結果
      */
     public int insertConfig(SysConfig config);
 
     /**
-     * 修改参数配置
+     * 修改パラメーター構成
      * 
-     * @param config 参数配置信息
-     * @return 结果
+     * @param config パラメーター構成信息
+     * @return 結果
      */
     public int updateConfig(SysConfig config);
 
     /**
-     * 删除参数配置
+     * 删除パラメーター構成
      * 
-     * @param configId 参数ID
-     * @return 结果
+     * @param configId パラメーターID
+     * @return 結果
      */
     public int deleteConfigById(Long configId);
 
     /**
-     * 批量删除参数信息
+     * 批量删除パラメーター信息
      * 
-     * @param configIds 需要删除的参数ID
-     * @return 结果
+     * @param configIds 需要删除的パラメーターID
+     * @return 結果
      */
     public int deleteConfigByIds(Long[] configIds);
 }

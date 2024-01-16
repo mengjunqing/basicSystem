@@ -7,138 +7,138 @@ import com.ruoyi.common.core.domain.entity.SysMenu;
 import com.ruoyi.system.domain.vo.RouterVo;
 
 /**
- * 菜单 业务层
+ * メニュー ビジネス層
  * 
  * @author ruoyi
  */
 public interface ISysMenuService
 {
     /**
-     * 根据用户查询系统菜单列表
+     * 根据ユーザー查询系统メニュー列表
      * 
-     * @param userId 用户ID
-     * @return 菜单列表
+     * @param userId ユーザーID
+     * @return メニュー列表
      */
     public List<SysMenu> selectMenuList(Long userId);
 
     /**
-     * 根据用户查询系统菜单列表
+     * 根据ユーザー查询系统メニュー列表
      * 
-     * @param menu 菜单信息
-     * @param userId 用户ID
-     * @return 菜单列表
+     * @param menu メニュー信息
+     * @param userId ユーザーID
+     * @return メニュー列表
      */
     public List<SysMenu> selectMenuList(SysMenu menu, Long userId);
 
     /**
-     * 根据用户ID查询权限
+     * 根据ユーザーIDQuery Authority
      * 
-     * @param userId 用户ID
-     * @return 权限列表
+     * @param userId ユーザーID
+     * @return 許可リスト
      */
     public Set<String> selectMenuPermsByUserId(Long userId);
 
     /**
-     * 根据角色ID查询权限
+     * 役割によるとIDQuery Authority
      * 
-     * @param roleId 角色ID
-     * @return 权限列表
+     * @param roleId 役割ID
+     * @return 許可リスト
      */
     public Set<String> selectMenuPermsByRoleId(Long roleId);
 
     /**
-     * 根据用户ID查询菜单树信息
+     * 根据ユーザーID查询メニュー树信息
      * 
-     * @param userId 用户ID
-     * @return 菜单列表
+     * @param userId ユーザーID
+     * @return メニュー列表
      */
     public List<SysMenu> selectMenuTreeByUserId(Long userId);
 
     /**
-     * 根据角色ID查询菜单树信息
+     * 役割によるとID查询メニュー树信息
      * 
-     * @param roleId 角色ID
-     * @return 选中菜单列表
+     * @param roleId 役割ID
+     * @return 选中メニュー列表
      */
     public List<Long> selectMenuListByRoleId(Long roleId);
 
     /**
-     * 构建前端路由所需要的菜单
+     * 构建前端路由所需要的メニュー
      * 
-     * @param menus 菜单列表
-     * @return 路由列表
+     * @param menus メニュー列表
+     * @return ルーティングリスト
      */
     public List<RouterVo> buildMenus(List<SysMenu> menus);
 
     /**
-     * 构建前端所需要树结构
+     * フロントエンドに必要なツリー構造を構築します
      * 
-     * @param menus 菜单列表
-     * @return 树结构列表
+     * @param menus メニュー列表
+     * @return ツリー構造リスト
      */
     public List<SysMenu> buildMenuTree(List<SysMenu> menus);
 
     /**
-     * 构建前端所需要下拉树结构
+     * フロントエンドのプルダウンツリー構造を構築する
      * 
-     * @param menus 菜单列表
-     * @return 下拉树结构列表
+     * @param menus メニュー列表
+     * @return 下拉ツリー構造リスト
      */
     public List<TreeSelect> buildMenuTreeSelect(List<SysMenu> menus);
 
     /**
-     * 根据菜单ID查询信息
+     * 根据メニューID検索情報
      * 
-     * @param menuId 菜单ID
-     * @return 菜单信息
+     * @param menuId メニューID
+     * @return メニュー信息
      */
     public SysMenu selectMenuById(Long menuId);
 
     /**
-     * 是否存在菜单子节点
+     * 是否存在するするメニュー子节点
      * 
-     * @param menuId 菜单ID
-     * @return 结果 true 存在 false 不存在
+     * @param menuId メニューID
+     * @return 結果 true 存在するする false 存在するしないする
      */
     public boolean hasChildByMenuId(Long menuId);
 
     /**
-     * 查询菜单是否存在角色
+     * 查询メニュー是否存在するする役割
      * 
-     * @param menuId 菜单ID
-     * @return 结果 true 存在 false 不存在
+     * @param menuId メニューID
+     * @return 結果 true 存在するする false 存在するしないする
      */
     public boolean checkMenuExistRole(Long menuId);
 
     /**
-     * 新增保存菜单信息
+     * 新增保存メニュー信息
      * 
-     * @param menu 菜单信息
-     * @return 结果
+     * @param menu メニュー信息
+     * @return 結果
      */
     public int insertMenu(SysMenu menu);
 
     /**
-     * 修改保存菜单信息
+     * 修改保存メニュー信息
      * 
-     * @param menu 菜单信息
-     * @return 结果
+     * @param menu メニュー信息
+     * @return 結果
      */
     public int updateMenu(SysMenu menu);
 
     /**
-     * 删除菜单管理信息
+     * 删除メニュー管理信息
      * 
-     * @param menuId 菜单ID
-     * @return 结果
+     * @param menuId メニューID
+     * @return 結果
      */
     public int deleteMenuById(Long menuId);
 
     /**
-     * 校验菜单名称是否唯一
+     * 校验メニュー名称是否唯一
      * 
-     * @param menu 菜单信息
-     * @return 结果
+     * @param menu メニュー信息
+     * @return 結果
      */
     public boolean checkMenuNameUnique(SysMenu menu);
 }

@@ -8,7 +8,7 @@ import com.ruoyi.common.core.domain.entity.SysDept;
 import com.ruoyi.common.core.domain.entity.SysMenu;
 
 /**
- * Treeselect树结构实体类
+ * Treeselectツリー構造エンティティクラス
  * 
  * @author ruoyi
  */
@@ -16,13 +16,13 @@ public class TreeSelect implements Serializable
 {
     private static final long serialVersionUID = 1L;
 
-    /** 节点ID */
+    /** ノードID */
     private Long id;
 
-    /** 节点名称 */
+    /** ノード名称 */
     private String label;
 
-    /** 子节点 */
+    /** 子ノード */
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private List<TreeSelect> children;
 

@@ -6,168 +6,168 @@ import com.ruoyi.common.core.domain.entity.SysRole;
 import com.ruoyi.system.domain.SysUserRole;
 
 /**
- * 角色业务层
+ * キャラクタービジネスレイヤー
  * 
  * @author ruoyi
  */
 public interface ISysRoleService
 {
     /**
-     * 根据条件分页查询角色数据
+     * 条件のページネーションに従ってロールデータを確認してください
      * 
-     * @param role 角色信息
-     * @return 角色数据集合信息
+     * @param role ロール情報
+     * @return 文字データセット情報
      */
     public List<SysRole> selectRoleList(SysRole role);
 
     /**
-     * 根据用户ID查询角色列表
+     * ユーザーによるとIDコーナーリストをクエリします
      * 
-     * @param userId 用户ID
-     * @return 角色列表
+     * @param userId ユーザーID
+     * @return コーナーリスト
      */
     public List<SysRole> selectRolesByUserId(Long userId);
 
     /**
-     * 根据用户ID查询角色权限
+     * ユーザーによるとIDクエリロール許可
      * 
-     * @param userId 用户ID
-     * @return 权限列表
+     * @param userId ユーザーID
+     * @return 許可リスト
      */
     public Set<String> selectRolePermissionByUserId(Long userId);
 
     /**
-     * 查询所有角色
+     * すべての役割をクエリします
      * 
-     * @return 角色列表
+     * @return コーナーリスト
      */
     public List<SysRole> selectRoleAll();
 
     /**
-     * 根据用户ID获取角色选择框列表
+     * ユーザーによるとIDキャラクター選択ボックスリストを取得します
      * 
-     * @param userId 用户ID
-     * @return 选中角色ID列表
+     * @param userId ユーザーID
+     * @return 役割を選択しましたIDリスト
      */
     public List<Long> selectRoleListByUserId(Long userId);
 
     /**
-     * 通过角色ID查询角色
+     * 役割を通してIDクエリロール
      * 
-     * @param roleId 角色ID
-     * @return 角色对象信息
+     * @param roleId 役割ID
+     * @return スプリングオブジェクト情報
      */
     public SysRole selectRoleById(Long roleId);
 
     /**
-     * 校验角色名称是否唯一
+     * パッセージの名前が名前を切るかどうかは一意です
      * 
-     * @param role 角色信息
-     * @return 结果
+     * @param role ロール情報
+     * @return 結果
      */
     public boolean checkRoleNameUnique(SysRole role);
 
     /**
-     * 校验角色权限是否唯一
+     * 検証ですか？
      * 
-     * @param role 角色信息
-     * @return 结果
+     * @param role ロール情報
+     * @return 結果
      */
     public boolean checkRoleKeyUnique(SysRole role);
 
     /**
-     * 校验角色是否允许操作
+     * テストの操作が許可されているかどうか
      * 
-     * @param role 角色信息
+     * @param role ロール情報
      */
     public void checkRoleAllowed(SysRole role);
 
     /**
-     * 校验角色是否有数据权限
+     * 検証のためのデータ権限はありますか？
      * 
-     * @param roleId 角色id
+     * @param roleId 役割id
      */
     public void checkRoleDataScope(Long roleId);
 
     /**
-     * 通过角色ID查询角色使用数量
+     * 役割を通してIDクエリロール使用数量
      * 
-     * @param roleId 角色ID
-     * @return 结果
+     * @param roleId 役割ID
+     * @return 結果
      */
     public int countUserRoleByRoleId(Long roleId);
 
     /**
-     * 新增保存角色信息
+     * 新增保存ロール情報
      * 
-     * @param role 角色信息
-     * @return 结果
+     * @param role ロール情報
+     * @return 結果
      */
     public int insertRole(SysRole role);
 
     /**
-     * 修改保存角色信息
+     * 修改保存ロール情報
      * 
-     * @param role 角色信息
-     * @return 结果
+     * @param role ロール情報
+     * @return 結果
      */
     public int updateRole(SysRole role);
 
     /**
-     * 修改角色状态
+     * 通勤のステータスを変更します
      * 
-     * @param role 角色信息
-     * @return 结果
+     * @param role ロール情報
+     * @return 結果
      */
     public int updateRoleStatus(SysRole role);
 
     /**
-     * 修改数据权限信息
+     * データ許可情報を変更します
      * 
-     * @param role 角色信息
-     * @return 结果
+     * @param role ロール情報
+     * @return 結果
      */
     public int authDataScope(SysRole role);
 
     /**
-     * 通过角色ID删除角色
+     * 役割を通してID消去
      * 
-     * @param roleId 角色ID
-     * @return 结果
+     * @param roleId 役割ID
+     * @return 結果
      */
     public int deleteRoleById(Long roleId);
 
     /**
-     * 批量删除角色信息
+     * 批量删除ロール情報
      * 
-     * @param roleIds 需要删除的角色ID
-     * @return 结果
+     * @param roleIds 削除用の切断ID
+     * @return 結果
      */
     public int deleteRoleByIds(Long[] roleIds);
 
     /**
-     * 取消授权用户角色
+     * 取消授权ユーザー役割
      * 
-     * @param userRole 用户和角色关联信息
-     * @return 结果
+     * @param userRole ユーザー和役割关联信息
+     * @return 結果
      */
     public int deleteAuthUser(SysUserRole userRole);
 
     /**
-     * 批量取消授权用户角色
+     * 批量取消授权ユーザー役割
      * 
-     * @param roleId 角色ID
-     * @param userIds 需要取消授权的用户数据ID
-     * @return 结果
+     * @param roleId 役割ID
+     * @param userIds 需要取消授权的ユーザー数据ID
+     * @return 結果
      */
     public int deleteAuthUsers(Long roleId, Long[] userIds);
 
     /**
-     * 批量选择授权用户角色
+     * 批量选择授权ユーザー役割
      * 
-     * @param roleId 角色ID
-     * @param userIds 需要删除的用户数据ID
-     * @return 结果
+     * @param roleId 役割ID
+     * @param userIds 需要删除的ユーザー数据ID
+     * @return 結果
      */
     public int insertAuthUsers(Long roleId, Long[] userIds);
 }

@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * 表格分页数据对象
+ * ページングデータオブジェクトを形成します
  * 
  * @author ruoyi
  */
@@ -12,30 +12,30 @@ public class TableDataInfo implements Serializable
 {
     private static final long serialVersionUID = 1L;
 
-    /** 总记录数 */
+    /** 合計 */
     private long total;
 
-    /** 列表数据 */
+    /** データをリストします */
     private List<?> rows;
 
-    /** 消息状态码 */
+    /** メッセージステータスコード */
     private int code;
 
-    /** 消息内容 */
+    /** メッセージコンテンツ */
     private String msg;
 
     /**
-     * 表格数据对象
+     * テーブルデータオブジェクト
      */
     public TableDataInfo()
     {
     }
 
     /**
-     * 分页
+     * ページネーション
      * 
-     * @param list 列表数据
-     * @param total 总记录数
+     * @param list データをリストします
+     * @param total 合計
      */
     public TableDataInfo(List<?> list, int total)
     {

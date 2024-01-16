@@ -4,96 +4,96 @@ import java.util.List;
 import com.ruoyi.system.domain.SysPost;
 
 /**
- * 岗位信息 服务层
+ * 情報を投稿します サービスレイヤー
  * 
  * @author ruoyi
  */
 public interface ISysPostService
 {
     /**
-     * 查询岗位信息集合
+     * 查询情報を投稿します集合
      * 
-     * @param post 岗位信息
-     * @return 岗位列表
+     * @param post 情報を投稿します
+     * @return 位置リスト
      */
     public List<SysPost> selectPostList(SysPost post);
 
     /**
-     * 查询所有岗位
+     * すべての位置を確認してください
      * 
-     * @return 岗位列表
+     * @return 位置リスト
      */
     public List<SysPost> selectPostAll();
 
     /**
-     * 通过岗位ID查询岗位信息
+     * 合格ID查询情報を投稿します
      * 
-     * @param postId 岗位ID
-     * @return 角色对象信息
+     * @param postId 役職ID
+     * @return 文字情報
      */
     public SysPost selectPostById(Long postId);
 
     /**
-     * 根据用户ID获取岗位选择框列表
+     * ユーザーによるとID获取役職选择框リスト
      * 
-     * @param userId 用户ID
-     * @return 选中岗位ID列表
+     * @param userId ユーザーID
+     * @return 选中役職IDリスト
      */
     public List<Long> selectPostListByUserId(Long userId);
 
     /**
-     * 校验岗位名称
+     * 校验役職名称
      * 
-     * @param post 岗位信息
-     * @return 结果
+     * @param post 情報を投稿します
+     * @return 結果
      */
     public boolean checkPostNameUnique(SysPost post);
 
     /**
-     * 校验岗位编码
+     * コードを確認してください
      * 
-     * @param post 岗位信息
-     * @return 结果
+     * @param post 情報を投稿します
+     * @return 結果
      */
     public boolean checkPostCodeUnique(SysPost post);
 
     /**
-     * 通过岗位ID查询岗位使用数量
+     * 合格IDサービス数量のクエリ
      * 
-     * @param postId 岗位ID
-     * @return 结果
+     * @param postId 役職ID
+     * @return 結果
      */
     public int countUserPostById(Long postId);
 
     /**
-     * 删除岗位信息
+     * 删除情報を投稿します
      * 
-     * @param postId 岗位ID
-     * @return 结果
+     * @param postId 役職ID
+     * @return 結果
      */
     public int deletePostById(Long postId);
 
     /**
-     * 批量删除岗位信息
+     * 批量删除情報を投稿します
      * 
-     * @param postIds 需要删除的岗位ID
-     * @return 结果
+     * @param postIds 削除される義務ID
+     * @return 結果
      */
     public int deletePostByIds(Long[] postIds);
 
     /**
-     * 新增保存岗位信息
+     * 新增保存情報を投稿します
      * 
-     * @param post 岗位信息
-     * @return 结果
+     * @param post 情報を投稿します
+     * @return 結果
      */
     public int insertPost(SysPost post);
 
     /**
-     * 修改保存岗位信息
+     * 修改保存情報を投稿します
      * 
-     * @param post 岗位信息
-     * @return 结果
+     * @param post 情報を投稿します
+     * @return 結果
      */
     public int updatePost(SysPost post);
 }

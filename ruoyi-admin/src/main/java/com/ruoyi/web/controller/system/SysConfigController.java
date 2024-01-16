@@ -23,7 +23,7 @@ import com.ruoyi.system.domain.SysConfig;
 import com.ruoyi.system.service.ISysConfigService;
 
 /**
- * 参数配置 信息操作处理
+ * パラメーター構成 情報操作処理
  * 
  * @author ruoyi
  */
@@ -35,7 +35,7 @@ public class SysConfigController extends BaseController
     private ISysConfigService configService;
 
     /**
-     * 获取参数配置列表
+     * 获取パラメーター構成列表
      */
     @PreAuthorize("@ss.hasPermi('system:config:list')")
     @GetMapping("/list")
@@ -46,18 +46,18 @@ public class SysConfigController extends BaseController
         return getDataTable(list);
     }
 
-    @Log(title = "参数管理", businessType = BusinessType.EXPORT)
+    @Log(title = "パラメーター管理", businessType = BusinessType.EXPORT)
     @PreAuthorize("@ss.hasPermi('system:config:export')")
     @PostMapping("/export")
     public void export(HttpServletResponse response, SysConfig config)
     {
         List<SysConfig> list = configService.selectConfigList(config);
         ExcelUtil<SysConfig> util = new ExcelUtil<SysConfig>(SysConfig.class);
-        util.exportExcel(response, list, "参数数据");
+        util.exportExcel(response, list, "パラメーターデータ");
     }
 
     /**
-     * 根据参数编号获取详细信息
+     * パラメーター番号に従って詳細情報を取得します
      */
     @PreAuthorize("@ss.hasPermi('system:config:query')")
     @GetMapping(value = "/{configId}")
@@ -67,7 +67,7 @@ public class SysConfigController extends BaseController
     }
 
     /**
-     * 根据参数键名查询参数值
+     * パラメーターキー名によるクエリパラメーター値
      */
     @GetMapping(value = "/configKey/{configKey}")
     public AjaxResult getConfigKey(@PathVariable String configKey)
@@ -76,42 +76,42 @@ public class SysConfigController extends BaseController
     }
 
     /**
-     * 新增参数配置
+     * 新增パラメーター構成
      */
     @PreAuthorize("@ss.hasPermi('system:config:add')")
-    @Log(title = "参数管理", businessType = BusinessType.INSERT)
+    @Log(title = "パラメーター管理", businessType = BusinessType.INSERT)
     @PostMapping
     public AjaxResult add(@Validated @RequestBody SysConfig config)
     {
         if (!configService.checkConfigKeyUnique(config))
         {
-            return error("新增参数'" + config.getConfigName() + "'失败，参数键名已存在");
+            return error("新しいパラメーター'" + config.getConfigName() + "'失敗，パラメーターキー名はすでに存在します");
         }
         config.setCreateBy(getUsername());
         return toAjax(configService.insertConfig(config));
     }
 
     /**
-     * 修改参数配置
+     * 修改パラメーター構成
      */
     @PreAuthorize("@ss.hasPermi('system:config:edit')")
-    @Log(title = "参数管理", businessType = BusinessType.UPDATE)
+    @Log(title = "パラメーター管理", businessType = BusinessType.UPDATE)
     @PutMapping
     public AjaxResult edit(@Validated @RequestBody SysConfig config)
     {
         if (!configService.checkConfigKeyUnique(config))
         {
-            return error("修改参数'" + config.getConfigName() + "'失败，参数键名已存在");
+            return error("パラメーターを変更します'" + config.getConfigName() + "'失敗，パラメーターキー名はすでに存在します");
         }
         config.setUpdateBy(getUsername());
         return toAjax(configService.updateConfig(config));
     }
 
     /**
-     * 删除参数配置
+     * 删除パラメーター構成
      */
     @PreAuthorize("@ss.hasPermi('system:config:remove')")
-    @Log(title = "参数管理", businessType = BusinessType.DELETE)
+    @Log(title = "パラメーター管理", businessType = BusinessType.DELETE)
     @DeleteMapping("/{configIds}")
     public AjaxResult remove(@PathVariable Long[] configIds)
     {
@@ -120,10 +120,10 @@ public class SysConfigController extends BaseController
     }
 
     /**
-     * 刷新参数缓存
+     * パラメーターキャッシュを更新します
      */
     @PreAuthorize("@ss.hasPermi('system:config:remove')")
-    @Log(title = "参数管理", businessType = BusinessType.CLEAN)
+    @Log(title = "パラメーター管理", businessType = BusinessType.CLEAN)
     @DeleteMapping("/refreshCache")
     public AjaxResult refreshCache()
     {

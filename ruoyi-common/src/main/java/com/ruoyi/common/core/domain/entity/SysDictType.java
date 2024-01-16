@@ -10,7 +10,7 @@ import com.ruoyi.common.annotation.Excel.ColumnType;
 import com.ruoyi.common.core.domain.BaseEntity;
 
 /**
- * 字典类型表 sys_dict_type
+ * 辞書タイプテーブル sys_dict_type
  * 
  * @author ruoyi
  */
@@ -18,20 +18,20 @@ public class SysDictType extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
-    /** 字典主键 */
-    @Excel(name = "字典主键", cellType = ColumnType.NUMERIC)
+    /** 辞書のメインキー */
+    @Excel(name = "辞書のメインキー", cellType = ColumnType.NUMERIC)
     private Long dictId;
 
-    /** 字典名称 */
-    @Excel(name = "字典名称")
+    /** 辞書名 */
+    @Excel(name = "辞書名")
     private String dictName;
 
-    /** 字典类型 */
-    @Excel(name = "字典类型")
+    /** 辞書 */
+    @Excel(name = "辞書")
     private String dictType;
 
-    /** 状态（0正常 1停用） */
-    @Excel(name = "状态", readConverterExp = "0=正常,1=停用")
+    /** 州（0普通 1停止） */
+    @Excel(name = "州", readConverterExp = "0=普通,1=停止")
     private String status;
 
     public Long getDictId()
@@ -44,8 +44,8 @@ public class SysDictType extends BaseEntity
         this.dictId = dictId;
     }
 
-    @NotBlank(message = "字典名称不能为空")
-    @Size(min = 0, max = 100, message = "字典类型名称长度不能超过100个字符")
+    @NotBlank(message = "辞書の名前は空にすることはできません")
+    @Size(min = 0, max = 100, message = "辞書の名前の長さを超えることはできません100個のキャラクター")
     public String getDictName()
     {
         return dictName;
@@ -56,9 +56,9 @@ public class SysDictType extends BaseEntity
         this.dictName = dictName;
     }
 
-    @NotBlank(message = "字典类型不能为空")
-    @Size(min = 0, max = 100, message = "字典类型类型长度不能超过100个字符")
-    @Pattern(regexp = "^[a-z][a-z0-9_]*$", message = "字典类型必须以字母开头，且只能为（小写字母，数字，下滑线）")
+    @NotBlank(message = "辞書は空にすることはできません")
+    @Size(min = 0, max = 100, message = "辞書の長さはそれ以上を超えてはなりません100個のキャラクター")
+    @Pattern(regexp = "^[a-z][a-z0-9_]*$", message = "辞書は手紙から始める必要があります，できるだけです（小文字，番号，衰退）")
     public String getDictType()
     {
         return dictType;

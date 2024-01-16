@@ -11,7 +11,7 @@ import com.ruoyi.common.utils.StringUtils;
 import com.ruoyi.framework.security.context.PermissionContextHolder;
 
 /**
- * RuoYi首创 自定义权限实现，ss取自SpringSecurity首字母
+ * RuoYi始める カスタム当局の実装，ss取るSpringSecurityイニシャル
  * 
  * @author ruoyi
  */
@@ -19,10 +19,10 @@ import com.ruoyi.framework.security.context.PermissionContextHolder;
 public class PermissionService
 {
     /**
-     * 验证用户是否具备某权限
+     * ユーザーが特定の権限を持っているかどうかを確認します
      * 
-     * @param permission 权限字符串
-     * @return 用户是否具备某权限
+     * @param permission 権限文字列
+     * @return ユーザーが特定の権限を持っているかどうか
      */
     public boolean hasPermi(String permission)
     {
@@ -40,10 +40,10 @@ public class PermissionService
     }
 
     /**
-     * 验证用户是否不具备某权限，与 hasPermi逻辑相反
+     * ユーザーが特定の権限を持っていないかどうかを確認する，そして hasPermi反対
      *
-     * @param permission 权限字符串
-     * @return 用户是否不具备某权限
+     * @param permission 権限文字列
+     * @return ユーザーが特定の権限を持っていないかどうか
      */
     public boolean lacksPermi(String permission)
     {
@@ -51,10 +51,10 @@ public class PermissionService
     }
 
     /**
-     * 验证用户是否具有以下任意一个权限
+     * ユーザーが次のアクセス許可を持っているかどうかを確認します
      *
-     * @param permissions 以 PERMISSION_DELIMETER 为分隔符的权限列表
-     * @return 用户是否具有以下任意一个权限
+     * @param permissions による PERMISSION_DELIMETER セパレーターの権限リスト
+     * @return 用户是否具有による下任意一个权限
      */
     public boolean hasAnyPermi(String permissions)
     {
@@ -80,10 +80,10 @@ public class PermissionService
     }
 
     /**
-     * 判断用户是否拥有某个角色
+     * ユーザーが特定の役割を持っているかどうかを判断します
      * 
-     * @param role 角色字符串
-     * @return 用户是否具备某角色
+     * @param role 文字文字列
+     * @return ユーザーが特定の役割を持っているかどうか
      */
     public boolean hasRole(String role)
     {
@@ -108,10 +108,10 @@ public class PermissionService
     }
 
     /**
-     * 验证用户是否不具备某角色，与 isRole逻辑相反。
+     * ユーザーが特定の役割を持っていないかどうかを確認する，そして isRole反対。
      *
-     * @param role 角色名称
-     * @return 用户是否不具备某角色
+     * @param role ロール名
+     * @return ユーザーには特定の役割がありませんか
      */
     public boolean lacksRole(String role)
     {
@@ -119,10 +119,10 @@ public class PermissionService
     }
 
     /**
-     * 验证用户是否具有以下任意一个角色
+     * 验证用户是否具有による下任意一个角色
      *
-     * @param roles 以 ROLE_NAMES_DELIMETER 为分隔符的角色列表
-     * @return 用户是否具有以下任意一个角色
+     * @param roles による ROLE_NAMES_DELIMETER セパレーターのコーナーリスト
+     * @return 用户是否具有による下任意一个角色
      */
     public boolean hasAnyRoles(String roles)
     {
@@ -146,11 +146,11 @@ public class PermissionService
     }
 
     /**
-     * 判断是否包含权限
+     * 権限が含まれているかどうかを判断します
      * 
-     * @param permissions 权限列表
-     * @param permission 权限字符串
-     * @return 用户是否具备某权限
+     * @param permissions 許可リスト
+     * @param permission 権限文字列
+     * @return ユーザーが特定の権限を持っているかどうか
      */
     private boolean hasPermissions(Set<String> permissions, String permission)
     {

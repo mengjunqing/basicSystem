@@ -8,7 +8,7 @@ import com.ruoyi.common.core.domain.AjaxResult;
 import com.ruoyi.framework.web.domain.Server;
 
 /**
- * 服务器监控
+ * サーバー監視
  * 
  * @author ruoyi
  */

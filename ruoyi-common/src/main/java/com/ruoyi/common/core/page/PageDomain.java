@@ -3,25 +3,25 @@ package com.ruoyi.common.core.page;
 import com.ruoyi.common.utils.StringUtils;
 
 /**
- * 分页数据
+ * ページネーションデータ
  * 
  * @author ruoyi
  */
 public class PageDomain
 {
-    /** 当前记录起始索引 */
+    /** 現在のレコード開始インデックス */
     private Integer pageNum;
 
-    /** 每页显示记录数 */
+    /** ページごとにレコード番号を表示します */
     private Integer pageSize;
 
-    /** 排序列 */
+    /** 排出 */
     private String orderByColumn;
 
-    /** 排序的方向desc或者asc */
+    /** ソートdescまたはasc */
     private String isAsc = "asc";
 
-    /** 分页参数合理化 */
+    /** パグリングパラメーターの合理化 */
     private Boolean reasonable = true;
 
     public String getOrderBy()
@@ -72,7 +72,7 @@ public class PageDomain
     {
         if (StringUtils.isNotEmpty(isAsc))
         {
-            // 兼容前端排序类型
+            // フロントエンドのソートタイプと互換性があります
             if ("ascending".equals(isAsc))
             {
                 isAsc = "asc";

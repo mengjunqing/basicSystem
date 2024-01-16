@@ -4,61 +4,61 @@ import java.util.List;
 import com.ruoyi.quartz.domain.SysJobLog;
 
 /**
- * 调度任务日志信息 数据层
+ * タスクログ情報をスケジュールします データレイヤー
  * 
  * @author ruoyi
  */
 public interface SysJobLogMapper
 {
     /**
-     * 获取quartz调度器日志的计划任务
+     * 得るquartzログのスケジューリングのタスクを計画します
      * 
-     * @param jobLog 调度日志信息
-     * @return 调度任务日志集合
+     * @param jobLog ログ情報をスーリングします
+     * @return タスクログコレクションをスケジュールします
      */
     public List<SysJobLog> selectJobLogList(SysJobLog jobLog);
 
     /**
-     * 查询所有调度任务日志
+     * すべてのスケジューリングタスクログをクエリします
      *
-     * @return 调度任务日志列表
+     * @return タスクログリストを表示します
      */
     public List<SysJobLog> selectJobLogAll();
 
     /**
-     * 通过调度任务日志ID查询调度信息
+     * タスクログをスケジュールしますIDクエリスケジューリング情報
      * 
-     * @param jobLogId 调度任务日志ID
-     * @return 调度任务日志对象信息
+     * @param jobLogId スウォッチタスクログID
+     * @return スウォッチタスクログ对象信息
      */
     public SysJobLog selectJobLogById(Long jobLogId);
 
     /**
-     * 新增任务日志
+     * 新しいタスクログ
      * 
-     * @param jobLog 调度日志信息
-     * @return 结果
+     * @param jobLog ログ情報をスーリングします
+     * @return 結果
      */
     public int insertJobLog(SysJobLog jobLog);
 
     /**
-     * 批量删除调度日志信息
+     * 批量删除ログ情報をスーリングします
      * 
-     * @param logIds 需要删除的数据ID
-     * @return 结果
+     * @param logIds データを削除する必要がありましたID
+     * @return 結果
      */
     public int deleteJobLogByIds(Long[] logIds);
 
     /**
-     * 删除任务日志
+     * タスクログを削除します
      * 
-     * @param jobId 调度日志ID
-     * @return 结果
+     * @param jobId スケジュールされたログID
+     * @return 結果
      */
     public int deleteJobLogById(Long jobId);
 
     /**
-     * 清空任务日志
+     * タスクログをクリアします
      */
     public void cleanJobLog();
 }

@@ -3,7 +3,7 @@ package com.ruoyi.common.core.text;
 import com.ruoyi.common.utils.StringUtils;
 
 /**
- * 字符串格式化
+ * 文字列のフォーマット
  * 
  * @author ruoyi
  */
@@ -15,17 +15,17 @@ public class StrFormatter
     public static final char C_DELIM_END = '}';
 
     /**
-     * 格式化字符串<br>
-     * 此方法只是简单将占位符 {} 按照顺序替换为参数<br>
-     * 如果想输出 {} 使用 \\转义 { 即可，如果想输出 {} 之前的 \ 使用双转义符 \\\\ 即可<br>
+     * フォーマット文字列<br>
+     * この方法は、配置記号の単純さにすぎません {} パラメーターを順番に交換します<br>
+     * 出力したい場合 {} 使用 \\转義 { に，出力したい場合 {} 前の \ 使用双转義符 \\\\ に<br>
      * 例：<br>
-     * 通常使用：format("this is {} for {}", "a", "b") -> this is a for b<br>
-     * 转义{}： format("this is \\{} for {}", "a", "b") -> this is \{} for a<br>
-     * 转义\： format("this is \\\\{} for {}", "a", "b") -> this is \a for b<br>
+     * 通常使用されます：format("this is {} for {}", "a", "b") -> this is a for b<br>
+     * 转義{}： format("this is \\{} for {}", "a", "b") -> this is \{} for a<br>
+     * 转義\： format("this is \\\\{} for {}", "a", "b") -> this is \a for b<br>
      * 
-     * @param strPattern 字符串模板
-     * @param argArray 参数列表
-     * @return 结果
+     * @param strPattern 文字列テンプレート
+     * @param argArray パラメーターリスト
+     * @return 結果
      */
     public static String format(final String strPattern, final Object... argArray)
     {
@@ -35,11 +35,11 @@ public class StrFormatter
         }
         final int strPatternLength = strPattern.length();
 
-        // 初始化定义好的长度以获得更好的性能
+        // 初期化の長さは、パフォーマンスを向上させる方が良いです
         StringBuilder sbuf = new StringBuilder(strPatternLength + 50);
 
         int handledPosition = 0;
-        int delimIndex;// 占位符所在位置
+        int delimIndex;// 配置がある場所
         for (int argIndex = 0; argIndex < argArray.length; argIndex++)
         {
             delimIndex = strPattern.indexOf(EMPTY_JSON, handledPosition);
@@ -50,7 +50,7 @@ public class StrFormatter
                     return strPattern;
                 }
                 else
-                { // 字符串模板剩余部分不再包含占位符，加入剩余部分后返回结果
+                { // 文字列テンプレート剩余部分不再包含占位符，加入剩余部分后返回結果
                     sbuf.append(strPattern, handledPosition, strPatternLength);
                     return sbuf.toString();
                 }
@@ -61,14 +61,14 @@ public class StrFormatter
                 {
                     if (delimIndex > 1 && strPattern.charAt(delimIndex - 2) == C_BACKSLASH)
                     {
-                        // 转义符之前还有一个转义符，占位符依旧有效
+                        // 转義符之前还有一个转義符，職業シンボルはまだ効果的です
                         sbuf.append(strPattern, handledPosition, delimIndex - 1);
                         sbuf.append(Convert.utf8Str(argArray[argIndex]));
                         handledPosition = delimIndex + 2;
                     }
                     else
                     {
-                        // 占位符被转义
+                        // 占位符被转義
                         argIndex--;
                         sbuf.append(strPattern, handledPosition, delimIndex - 1);
                         sbuf.append(C_DELIM_START);
@@ -77,14 +77,14 @@ public class StrFormatter
                 }
                 else
                 {
-                    // 正常占位符
+                    // 通常の配置記号
                     sbuf.append(strPattern, handledPosition, delimIndex);
                     sbuf.append(Convert.utf8Str(argArray[argIndex]));
                     handledPosition = delimIndex + 2;
                 }
             }
         }
-        // 加入最后一个占位符后所有的字符
+        // 最後のプレースホルダーに参加した後のすべてのキャラクター
         sbuf.append(strPattern, handledPosition, strPattern.length());
 
         return sbuf.toString();

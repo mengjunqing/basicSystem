@@ -1,44 +1,44 @@
 package com.ruoyi.common.constant;
 
 /**
- * 缓存的key 常量
+ * キャッシュkey 絶え間ない
  * 
  * @author ruoyi
  */
 public class CacheConstants
 {
     /**
-     * 登录用户 redis key
+     * ログインユーザー redis key
      */
     public static final String LOGIN_TOKEN_KEY = "login_tokens:";
 
     /**
-     * 验证码 redis key
+     * 検証コード redis key
      */
     public static final String CAPTCHA_CODE_KEY = "captcha_codes:";
 
     /**
-     * 参数管理 cache key
+     * パラメーター管理 cache key
      */
     public static final String SYS_CONFIG_KEY = "sys_config:";
 
     /**
-     * 字典管理 cache key
+     * 辞書管理 cache key
      */
     public static final String SYS_DICT_KEY = "sys_dict:";
 
     /**
-     * 防重提交 redis key
+     * 耳が多い提出 redis key
      */
     public static final String REPEAT_SUBMIT_KEY = "repeat_submit:";
 
     /**
-     * 限流 redis key
+     * 制限 redis key
      */
     public static final String RATE_LIMIT_KEY = "rate_limit:";
 
     /**
-     * 登录账户密码错误次数 redis key
+     * ログインアカウントパスワードエラー番号の時間 redis key
      */
     public static final String PWD_ERR_CNT_KEY = "pwd_err_cnt:";
 }

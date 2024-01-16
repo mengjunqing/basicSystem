@@ -18,14 +18,14 @@ import com.ruoyi.common.constant.Constants;
 import com.ruoyi.common.core.text.Convert;
 
 /**
- * 客户端工具类
+ * クライアントツールクラス
  * 
  * @author ruoyi
  */
 public class ServletUtils
 {
     /**
-     * 获取String参数
+     * 得るStringパラメーター
      */
     public static String getParameter(String name)
     {
@@ -33,7 +33,7 @@ public class ServletUtils
     }
 
     /**
-     * 获取String参数
+     * 得るStringパラメーター
      */
     public static String getParameter(String name, String defaultValue)
     {
@@ -41,7 +41,7 @@ public class ServletUtils
     }
 
     /**
-     * 获取Integer参数
+     * 得るIntegerパラメーター
      */
     public static Integer getParameterToInt(String name)
     {
@@ -49,7 +49,7 @@ public class ServletUtils
     }
 
     /**
-     * 获取Integer参数
+     * 得るIntegerパラメーター
      */
     public static Integer getParameterToInt(String name, Integer defaultValue)
     {
@@ -57,7 +57,7 @@ public class ServletUtils
     }
 
     /**
-     * 获取Boolean参数
+     * 得るBooleanパラメーター
      */
     public static Boolean getParameterToBool(String name)
     {
@@ -65,7 +65,7 @@ public class ServletUtils
     }
 
     /**
-     * 获取Boolean参数
+     * 得るBooleanパラメーター
      */
     public static Boolean getParameterToBool(String name, Boolean defaultValue)
     {
@@ -73,9 +73,9 @@ public class ServletUtils
     }
 
     /**
-     * 获得所有请求参数
+     * 获得所有请求パラメーター
      *
-     * @param request 请求对象{@link ServletRequest}
+     * @param request オブジェクトを要求します{@link ServletRequest}
      * @return Map
      */
     public static Map<String, String[]> getParams(ServletRequest request)
@@ -85,9 +85,9 @@ public class ServletUtils
     }
 
     /**
-     * 获得所有请求参数
+     * 获得所有请求パラメーター
      *
-     * @param request 请求对象{@link ServletRequest}
+     * @param request オブジェクトを要求します{@link ServletRequest}
      * @return Map
      */
     public static Map<String, String> getParamMap(ServletRequest request)
@@ -101,7 +101,7 @@ public class ServletUtils
     }
 
     /**
-     * 获取request
+     * 得るrequest
      */
     public static HttpServletRequest getRequest()
     {
@@ -109,7 +109,7 @@ public class ServletUtils
     }
 
     /**
-     * 获取response
+     * 得るresponse
      */
     public static HttpServletResponse getResponse()
     {
@@ -117,7 +117,7 @@ public class ServletUtils
     }
 
     /**
-     * 获取session
+     * 得るsession
      */
     public static HttpSession getSession()
     {
@@ -131,10 +131,10 @@ public class ServletUtils
     }
 
     /**
-     * 将字符串渲染到客户端
+     * 文字列をクライアントにレンダリングします
      * 
-     * @param response 渲染对象
-     * @param string 待渲染的字符串
+     * @param response レンダリングオブジェクト
+     * @param string レンダリングする文字列
      */
     public static void renderString(HttpServletResponse response, String string)
     {
@@ -152,7 +152,7 @@ public class ServletUtils
     }
 
     /**
-     * 是否是Ajax异步请求
+     * かどうかAjax非同期リクエスト
      * 
      * @param request
      */
@@ -181,10 +181,10 @@ public class ServletUtils
     }
 
     /**
-     * 内容编码
+     * コンテンツコーディング
      * 
-     * @param str 内容
-     * @return 编码后的内容
+     * @param str コンテンツ
+     * @return 编码后的コンテンツ
      */
     public static String urlEncode(String str)
     {
@@ -199,10 +199,10 @@ public class ServletUtils
     }
 
     /**
-     * 内容解码
+     * コンテンツ解码
      * 
-     * @param str 内容
-     * @return 解码后的内容
+     * @param str コンテンツ
+     * @return 解码后的コンテンツ
      */
     public static String urlDecode(String str)
     {

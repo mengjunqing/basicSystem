@@ -15,14 +15,14 @@ import com.ruoyi.common.utils.StringUtils;
 import com.ruoyi.common.enums.HttpMethod;
 
 /**
- * 防止XSS攻击的过滤器
+ * 防ぐXSS攻撃フィルター
  * 
  * @author ruoyi
  */
 public class XssFilter implements Filter
 {
     /**
-     * 排除链接
+     * リンクを除外します
      */
     public List<String> excludes = new ArrayList<>();
 
@@ -59,7 +59,7 @@ public class XssFilter implements Filter
     {
         String url = request.getServletPath();
         String method = request.getMethod();
-        // GET DELETE 不过滤
+        // GET DELETE しかし、フィルター
         if (method == null || HttpMethod.GET.matches(method) || HttpMethod.DELETE.matches(method))
         {
             return true;

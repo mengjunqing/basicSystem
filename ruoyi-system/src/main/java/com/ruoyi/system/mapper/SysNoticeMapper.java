@@ -4,57 +4,57 @@ import java.util.List;
 import com.ruoyi.system.domain.SysNotice;
 
 /**
- * 通知公告表 数据层
+ * 通知アナウンスフォーム データレイヤー
  * 
  * @author ruoyi
  */
 public interface SysNoticeMapper
 {
     /**
-     * 查询公告信息
+     * クエリアナウンス情報
      * 
-     * @param noticeId 公告ID
-     * @return 公告信息
+     * @param noticeId 発表ID
+     * @return 発表信息
      */
     public SysNotice selectNoticeById(Long noticeId);
 
     /**
-     * 查询公告列表
+     * クエリテーブルリスト
      * 
-     * @param notice 公告信息
-     * @return 公告集合
+     * @param notice 発表信息
+     * @return 発表集合
      */
     public List<SysNotice> selectNoticeList(SysNotice notice);
 
     /**
-     * 新增公告
+     * 新增発表
      * 
-     * @param notice 公告信息
-     * @return 结果
+     * @param notice 発表信息
+     * @return 結果
      */
     public int insertNotice(SysNotice notice);
 
     /**
-     * 修改公告
+     * 修改発表
      * 
-     * @param notice 公告信息
-     * @return 结果
+     * @param notice 発表信息
+     * @return 結果
      */
     public int updateNotice(SysNotice notice);
 
     /**
-     * 批量删除公告
+     * バッチ削除除除除除
      * 
-     * @param noticeId 公告ID
-     * @return 结果
+     * @param noticeId 発表ID
+     * @return 結果
      */
     public int deleteNoticeById(Long noticeId);
 
     /**
-     * 批量删除公告信息
+     * バッチ削除除除除除信息
      * 
-     * @param noticeIds 需要删除的公告ID
-     * @return 结果
+     * @param noticeIds 削除する必要があるテーブルID
+     * @return 結果
      */
     public int deleteNoticeByIds(Long[] noticeIds);
 }

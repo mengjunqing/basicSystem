@@ -20,7 +20,7 @@ import com.ruoyi.common.utils.StringUtils;
 import com.ruoyi.common.utils.ip.IpUtils;
 
 /**
- * 限流处理
+ * Streaming
  *
  * @author ruoyi
  */
@@ -59,9 +59,9 @@ public class RateLimiterAspect
             Long number = redisTemplate.execute(limitScript, keys, count, time);
             if (StringUtils.isNull(number) || number.intValue() > count)
             {
-                throw new ServiceException("访问过于频繁，请稍候再试");
+                throw new ServiceException("頻繁に訪問します，もう一度やり直してください");
             }
-            log.info("限制请求'{}',当前请求'{}',缓存key'{}'", count, number.intValue(), combineKey);
+            log.info("制限要求'{}',現在のリクエスト'{}',キャッシュkey'{}'", count, number.intValue(), combineKey);
         }
         catch (ServiceException e)
         {
@@ -69,7 +69,7 @@ public class RateLimiterAspect
         }
         catch (Exception e)
         {
-            throw new RuntimeException("服务器限流异常，请稍候再试");
+            throw new RuntimeException("サーバーの制限は異常です，もう一度やり直してください");
         }
     }
 

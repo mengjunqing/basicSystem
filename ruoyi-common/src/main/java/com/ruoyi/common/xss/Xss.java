@@ -8,7 +8,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * 自定义xss校验注解
+ * カスタマイズxss注釈をテストします
  * 
  * @author ruoyi
  */
@@ -19,7 +19,7 @@ public @interface Xss
 {
     String message()
 
-    default "不允许任何脚本运行";
+    default "スクリプトは実行できません";
 
     Class<?>[] groups() default {};
 

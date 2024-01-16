@@ -20,7 +20,7 @@ import com.ruoyi.common.utils.uuid.IdUtils;
 import org.apache.commons.io.FilenameUtils;
 
 /**
- * 文件处理工具类
+ * ファイル処理ツールクラス
  * 
  * @author ruoyi
  */
@@ -29,10 +29,10 @@ public class FileUtils
     public static String FILENAME_PATTERN = "[a-zA-Z0-9_\\-\\|\\.\\u4e00-\\u9fa5]+";
 
     /**
-     * 输出指定文件的byte数组
+     * 出力指定されたファイルbyte配列
      * 
-     * @param filePath 文件路径
-     * @param os 输出流
+     * @param filePath ファイルパス
+     * @param os 出力フロー
      * @return
      */
     public static void writeBytes(String filePath, OutputStream os) throws IOException
@@ -65,11 +65,11 @@ public class FileUtils
     }
 
     /**
-     * 写数据到文件中
+     * ファイルにデータを書き込みます
      *
-     * @param data 数据
-     * @return 目标文件
-     * @throws IOException IO异常
+     * @param data データ
+     * @return ターゲットファイル
+     * @throws IOException IO異常な
      */
     public static String writeImportBytes(byte[] data) throws IOException
     {
@@ -77,12 +77,12 @@ public class FileUtils
     }
 
     /**
-     * 写数据到文件中
+     * ファイルにデータを書き込みます
      *
-     * @param data 数据
-     * @param uploadDir 目标文件
-     * @return 目标文件
-     * @throws IOException IO异常
+     * @param data データ
+     * @param uploadDir ターゲットファイル
+     * @return ターゲットファイル
+     * @throws IOException IO異常な
      */
     public static String writeBytes(byte[] data, String uploadDir) throws IOException
     {
@@ -104,16 +104,16 @@ public class FileUtils
     }
 
     /**
-     * 删除文件
+     * ファイルを削除します
      * 
-     * @param filePath 文件
+     * @param filePath 書類
      * @return
      */
     public static boolean deleteFile(String filePath)
     {
         boolean flag = false;
         File file = new File(filePath);
-        // 路径为文件且不为空则进行删除
+        // 路径为書類且不为空则进行删除
         if (file.isFile() && file.exists())
         {
             flag = file.delete();
@@ -122,10 +122,10 @@ public class FileUtils
     }
 
     /**
-     * 文件名称验证
+     * 書類名称验证
      * 
-     * @param filename 文件名称
-     * @return true 正常 false 非法
+     * @param filename 書類名称
+     * @return true 普通 false 違法
      */
     public static boolean isValidFilename(String filename)
     {
@@ -133,35 +133,35 @@ public class FileUtils
     }
 
     /**
-     * 检查文件是否可下载
+     * 检查書類是否可下载
      * 
-     * @param resource 需要下载的文件
-     * @return true 正常 false 非法
+     * @param resource 需要下载的書類
+     * @return true 普通 false 違法
      */
     public static boolean checkAllowDownload(String resource)
     {
-        // 禁止目录上跳级别
+        // ディレクトリのジャンパーレベルを禁止します
         if (StringUtils.contains(resource, ".."))
         {
             return false;
         }
 
-        // 检查允许下载的文件规则
+        // 检查允许下载的書類规则
         if (ArrayUtils.contains(MimeTypeUtils.DEFAULT_ALLOWED_EXTENSION, FileTypeUtils.getFileType(resource)))
         {
             return true;
         }
 
-        // 不在允许下载的文件规则
+        // 不在允许下载的書類规则
         return false;
     }
 
     /**
-     * 下载文件名重新编码
+     * 下载書類名重新编码
      * 
-     * @param request 请求对象
-     * @param fileName 文件名
-     * @return 编码后的文件名
+     * @param request オブジェクトを要求します
+     * @param fileName 書類名
+     * @return 编码后的書類名
      */
     public static String setFileDownloadHeader(HttpServletRequest request, String fileName) throws UnsupportedEncodingException
     {
@@ -169,33 +169,33 @@ public class FileUtils
         String filename = fileName;
         if (agent.contains("MSIE"))
         {
-            // IE浏览器
+            // IEブラウザ
             filename = URLEncoder.encode(filename, "utf-8");
             filename = filename.replace("+", " ");
         }
         else if (agent.contains("Firefox"))
         {
-            // 火狐浏览器
+            // 火狐ブラウザ
             filename = new String(fileName.getBytes(), "ISO8859-1");
         }
         else if (agent.contains("Chrome"))
         {
-            // google浏览器
+            // googleブラウザ
             filename = URLEncoder.encode(filename, "utf-8");
         }
         else
         {
-            // 其它浏览器
+            // 其它ブラウザ
             filename = URLEncoder.encode(filename, "utf-8");
         }
         return filename;
     }
 
     /**
-     * 下载文件名重新编码
+     * 下载書類名重新编码
      *
-     * @param response 响应对象
-     * @param realFileName 真实文件名
+     * @param response 応答オブジェクト
+     * @param realFileName 真实書類名
      */
     public static void setAttachmentResponseHeader(HttpServletResponse response, String realFileName) throws UnsupportedEncodingException
     {
@@ -215,10 +215,10 @@ public class FileUtils
     }
 
     /**
-     * 百分号编码工具方法
+     * パーセント番号コーディングツール方法
      *
-     * @param s 需要百分号编码的字符串
-     * @return 百分号编码后的字符串
+     * @param s パーセンテージ番号コーディングに必要な文字列
+     * @return パーセント番号コーディング後の文字列
      */
     public static String percentEncode(String s) throws UnsupportedEncodingException
     {
@@ -227,10 +227,10 @@ public class FileUtils
     }
 
     /**
-     * 获取图像后缀
+     * 画像の接尾辞を取得します
      * 
-     * @param photoByte 图像数据
-     * @return 后缀名
+     * @param photoByte 图像データ
+     * @return サフィックス
      */
     public static String getFileExtendName(byte[] photoByte)
     {
@@ -256,10 +256,10 @@ public class FileUtils
     }
 
     /**
-     * 获取文件名称 /profile/upload/2022/04/16/ruoyi.png -- ruoyi.png
+     * 获取書類名称 /profile/upload/2022/04/16/ruoyi.png -- ruoyi.png
      * 
-     * @param fileName 路径名称
-     * @return 没有文件路径的名称
+     * @param fileName パス名
+     * @return 没有ファイルパス的名称
      */
     public static String getName(String fileName)
     {
@@ -274,10 +274,10 @@ public class FileUtils
     }
 
     /**
-     * 获取不带后缀文件名称 /profile/upload/2022/04/16/ruoyi.png -- ruoyi
+     * 获取不带后缀書類名称 /profile/upload/2022/04/16/ruoyi.png -- ruoyi
      * 
-     * @param fileName 路径名称
-     * @return 没有文件路径和后缀的名称
+     * @param fileName パス名
+     * @return 没有ファイルパス和后缀的名称
      */
     public static String getNameNotSuffix(String fileName)
     {

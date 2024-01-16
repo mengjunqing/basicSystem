@@ -18,7 +18,7 @@ import com.ruoyi.framework.web.service.SysPermissionService;
 import com.ruoyi.system.service.ISysMenuService;
 
 /**
- * 登录验证
+ * ログイン認証
  * 
  * @author ruoyi
  */
@@ -35,16 +35,16 @@ public class SysLoginController
     private SysPermissionService permissionService;
 
     /**
-     * 登录方法
+     * ログインメソッド
      * 
-     * @param loginBody 登录信息
-     * @return 结果
+     * @param loginBody ログイン情報
+     * @return 結果
      */
     @PostMapping("/login")
     public AjaxResult login(@RequestBody LoginBody loginBody)
     {
         AjaxResult ajax = AjaxResult.success();
-        // 生成令牌
+        // トークン
         String token = loginService.login(loginBody.getUsername(), loginBody.getPassword(), loginBody.getCode(),
                 loginBody.getUuid());
         ajax.put(Constants.TOKEN, token);
@@ -52,17 +52,17 @@ public class SysLoginController
     }
 
     /**
-     * 获取用户信息
+     * ユーザー情報を取得します
      * 
-     * @return 用户信息
+     * @return ユーザー情報
      */
     @GetMapping("getInfo")
     public AjaxResult getInfo()
     {
         SysUser user = SecurityUtils.getLoginUser().getUser();
-        // 角色集合
+        // ロールコレクション
         Set<String> roles = permissionService.getRolePermission(user);
-        // 权限集合
+        // 権限
         Set<String> permissions = permissionService.getMenuPermission(user);
         AjaxResult ajax = AjaxResult.success();
         ajax.put("user", user);
@@ -72,9 +72,9 @@ public class SysLoginController
     }
 
     /**
-     * 获取路由信息
+     * ルート情報を取得します
      * 
-     * @return 路由信息
+     * @return ルート情報
      */
     @GetMapping("getRouters")
     public AjaxResult getRouters()

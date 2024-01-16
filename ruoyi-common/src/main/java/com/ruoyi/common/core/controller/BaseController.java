@@ -22,7 +22,7 @@ import com.ruoyi.common.utils.StringUtils;
 import com.ruoyi.common.utils.sql.SqlUtil;
 
 /**
- * web层通用数据处理
+ * webレイヤーシップデータ処理
  * 
  * @author ruoyi
  */
@@ -31,12 +31,12 @@ public class BaseController
     protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     /**
-     * 将前台传递过来的日期格式的字符串，自动转化为Date类型
+     * フロントデスクを通過した日付形式の文字列，に自動的に変換されますDateタイプ
      */
     @InitBinder
     public void initBinder(WebDataBinder binder)
     {
-        // Date 类型转换
+        // Date タイプ转换
         binder.registerCustomEditor(Date.class, new PropertyEditorSupport()
         {
             @Override
@@ -48,7 +48,7 @@ public class BaseController
     }
 
     /**
-     * 设置请求分页数据
+     * リクエストページネーションデータを設定します
      */
     protected void startPage()
     {
@@ -56,7 +56,7 @@ public class BaseController
     }
 
     /**
-     * 设置请求排序数据
+     * リクエストソートデータを設定します
      */
     protected void startOrderBy()
     {
@@ -69,7 +69,7 @@ public class BaseController
     }
 
     /**
-     * 清理分页的线程变量
+     * ページングスレッド変数を清掃します
      */
     protected void clearPage()
     {
@@ -77,21 +77,21 @@ public class BaseController
     }
 
     /**
-     * 响应请求分页数据
+     * 応答要求ページングデータ
      */
     @SuppressWarnings({ "rawtypes", "unchecked" })
     protected TableDataInfo getDataTable(List<?> list)
     {
         TableDataInfo rspData = new TableDataInfo();
         rspData.setCode(HttpStatus.SUCCESS);
-        rspData.setMsg("查询成功");
+        rspData.setMsg("成功して検索します");
         rspData.setRows(list);
         rspData.setTotal(new PageInfo(list).getTotal());
         return rspData;
     }
 
     /**
-     * 返回成功
+     * 成功に戻ります
      */
     public AjaxResult success()
     {
@@ -99,7 +99,7 @@ public class BaseController
     }
 
     /**
-     * 返回失败消息
+     * 失敗に戻ります
      */
     public AjaxResult error()
     {
@@ -107,7 +107,7 @@ public class BaseController
     }
 
     /**
-     * 返回成功消息
+     * 成功に戻ります消息
      */
     public AjaxResult success(String message)
     {
@@ -115,7 +115,7 @@ public class BaseController
     }
     
     /**
-     * 返回成功消息
+     * 成功に戻ります消息
      */
     public AjaxResult success(Object data)
     {
@@ -123,7 +123,7 @@ public class BaseController
     }
 
     /**
-     * 返回失败消息
+     * 失敗に戻ります
      */
     public AjaxResult error(String message)
     {
@@ -131,7 +131,7 @@ public class BaseController
     }
 
     /**
-     * 返回警告消息
+     * 警告メッセージに戻ります
      */
     public AjaxResult warn(String message)
     {
@@ -139,10 +139,10 @@ public class BaseController
     }
 
     /**
-     * 响应返回结果
+     * 応答リターン結果
      * 
-     * @param rows 影响行数
-     * @return 操作结果
+     * @param rows 影響力に影響します
+     * @return 操作結果
      */
     protected AjaxResult toAjax(int rows)
     {
@@ -150,10 +150,10 @@ public class BaseController
     }
 
     /**
-     * 响应返回结果
+     * 応答リターン結果
      * 
-     * @param result 结果
-     * @return 操作结果
+     * @param result 結果
+     * @return 操作結果
      */
     protected AjaxResult toAjax(boolean result)
     {
@@ -161,7 +161,7 @@ public class BaseController
     }
 
     /**
-     * 页面跳转
+     * ページジャンプ
      */
     public String redirect(String url)
     {
@@ -169,7 +169,7 @@ public class BaseController
     }
 
     /**
-     * 获取用户缓存信息
+     * ユーザーキャッシュ情報を取得します
      */
     public LoginUser getLoginUser()
     {
@@ -177,7 +177,7 @@ public class BaseController
     }
 
     /**
-     * 获取登录用户id
+     * ログインユーザーを取得しますid
      */
     public Long getUserId()
     {
@@ -185,7 +185,7 @@ public class BaseController
     }
 
     /**
-     * 获取登录部门id
+     * ログイン部門を取得しますid
      */
     public Long getDeptId()
     {
@@ -193,7 +193,7 @@ public class BaseController
     }
 
     /**
-     * 获取登录用户名
+     * ログインユーザーを取得します名
      */
     public String getUsername()
     {

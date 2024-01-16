@@ -17,7 +17,7 @@ import com.ruoyi.common.utils.StringUtils;
 import com.ruoyi.framework.web.service.TokenService;
 
 /**
- * token过滤器 验证token有效性
+ * tokenフィルター 確認するtoken有効
  * 
  * @author ruoyi
  */

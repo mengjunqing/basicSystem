@@ -1,19 +1,19 @@
 package com.ruoyi.common.enums;
 
 /**
- * 数据源
+ * 情報元
  * 
  * @author ruoyi
  */
 public enum DataSourceType
 {
     /**
-     * 主库
+     * メインライブラリ
      */
     MASTER,
 
     /**
-     * 从库
+     * 図書館から
      */
     SLAVE
 }

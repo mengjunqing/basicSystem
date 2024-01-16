@@ -4,64 +4,64 @@ import java.util.List;
 import com.ruoyi.quartz.domain.SysJob;
 
 /**
- * 调度任务信息 数据层
+ * タスク情報をスケジュールします データレイヤー
  * 
  * @author ruoyi
  */
 public interface SysJobMapper
 {
     /**
-     * 查询调度任务日志集合
+     * クエリスケジューリングタスクログコレクション
      * 
-     * @param job 调度信息
-     * @return 操作日志集合
+     * @param job 情報のスケジューリング
+     * @return ジャッキログ
      */
     public List<SysJob> selectJobList(SysJob job);
 
     /**
-     * 查询所有调度任务
+     * すべてのスケジューリングタスクをクエリします
      * 
-     * @return 调度任务列表
+     * @return タスクリストをスケジュールします
      */
     public List<SysJob> selectJobAll();
 
     /**
-     * 通过调度ID查询调度任务信息
+     * スケジュールID查询タスク情報をスケジュールします
      * 
-     * @param jobId 调度ID
-     * @return 角色对象信息
+     * @param jobId スケジュールID
+     * @return 文字情報
      */
     public SysJob selectJobById(Long jobId);
 
     /**
-     * 通过调度ID删除调度任务信息
+     * スケジュールID删除タスク情報をスケジュールします
      * 
-     * @param jobId 调度ID
-     * @return 结果
+     * @param jobId スケジュールID
+     * @return 結果
      */
     public int deleteJobById(Long jobId);
 
     /**
-     * 批量删除调度任务信息
+     * 批量删除タスク情報をスケジュールします
      * 
-     * @param ids 需要删除的数据ID
-     * @return 结果
+     * @param ids データを削除する必要がありましたID
+     * @return 結果
      */
     public int deleteJobByIds(Long[] ids);
 
     /**
-     * 修改调度任务信息
+     * 修改タスク情報をスケジュールします
      * 
-     * @param job 调度任务信息
-     * @return 结果
+     * @param job タスク情報をスケジュールします
+     * @return 結果
      */
     public int updateJob(SysJob job);
 
     /**
-     * 新增调度任务信息
+     * 新增タスク情報をスケジュールします
      * 
-     * @param job 调度任务信息
-     * @return 结果
+     * @param job タスク情報をスケジュールします
+     * @return 結果
      */
     public int insertJob(SysJob job);
 }

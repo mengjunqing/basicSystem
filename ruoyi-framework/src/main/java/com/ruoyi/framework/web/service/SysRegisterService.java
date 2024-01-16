@@ -19,7 +19,7 @@ import com.ruoyi.system.service.ISysConfigService;
 import com.ruoyi.system.service.ISysUserService;
 
 /**
- * 注册校验方法
+ * 登録検証方法
  * 
  * @author ruoyi
  */
@@ -36,7 +36,7 @@ public class SysRegisterService
     private RedisCache redisCache;
 
     /**
-     * 注册
+     * 登録する
      */
     public String register(RegisterBody registerBody)
     {
@@ -44,7 +44,7 @@ public class SysRegisterService
         SysUser sysUser = new SysUser();
         sysUser.setUserName(username);
 
-        // 验证码开关
+        // 検証コードスイッチ
         boolean captchaEnabled = configService.selectCaptchaEnabled();
         if (captchaEnabled)
         {
@@ -53,25 +53,25 @@ public class SysRegisterService
 
         if (StringUtils.isEmpty(username))
         {
-            msg = "用户名不能为空";
+            msg = "ユーザー名は空になりません";
         }
         else if (StringUtils.isEmpty(password))
         {
-            msg = "用户密码不能为空";
+            msg = "ユーザーパスワードを空にすることはできません";
         }
         else if (username.length() < UserConstants.USERNAME_MIN_LENGTH
                 || username.length() > UserConstants.USERNAME_MAX_LENGTH)
         {
-            msg = "账户长度必须在2到20个字符之间";
+            msg = "アカウントの長さがある必要があります2到着着20個々々々の文字間";
         }
         else if (password.length() < UserConstants.PASSWORD_MIN_LENGTH
                 || password.length() > UserConstants.PASSWORD_MAX_LENGTH)
         {
-            msg = "密码长度必须在5到20个字符之间";
+            msg = "パスワードの長さは入っている必要があります5到着着20個々々々の文字間";
         }
         else if (!userService.checkUserNameUnique(sysUser))
         {
-            msg = "保存用户'" + username + "'失败，注册账号已存在";
+            msg = "ユーザーを保存します'" + username + "'失敗，登録する账号已存在";
         }
         else
         {
@@ -80,7 +80,7 @@ public class SysRegisterService
             boolean regFlag = userService.registerUser(sysUser);
             if (!regFlag)
             {
-                msg = "注册失败,请联系系统管理人员";
+                msg = "登録する失敗,システムマネージャーに連絡してください";
             }
             else
             {
@@ -91,12 +91,12 @@ public class SysRegisterService
     }
 
     /**
-     * 校验验证码
+     * 検証コード
      * 
-     * @param username 用户名
-     * @param code 验证码
-     * @param uuid 唯一标识
-     * @return 结果
+     * @param username ユーザー名
+     * @param code 検証コード
+     * @param uuid 独自に識別します
+     * @return 結果
      */
     public void validateCaptcha(String username, String code, String uuid)
     {

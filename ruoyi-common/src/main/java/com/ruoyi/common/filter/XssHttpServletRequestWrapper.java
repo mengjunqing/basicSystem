@@ -13,7 +13,7 @@ import com.ruoyi.common.utils.StringUtils;
 import com.ruoyi.common.utils.html.EscapeUtil;
 
 /**
- * XSS过滤处理
+ * XSSフィルタリング
  * 
  * @author ruoyi
  */
@@ -37,7 +37,7 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper
             String[] escapesValues = new String[length];
             for (int i = 0; i < length; i++)
             {
-                // 防xss攻击和过滤前后空格
+                // 守るxss攻撃とろ過の前後
                 escapesValues[i] = EscapeUtil.clean(values[i]).trim();
             }
             return escapesValues;
@@ -48,20 +48,20 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper
     @Override
     public ServletInputStream getInputStream() throws IOException
     {
-        // 非json类型，直接返回
+        // いいえjsonタイプ，直接返す
         if (!isJsonRequest())
         {
             return super.getInputStream();
         }
 
-        // 为空，直接返回
+        // 空です，直接返す
         String json = IOUtils.toString(super.getInputStream(), "utf-8");
         if (StringUtils.isEmpty(json))
         {
             return super.getInputStream();
         }
 
-        // xss过滤
+        // xssフィルター
         json = EscapeUtil.clean(json).trim();
         byte[] jsonBytes = json.getBytes("utf-8");
         final ByteArrayInputStream bis = new ByteArrayInputStream(jsonBytes);
@@ -99,7 +99,7 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper
     }
 
     /**
-     * 是否是Json请求
+     * かどうかJson聞く
      * 
      * @param request
      */

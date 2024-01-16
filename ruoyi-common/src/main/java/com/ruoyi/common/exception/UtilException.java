@@ -1,7 +1,7 @@
 package com.ruoyi.common.exception;
 
 /**
- * 工具类异常
+ * ツールクラスの異常
  * 
  * @author ruoyi
  */

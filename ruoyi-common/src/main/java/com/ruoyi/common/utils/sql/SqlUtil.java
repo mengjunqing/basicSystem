@@ -4,45 +4,45 @@ import com.ruoyi.common.exception.UtilException;
 import com.ruoyi.common.utils.StringUtils;
 
 /**
- * sql操作工具类
+ * sql操作ツール
  * 
  * @author ruoyi
  */
 public class SqlUtil
 {
     /**
-     * 定义常用的 sql关键字
+     * 一般的に使用されます sqlキーワード
      */
     public static String SQL_REGEX = "and |extractvalue|updatexml|exec |insert |select |delete |update |drop |count |chr |mid |master |truncate |char |declare |or |+|user()";
 
     /**
-     * 仅支持字母、数字、下划线、空格、逗号、小数点（支持多个字段排序）
+     * サポートレターのみ、番号、下線、空間、コンマ、小数（複数のフィールドソートをサポートします）
      */
     public static String SQL_PATTERN = "[a-zA-Z0-9_\\ \\,\\.]+";
 
     /**
-     * 限制orderBy最大长度
+     * 制限orderBy最大長
      */
     private static final int ORDER_BY_MAX_LENGTH = 500;
 
     /**
-     * 检查字符，防止注入绕过
+     * 文字を確認してください，バイパスして注射を防ぎます
      */
     public static String escapeOrderBySql(String value)
     {
         if (StringUtils.isNotEmpty(value) && !isValidOrderBySql(value))
         {
-            throw new UtilException("参数不符合规范，不能进行查询");
+            throw new UtilException("パラメーターは仕様を満たしていません，お問い合わせできません");
         }
         if (StringUtils.length(value) > ORDER_BY_MAX_LENGTH)
         {
-            throw new UtilException("参数已超过最大限制，不能进行查询");
+            throw new UtilException("参数已超过最大制限，お問い合わせできません");
         }
         return value;
     }
 
     /**
-     * 验证 order by 语法是否符合规范
+     * 確認する order by 文法が規範を満たすかどうか
      */
     public static boolean isValidOrderBySql(String value)
     {
@@ -50,7 +50,7 @@ public class SqlUtil
     }
 
     /**
-     * SQL关键字检查
+     * SQLキーワード检查
      */
     public static void filterKeyword(String value)
     {
@@ -63,7 +63,7 @@ public class SqlUtil
         {
             if (StringUtils.indexOfIgnoreCase(value, sqlKeyword) > -1)
             {
-                throw new UtilException("参数存在SQL注入风险");
+                throw new UtilException("パラメーターの存在SQL注射リスク");
             }
         }
     }

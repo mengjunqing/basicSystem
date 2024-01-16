@@ -11,14 +11,14 @@ import org.springframework.stereotype.Component;
 import com.ruoyi.common.utils.StringUtils;
 
 /**
- * spring工具类 方便在非spring管理环境中获取bean
+ * springツール 便利spring管理環境に参加してくださいbean
  * 
  * @author ruoyi
  */
 @Component
 public final class SpringUtils implements BeanFactoryPostProcessor, ApplicationContextAware 
 {
-    /** Spring应用上下文环境 */
+    /** Springアプリケーションコンテキスト環境 */
     private static ConfigurableListableBeanFactory beanFactory;
 
     private static ApplicationContext applicationContext;
@@ -36,10 +36,10 @@ public final class SpringUtils implements BeanFactoryPostProcessor, ApplicationC
     }
 
     /**
-     * 获取对象
+     * 得る
      *
      * @param name
-     * @return Object 一个以所给名字注册的bean的实例
+     * @return Object 与えられた名前に登録されたものbean実例
      * @throws org.springframework.beans.BeansException
      *
      */
@@ -50,7 +50,7 @@ public final class SpringUtils implements BeanFactoryPostProcessor, ApplicationC
     }
 
     /**
-     * 获取类型为requiredType的对象
+     * タイプを取得しますrequiredType物体
      *
      * @param clz
      * @return
@@ -64,7 +64,7 @@ public final class SpringUtils implements BeanFactoryPostProcessor, ApplicationC
     }
 
     /**
-     * 如果BeanFactory包含一个与所给名称匹配的bean定义，则返回true
+     * もしBeanFactory指定された名前に一致するものが含まれていますbean意味，その後、返しますtrue
      *
      * @param name
      * @return boolean
@@ -75,7 +75,7 @@ public final class SpringUtils implements BeanFactoryPostProcessor, ApplicationC
     }
 
     /**
-     * 判断以给定名字注册的bean定义是一个singleton还是一个prototype。 如果与给定名字相应的bean定义没有被找到，将会抛出一个异常（NoSuchBeanDefinitionException）
+     * 特定の名前で登録された判断bean意味是一个singletonまだprototype。 もし与给定名字相应的bean意味没有被找到，例外をスローします（NoSuchBeanDefinitionException）
      *
      * @param name
      * @return boolean
@@ -89,7 +89,7 @@ public final class SpringUtils implements BeanFactoryPostProcessor, ApplicationC
 
     /**
      * @param name
-     * @return Class 注册对象的类型
+     * @return Class 登録オブジェクトの種類
      * @throws org.springframework.beans.factory.NoSuchBeanDefinitionException
      *
      */
@@ -99,7 +99,7 @@ public final class SpringUtils implements BeanFactoryPostProcessor, ApplicationC
     }
 
     /**
-     * 如果给定的bean名字在bean定义中有别名，则返回这些别名
+     * もし给定的bean名前bean意味中有别名，その後、返します这些别名
      *
      * @param name
      * @return
@@ -112,7 +112,7 @@ public final class SpringUtils implements BeanFactoryPostProcessor, ApplicationC
     }
 
     /**
-     * 获取aop代理对象
+     * 得るaopプロキシ
      * 
      * @param invoker
      * @return
@@ -124,9 +124,9 @@ public final class SpringUtils implements BeanFactoryPostProcessor, ApplicationC
     }
 
     /**
-     * 获取当前的环境配置，无配置返回null
+     * 得る現在の環境構成，構成の返品はありませんnull
      *
-     * @return 当前的环境配置
+     * @return 現在の環境構成
      */
     public static String[] getActiveProfiles()
     {
@@ -134,9 +134,9 @@ public final class SpringUtils implements BeanFactoryPostProcessor, ApplicationC
     }
 
     /**
-     * 获取当前的环境配置，当有多个环境配置时，只获取第一个
+     * 得る現在の環境構成，複数の環境構成がある場合，只得る第一个
      *
-     * @return 当前的环境配置
+     * @return 現在の環境構成
      */
     public static String getActiveProfile()
     {
@@ -145,10 +145,10 @@ public final class SpringUtils implements BeanFactoryPostProcessor, ApplicationC
     }
 
     /**
-     * 获取配置文件中的值
+     * 得る配置文件中的值
      *
-     * @param key 配置文件的key
-     * @return 当前的配置文件的值
+     * @param key 構成key
+     * @return 当前的構成值
      *
      */
     public static String getRequiredProperty(String key)

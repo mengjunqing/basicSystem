@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import com.ruoyi.common.utils.ServletUtils;
 
 /**
- * 服务相关配置
+ * サービス関連の構成
  * 
  * @author ruoyi
  */
@@ -13,9 +13,9 @@ import com.ruoyi.common.utils.ServletUtils;
 public class ServerConfig
 {
     /**
-     * 获取完整的请求路径，包括：域名，端口，上下文访问路径
+     * 完全な要求パスを取得します，含む：ドメイン名，ポート，コンテキストアクセスパス
      * 
-     * @return 服务地址
+     * @return サービスアドレス
      */
     public String getUrl()
     {

@@ -1,7 +1,7 @@
 package com.ruoyi.common.enums;
 
 /**
- * 限流类型
+ * ストリーム
  *
  * @author ruoyi
  */
@@ -9,12 +9,12 @@ package com.ruoyi.common.enums;
 public enum LimitType
 {
     /**
-     * 默认策略全局限流
+     * デフォルトの戦略は、局全体に限定されています
      */
     DEFAULT,
 
     /**
-     * 根据请求者IP进行限流
+     * 要求に応じてIP底流
      */
     IP
 }

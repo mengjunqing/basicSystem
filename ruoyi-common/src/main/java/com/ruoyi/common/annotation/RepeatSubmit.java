@@ -8,7 +8,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * 自定义注解防止表单重复提交
+ * フォームの繰り返しの提出を防ぐために、注釈をカスタマイズします
  * 
  * @author ruoyi
  *
@@ -20,12 +20,12 @@ import java.lang.annotation.Target;
 public @interface RepeatSubmit
 {
     /**
-     * 间隔时间(ms)，小于此时间视为重复提交
+     * 間隔(ms)，これよりも小さく、繰り返し提出されるとみなされます
      */
     public int interval() default 5000;
 
     /**
-     * 提示消息
+     * 迅速なメッセージ
      */
-    public String message() default "不允许重复提交，请稍候再试";
+    public String message() default "繰り返し提出は許可されていません，もう一度やり直してください";
 }

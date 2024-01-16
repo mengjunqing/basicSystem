@@ -1,16 +1,16 @@
 package com.ruoyi.common.utils.uuid;
 
 /**
- * ID生成器工具类
+ * IDジェネレーターツール
  * 
  * @author ruoyi
  */
 public class IdUtils
 {
     /**
-     * 获取随机UUID
+     * ランダムになりますUUID
      * 
-     * @return 随机UUID
+     * @return ランダムUUID
      */
     public static String randomUUID()
     {
@@ -18,9 +18,9 @@ public class IdUtils
     }
 
     /**
-     * 简化的UUID，去掉了横线
+     * 簡素化UUID，水平線を取り外します
      * 
-     * @return 简化的UUID，去掉了横线
+     * @return 簡素化UUID，水平線を取り外します
      */
     public static String simpleUUID()
     {
@@ -28,9 +28,9 @@ public class IdUtils
     }
 
     /**
-     * 获取随机UUID，使用性能更好的ThreadLocalRandom生成UUID
+     * ランダムになりますUUID，より良い使用ThreadLocalRandom生成するするUUID
      * 
-     * @return 随机UUID
+     * @return ランダムUUID
      */
     public static String fastUUID()
     {
@@ -38,9 +38,9 @@ public class IdUtils
     }
 
     /**
-     * 简化的UUID，去掉了横线，使用性能更好的ThreadLocalRandom生成UUID
+     * 簡素化UUID，水平線を取り外します，より良い使用ThreadLocalRandom生成するするUUID
      * 
-     * @return 简化的UUID，去掉了横线
+     * @return 簡素化UUID，水平線を取り外します
      */
     public static String fastSimpleUUID()
     {

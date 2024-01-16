@@ -9,16 +9,16 @@ import com.ruoyi.common.utils.spring.SpringUtils;
 import com.ruoyi.quartz.domain.SysJob;
 
 /**
- * 任务执行工具
+ * タスク実行ツール
  *
  * @author ruoyi
  */
 public class JobInvokeUtil
 {
     /**
-     * 执行方法
+     * 実行方法
      *
-     * @param sysJob 系统任务
+     * @param sysJob システムタスク
      */
     public static void invokeMethod(SysJob sysJob) throws Exception
     {
@@ -40,11 +40,11 @@ public class JobInvokeUtil
     }
 
     /**
-     * 调用任务方法
+     * コールタスクメソッド
      *
-     * @param bean 目标对象
-     * @param methodName 方法名称
-     * @param methodParams 方法参数
+     * @param bean 目標
+     * @param methodName メソッド名
+     * @param methodParams メソッドパラメーター
      */
     private static void invokeMethod(Object bean, String methodName, List<Object[]> methodParams)
             throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException,
@@ -63,10 +63,10 @@ public class JobInvokeUtil
     }
 
     /**
-     * 校验是否为为class包名
+     * 検証があるかどうかclassパッケージ名
      * 
-     * @param invokeTarget 名称
-     * @return true是 false否
+     * @param invokeTarget 名前
+     * @return trueはい falseいいえ
      */
     public static boolean isValidClassName(String invokeTarget)
     {
@@ -74,10 +74,10 @@ public class JobInvokeUtil
     }
 
     /**
-     * 获取bean名称
+     * 得るbean名前
      * 
-     * @param invokeTarget 目标字符串
-     * @return bean名称
+     * @param invokeTarget ターゲット文字列
+     * @return bean名前
      */
     public static String getBeanName(String invokeTarget)
     {
@@ -86,9 +86,9 @@ public class JobInvokeUtil
     }
 
     /**
-     * 获取bean方法
+     * 得るbean方法
      * 
-     * @param invokeTarget 目标字符串
+     * @param invokeTarget ターゲット文字列
      * @return method方法
      */
     public static String getMethodName(String invokeTarget)
@@ -98,10 +98,10 @@ public class JobInvokeUtil
     }
 
     /**
-     * 获取method方法参数相关列表
+     * 得るmethodメソッドパラメーター相关列表
      * 
-     * @param invokeTarget 目标字符串
-     * @return method方法相关参数列表
+     * @param invokeTarget ターゲット文字列
+     * @return methodメソッド関連パラメーターリスト
      */
     public static List<Object[]> getMethodParams(String invokeTarget)
     {
@@ -115,27 +115,27 @@ public class JobInvokeUtil
         for (int i = 0; i < methodParams.length; i++)
         {
             String str = StringUtils.trimToEmpty(methodParams[i]);
-            // String字符串类型，以'或"开头
+            // String文字列タイプ，による'または"始まり
             if (StringUtils.startsWithAny(str, "'", "\""))
             {
                 classs.add(new Object[] { StringUtils.substring(str, 1, str.length() - 1), String.class });
             }
-            // boolean布尔类型，等于true或者false
+            // booleanブール，等しいtrueまたは者false
             else if ("true".equalsIgnoreCase(str) || "false".equalsIgnoreCase(str))
             {
                 classs.add(new Object[] { Boolean.valueOf(str), Boolean.class });
             }
-            // long长整形，以L结尾
+            // long長い整形手術，によるL終わり
             else if (StringUtils.endsWith(str, "L"))
             {
                 classs.add(new Object[] { Long.valueOf(StringUtils.substring(str, 0, str.length() - 1)), Long.class });
             }
-            // double浮点类型，以D结尾
+            // doubleフローティングポイントタイプ，によるD終わり
             else if (StringUtils.endsWith(str, "D"))
             {
                 classs.add(new Object[] { Double.valueOf(StringUtils.substring(str, 0, str.length() - 1)), Double.class });
             }
-            // 其他类型归类为整形
+            // 他のタイプは整形手術として分類されます
             else
             {
                 classs.add(new Object[] { Integer.valueOf(str), Integer.class });
@@ -145,10 +145,10 @@ public class JobInvokeUtil
     }
 
     /**
-     * 获取参数类型
+     * 得る参数类型
      * 
-     * @param methodParams 参数相关列表
-     * @return 参数类型列表
+     * @param methodParams パラメーター関連リスト
+     * @return パラメータータイプのリスト
      */
     public static Class<?>[] getMethodParamsType(List<Object[]> methodParams)
     {
@@ -163,10 +163,10 @@ public class JobInvokeUtil
     }
 
     /**
-     * 获取参数值
+     * 得る参数值
      * 
-     * @param methodParams 参数相关列表
-     * @return 参数值列表
+     * @param methodParams パラメーター関連リスト
+     * @return パラメーター値リスト
      */
     public static Object[] getMethodParamsValue(List<Object[]> methodParams)
     {

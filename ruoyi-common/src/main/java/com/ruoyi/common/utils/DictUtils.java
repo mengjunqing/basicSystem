@@ -9,22 +9,22 @@ import com.ruoyi.common.core.redis.RedisCache;
 import com.ruoyi.common.utils.spring.SpringUtils;
 
 /**
- * 字典工具类
+ * 辞書ツール
  * 
  * @author ruoyi
  */
 public class DictUtils
 {
     /**
-     * 分隔符
+     * 分離主義者
      */
     public static final String SEPARATOR = ",";
 
     /**
-     * 设置字典缓存
+     * 辞書キャッシュを設定します
      * 
-     * @param key 参数键
-     * @param dictDatas 字典数据列表
+     * @param key パラメーター
+     * @param dictDatas 辞書データリスト
      */
     public static void setDictCache(String key, List<SysDictData> dictDatas)
     {
@@ -32,10 +32,10 @@ public class DictUtils
     }
 
     /**
-     * 获取字典缓存
+     * 辞書キャッシュを取得します
      * 
-     * @param key 参数键
-     * @return dictDatas 字典数据列表
+     * @param key パラメーター
+     * @return dictDatas 辞書データリスト
      */
     public static List<SysDictData> getDictCache(String key)
     {
@@ -48,11 +48,11 @@ public class DictUtils
     }
 
     /**
-     * 根据字典类型和字典值获取字典标签
+     * 辞書タイプと辞書値に従って辞書ラベルを​​取得します
      * 
-     * @param dictType 字典类型
-     * @param dictValue 字典值
-     * @return 字典标签
+     * @param dictType 辞書
+     * @param dictValue 辞書
+     * @return 辞書ラベル
      */
     public static String getDictLabel(String dictType, String dictValue)
     {
@@ -60,11 +60,11 @@ public class DictUtils
     }
 
     /**
-     * 根据字典类型和字典标签获取字典值
+     * 根据辞書和辞書ラベル获取辞書
      * 
-     * @param dictType 字典类型
-     * @param dictLabel 字典标签
-     * @return 字典值
+     * @param dictType 辞書
+     * @param dictLabel 辞書ラベル
+     * @return 辞書
      */
     public static String getDictValue(String dictType, String dictLabel)
     {
@@ -72,12 +72,12 @@ public class DictUtils
     }
 
     /**
-     * 根据字典类型和字典值获取字典标签
+     * 辞書タイプと辞書値に従って辞書ラベルを​​取得します
      * 
-     * @param dictType 字典类型
-     * @param dictValue 字典值
-     * @param separator 分隔符
-     * @return 字典标签
+     * @param dictType 辞書
+     * @param dictValue 辞書
+     * @param separator 分離主義者
+     * @return 辞書ラベル
      */
     public static String getDictLabel(String dictType, String dictValue, String separator)
     {
@@ -115,12 +115,12 @@ public class DictUtils
     }
 
     /**
-     * 根据字典类型和字典标签获取字典值
+     * 根据辞書和辞書ラベル获取辞書
      * 
-     * @param dictType 字典类型
-     * @param dictLabel 字典标签
-     * @param separator 分隔符
-     * @return 字典值
+     * @param dictType 辞書
+     * @param dictLabel 辞書ラベル
+     * @param separator 分離主義者
+     * @return 辞書
      */
     public static String getDictValue(String dictType, String dictLabel, String separator)
     {
@@ -155,9 +155,9 @@ public class DictUtils
     }
 
     /**
-     * 删除指定字典缓存
+     * 指定された辞書キャッシュを削除します
      * 
-     * @param key 字典键
+     * @param key 辞書
      */
     public static void removeDictCache(String key)
     {
@@ -165,7 +165,7 @@ public class DictUtils
     }
 
     /**
-     * 清空字典缓存
+     * 辞書キャッシュのクリーニング
      */
     public static void clearDictCache()
     {
@@ -174,10 +174,10 @@ public class DictUtils
     }
 
     /**
-     * 设置cache key
+     * 設定cache key
      * 
-     * @param configKey 参数键
-     * @return 缓存键key
+     * @param configKey パラメーター
+     * @return キャッシュキーkey
      */
     public static String getCacheKey(String configKey)
     {

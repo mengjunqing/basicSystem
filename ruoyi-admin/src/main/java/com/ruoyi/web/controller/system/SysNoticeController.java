@@ -21,7 +21,7 @@ import com.ruoyi.system.domain.SysNotice;
 import com.ruoyi.system.service.ISysNoticeService;
 
 /**
- * 公告 信息操作处理
+ * 発表 情報操作処理
  * 
  * @author ruoyi
  */
@@ -33,7 +33,7 @@ public class SysNoticeController extends BaseController
     private ISysNoticeService noticeService;
 
     /**
-     * 获取通知公告列表
+     * 通知のリストを取得します
      */
     @PreAuthorize("@ss.hasPermi('system:notice:list')")
     @GetMapping("/list")
@@ -45,7 +45,7 @@ public class SysNoticeController extends BaseController
     }
 
     /**
-     * 根据通知公告编号获取详细信息
+     * 通知テーブル番号に従って詳細情報を取得する
      */
     @PreAuthorize("@ss.hasPermi('system:notice:query')")
     @GetMapping(value = "/{noticeId}")
@@ -55,10 +55,10 @@ public class SysNoticeController extends BaseController
     }
 
     /**
-     * 新增通知公告
+     * 新しい通知発テーブル
      */
     @PreAuthorize("@ss.hasPermi('system:notice:add')")
-    @Log(title = "通知公告", businessType = BusinessType.INSERT)
+    @Log(title = "通知発表", businessType = BusinessType.INSERT)
     @PostMapping
     public AjaxResult add(@Validated @RequestBody SysNotice notice)
     {
@@ -67,10 +67,10 @@ public class SysNoticeController extends BaseController
     }
 
     /**
-     * 修改通知公告
+     * 通知を変更します
      */
     @PreAuthorize("@ss.hasPermi('system:notice:edit')")
-    @Log(title = "通知公告", businessType = BusinessType.UPDATE)
+    @Log(title = "通知発表", businessType = BusinessType.UPDATE)
     @PutMapping
     public AjaxResult edit(@Validated @RequestBody SysNotice notice)
     {
@@ -79,10 +79,10 @@ public class SysNoticeController extends BaseController
     }
 
     /**
-     * 删除通知公告
+     * 通知を削除知テーブル
      */
     @PreAuthorize("@ss.hasPermi('system:notice:remove')")
-    @Log(title = "通知公告", businessType = BusinessType.DELETE)
+    @Log(title = "通知発表", businessType = BusinessType.DELETE)
     @DeleteMapping("/{noticeIds}")
     public AjaxResult remove(@PathVariable Long[] noticeIds)
     {

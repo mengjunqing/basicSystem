@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
- * Entity基类
+ * Entity基本クラス
  * 
  * @author ruoyi
  */
@@ -17,28 +17,28 @@ public class BaseEntity implements Serializable
 {
     private static final long serialVersionUID = 1L;
 
-    /** 搜索值 */
+    /** 検索値 */
     @JsonIgnore
     private String searchValue;
 
-    /** 创建者 */
+    /** 作成者 */
     private String createBy;
 
-    /** 创建时间 */
+    /** 作成時間 */
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 
-    /** 更新者 */
+    /** アップデーター */
     private String updateBy;
 
-    /** 更新时间 */
+    /** 時間を更新します */
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
 
-    /** 备注 */
+    /** 述べる */
     private String remark;
 
-    /** 请求参数 */
+    /** リクエストパラメーター */
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private Map<String, Object> params;
 

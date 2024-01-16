@@ -5,114 +5,114 @@ import org.apache.ibatis.annotations.Param;
 import com.ruoyi.common.core.domain.entity.SysDept;
 
 /**
- * 部门管理 数据层
+ * 部門管理 データレイヤー
  * 
  * @author ruoyi
  */
 public interface SysDeptMapper
 {
     /**
-     * 查询部门管理数据
+     * 照会部門管理データ
      * 
-     * @param dept 部门信息
-     * @return 部门信息集合
+     * @param dept 部門情報
+     * @return 部門情報コレクション
      */
     public List<SysDept> selectDeptList(SysDept dept);
 
     /**
-     * 根据角色ID查询部门树信息
+     * 役割によるとIDクエリ部門ツリー情報
      * 
-     * @param roleId 角色ID
-     * @param deptCheckStrictly 部门树选择项是否关联显示
-     * @return 选中部门列表
+     * @param roleId 役割ID
+     * @param deptCheckStrictly 部門のツリー選択アイテムが表示に関連しているかどうか
+     * @return 部門リストの選択
      */
     public List<Long> selectDeptListByRoleId(@Param("roleId") Long roleId, @Param("deptCheckStrictly") boolean deptCheckStrictly);
 
     /**
-     * 根据部门ID查询信息
+     * 部門によるとID検索情報
      * 
-     * @param deptId 部门ID
-     * @return 部门信息
+     * @param deptId 部門ID
+     * @return 部門情報
      */
     public SysDept selectDeptById(Long deptId);
 
     /**
-     * 根据ID查询所有子部门
+     * によるとIDすべてのサブデパートメントをクエリします
      * 
-     * @param deptId 部门ID
-     * @return 部门列表
+     * @param deptId 部門ID
+     * @return 部門リスト
      */
     public List<SysDept> selectChildrenDeptById(Long deptId);
 
     /**
-     * 根据ID查询所有子部门（正常状态）
+     * によるとIDすべてのサブデパートメントをクエリします（通常のステータス）
      * 
-     * @param deptId 部门ID
-     * @return 子部门数
+     * @param deptId 部門ID
+     * @return 子部門数
      */
     public int selectNormalChildrenDeptById(Long deptId);
 
     /**
-     * 是否存在子节点
+     * 子ノードがあるかどうか
      * 
-     * @param deptId 部门ID
-     * @return 结果
+     * @param deptId 部門ID
+     * @return 結果
      */
     public int hasChildByDeptId(Long deptId);
 
     /**
-     * 查询部门是否存在用户
+     * 部門にユーザーがいるかどうかを確認してください
      * 
-     * @param deptId 部门ID
-     * @return 结果
+     * @param deptId 部門ID
+     * @return 結果
      */
     public int checkDeptExistUser(Long deptId);
 
     /**
-     * 校验部门名称是否唯一
+     * 検証部門の名前はユニークですか？
      * 
-     * @param deptName 部门名称
-     * @param parentId 父部门ID
-     * @return 结果
+     * @param deptName 部署名
+     * @param parentId 親部門ID
+     * @return 結果
      */
     public SysDept checkDeptNameUnique(@Param("deptName") String deptName, @Param("parentId") Long parentId);
 
     /**
-     * 新增部门信息
+     * 新しい部門情報
      * 
-     * @param dept 部门信息
-     * @return 结果
+     * @param dept 部門情報
+     * @return 結果
      */
     public int insertDept(SysDept dept);
 
     /**
-     * 修改部门信息
+     * 部門情報を変更します
      * 
-     * @param dept 部门信息
-     * @return 结果
+     * @param dept 部門情報
+     * @return 結果
      */
     public int updateDept(SysDept dept);
 
     /**
-     * 修改所在部门正常状态
+     * 修改所在部門通常のステータス
      * 
-     * @param deptIds 部门ID组
+     * @param deptIds 部門IDグループ
      */
     public void updateDeptStatusNormal(Long[] deptIds);
 
     /**
-     * 修改子元素关系
+     * サブ要素の関係を変更します
      * 
-     * @param depts 子元素
-     * @return 结果
+     * @param depts サブエレメント
+     * @return 結果
      */
     public int updateDeptChildren(@Param("depts") List<SysDept> depts);
 
     /**
-     * 删除部门管理信息
+     * 部門管理情報を削除します
      * 
-     * @param deptId 部门ID
-     * @return 结果
+     * @param deptId 部門ID
+     * @return 結果
      */
     public int deleteDeptById(Long deptId);
 }

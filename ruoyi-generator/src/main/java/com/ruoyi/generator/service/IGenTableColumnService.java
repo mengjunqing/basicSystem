@@ -4,41 +4,41 @@ import java.util.List;
 import com.ruoyi.generator.domain.GenTableColumn;
 
 /**
- * 业务字段 服务层
+ * ビジネス分野 サービスレイヤー
  * 
  * @author ruoyi
  */
 public interface IGenTableColumnService
 {
     /**
-     * 查询业务字段列表
+     * 查询ビジネス分野列表
      * 
-     * @param tableId 业务字段编号
-     * @return 业务字段集合
+     * @param tableId ビジネス分野编号
+     * @return ビジネス分野集合
      */
     public List<GenTableColumn> selectGenTableColumnListByTableId(Long tableId);
 
     /**
-     * 新增业务字段
+     * 新增ビジネス分野
      * 
-     * @param genTableColumn 业务字段信息
-     * @return 结果
+     * @param genTableColumn ビジネス分野信息
+     * @return 結果
      */
     public int insertGenTableColumn(GenTableColumn genTableColumn);
 
     /**
-     * 修改业务字段
+     * 修改ビジネス分野
      * 
-     * @param genTableColumn 业务字段信息
-     * @return 结果
+     * @param genTableColumn ビジネス分野信息
+     * @return 結果
      */
     public int updateGenTableColumn(GenTableColumn genTableColumn);
 
     /**
-     * 删除业务字段信息
+     * 删除ビジネス分野信息
      * 
-     * @param ids 需要删除的数据ID
-     * @return 结果
+     * @param ids データを削除する必要がありましたID
+     * @return 結果
      */
     public int deleteGenTableColumnByIds(String ids);
 }

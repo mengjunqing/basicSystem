@@ -8,7 +8,7 @@ import com.ruoyi.quartz.mapper.SysJobLogMapper;
 import com.ruoyi.quartz.service.ISysJobLogService;
 
 /**
- * 定时任务调度日志信息 服务层
+ * タイミングタスクログ情報のスケジューリング サービスレイヤー
  * 
  * @author ruoyi
  */
@@ -19,10 +19,10 @@ public class SysJobLogServiceImpl implements ISysJobLogService
     private SysJobLogMapper jobLogMapper;
 
     /**
-     * 获取quartz调度器日志的计划任务
+     * 得るquartzログのスケジューリングのタスクを計画します
      * 
-     * @param jobLog 调度日志信息
-     * @return 调度任务日志集合
+     * @param jobLog ログ情報をスーリングします
+     * @return タスクログコレクションをスケジュールします
      */
     @Override
     public List<SysJobLog> selectJobLogList(SysJobLog jobLog)
@@ -31,10 +31,10 @@ public class SysJobLogServiceImpl implements ISysJobLogService
     }
 
     /**
-     * 通过调度任务日志ID查询调度信息
+     * タスクログをスケジュールしますIDクエリスケジューリング情報
      * 
-     * @param jobLogId 调度任务日志ID
-     * @return 调度任务日志对象信息
+     * @param jobLogId スウォッチタスクログID
+     * @return スウォッチタスクログ对象信息
      */
     @Override
     public SysJobLog selectJobLogById(Long jobLogId)
@@ -43,9 +43,9 @@ public class SysJobLogServiceImpl implements ISysJobLogService
     }
 
     /**
-     * 新增任务日志
+     * 新しいタスクログ
      * 
-     * @param jobLog 调度日志信息
+     * @param jobLog ログ情報をスーリングします
      */
     @Override
     public void addJobLog(SysJobLog jobLog)
@@ -54,10 +54,10 @@ public class SysJobLogServiceImpl implements ISysJobLogService
     }
 
     /**
-     * 批量删除调度日志信息
+     * 批量删除ログ情報をスーリングします
      * 
-     * @param logIds 需要删除的数据ID
-     * @return 结果
+     * @param logIds データを削除する必要がありましたID
+     * @return 結果
      */
     @Override
     public int deleteJobLogByIds(Long[] logIds)
@@ -66,9 +66,9 @@ public class SysJobLogServiceImpl implements ISysJobLogService
     }
 
     /**
-     * 删除任务日志
+     * タスクログを削除します
      * 
-     * @param jobId 调度日志ID
+     * @param jobId スケジュールされたログID
      */
     @Override
     public int deleteJobLogById(Long jobId)
@@ -77,7 +77,7 @@ public class SysJobLogServiceImpl implements ISysJobLogService
     }
 
     /**
-     * 清空任务日志
+     * タスクログをクリアします
      */
     @Override
     public void cleanJobLog()

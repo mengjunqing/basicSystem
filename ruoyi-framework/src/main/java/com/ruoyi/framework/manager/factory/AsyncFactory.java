@@ -17,7 +17,7 @@ import com.ruoyi.system.service.ISysOperLogService;
 import eu.bitwalker.useragentutils.UserAgent;
 
 /**
- * 异步工厂（产生任务用）
+ * 非同期工場（タスクを使用します）
  * 
  * @author ruoyi
  */
@@ -26,13 +26,13 @@ public class AsyncFactory
     private static final Logger sys_user_logger = LoggerFactory.getLogger("sys-user");
 
     /**
-     * 记录登录信息
+     * ログイン情報を記録します
      * 
-     * @param username 用户名
-     * @param status 状态
-     * @param message 消息
-     * @param args 列表
-     * @return 任务task
+     * @param username ユーザー名
+     * @param status 州
+     * @param message 情報
+     * @param args リスト
+     * @return タスクtask
      */
     public static TimerTask recordLogininfor(final String username, final String status, final String message,
             final Object... args)
@@ -51,13 +51,13 @@ public class AsyncFactory
                 s.append(LogUtils.getBlock(username));
                 s.append(LogUtils.getBlock(status));
                 s.append(LogUtils.getBlock(message));
-                // 打印信息到日志
+                // ログに情報を印刷します
                 sys_user_logger.info(s.toString(), args);
-                // 获取客户端操作系统
+                // クライアントオペレーティングシステムを取得します
                 String os = userAgent.getOperatingSystem().getName();
-                // 获取客户端浏览器
+                // クライアントブラウザを取得します
                 String browser = userAgent.getBrowser().getName();
-                // 封装对象
+                // カプセル化
                 SysLogininfor logininfor = new SysLogininfor();
                 logininfor.setUserName(username);
                 logininfor.setIpaddr(ip);
@@ -65,7 +65,7 @@ public class AsyncFactory
                 logininfor.setBrowser(browser);
                 logininfor.setOs(os);
                 logininfor.setMsg(message);
-                // 日志状态
+                // 日記
                 if (StringUtils.equalsAny(status, Constants.LOGIN_SUCCESS, Constants.LOGOUT, Constants.REGISTER))
                 {
                     logininfor.setStatus(Constants.SUCCESS);
@@ -74,17 +74,17 @@ public class AsyncFactory
                 {
                     logininfor.setStatus(Constants.FAIL);
                 }
-                // 插入数据
+                // データを挿入します
                 SpringUtils.getBean(ISysLogininforService.class).insertLogininfor(logininfor);
             }
         };
     }
 
     /**
-     * 操作日志记录
+     * 操作ログレコード
      * 
-     * @param operLog 操作日志信息
-     * @return 任务task
+     * @param operLog 操作ログ情報
+     * @return タスクtask
      */
     public static TimerTask recordOper(final SysOperLog operLog)
     {
@@ -93,7 +93,7 @@ public class AsyncFactory
             @Override
             public void run()
             {
-                // 远程查询操作地点
+                // リモートクエリ操作の場所
                 operLog.setOperLocation(AddressUtils.getRealAddressByIP(operLog.getOperIp()));
                 SpringUtils.getBean(ISysOperLogService.class).insertOperlog(operLog);
             }

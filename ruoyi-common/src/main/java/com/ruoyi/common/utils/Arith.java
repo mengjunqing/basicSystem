@@ -4,26 +4,26 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 /**
- * 精确的浮点数运算
+ * 正確なフローティング - ポイント番号操作
  * 
  * @author ruoyi
  */
 public class Arith
 {
 
-    /** 默认除法运算精度 */
+    /** 計算精度のデフォルトの削除 */
     private static final int DEF_DIV_SCALE = 10;
 
-    /** 这个类不能实例化 */
+    /** このクラスをインスタンス化することはできません */
     private Arith()
     {
     }
 
     /**
-     * 提供精确的加法运算。
-     * @param v1 被加数
-     * @param v2 加数
-     * @return 两个参数的和
+     * 正確な追加操作を供給します。
+     * @param v1 追加されます
+     * @param v2 増加
+     * @return 2つのパラメーターと
      */
     public static double add(double v1, double v2)
     {
@@ -33,10 +33,10 @@ public class Arith
     }
 
     /**
-     * 提供精确的减法运算。
-     * @param v1 被减数
-     * @param v2 减数
-     * @return 两个参数的差
+     * 正確な減算操作を供給します。
+     * @param v1 減らす
+     * @param v2 劣化
+     * @return 2つのパラメーターの違い
      */
     public static double sub(double v1, double v2)
     {
@@ -46,10 +46,10 @@ public class Arith
     }
 
     /**
-     * 提供精确的乘法运算。
-     * @param v1 被乘数
-     * @param v2 乘数
-     * @return 两个参数的积
+     * 正確な乗算操作を供給します。
+     * @param v1 番号
+     * @param v2 乗数
+     * @return 2つのパラメーターの蓄積
      */
     public static double mul(double v1, double v2)
     {
@@ -59,11 +59,11 @@ public class Arith
     }
 
     /**
-     * 提供（相对）精确的除法运算，当发生除不尽的情况时，精确到
-     * 小数点以后10位，以后的数字四舍五入。
-     * @param v1 被除数
+     * 供給（比較的）正確な削除操作，無限の状況があるとき，正確です
+     * 小数点の後10少し，将来の数に続きます。
+     * @param v1 分ける
      * @param v2 除数
-     * @return 两个参数的商
+     * @return 2つのパラメーターのビジネス
      */
     public static double div(double v1, double v2)
     {
@@ -71,12 +71,12 @@ public class Arith
     }
 
     /**
-     * 提供（相对）精确的除法运算。当发生除不尽的情况时，由scale参数指
-     * 定精度，以后的数字四舍五入。
-     * @param v1 被除数
+     * 供給（比較的）正確な削除操作。無限の状況があるとき，によるscaleパラメーター指
+     * 定精度，将来の数に続きます。
+     * @param v1 分ける
      * @param v2 除数
-     * @param scale 表示表示需要精确到小数点以后几位。
-     * @return 两个参数的商
+     * @param scale 表示表示需要正確です小数点の後几少し。
+     * @return 2つのパラメーターのビジネス
      */
     public static double div(double v1, double v2, int scale)
     {
@@ -95,10 +95,10 @@ public class Arith
     }
 
     /**
-     * 提供精确的小数位四舍五入处理。
-     * @param v 需要四舍五入的数字
-     * @param scale 小数点后保留几位
-     * @return 四舍五入后的结果
+     * 供給精确的小数少し四舍五入处理。
+     * @param v 4つの家と5つのエントリが必要な数字
+     * @param scale 小数点后保留几少し
+     * @return 4つの家と5つの家の結果
      */
     public static double round(double v, int scale)
     {
