@@ -9,7 +9,7 @@ import com.ruoyi.system.mapper.SysDictDataMapper;
 import com.ruoyi.system.service.ISysDictDataService;
 
 /**
- * 辞書 ビジネス層治療
+ * 辞書 ビジネス層治療  
  * 
  * @author ruoyi
  */
