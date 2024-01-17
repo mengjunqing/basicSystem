@@ -12,7 +12,7 @@
     <artifactId>ruoyi-framework</artifactId>
 
     <description>
-        framework框架核心
+        framework芯
     </description>
 
     <dependencies>
@@ -23,19 +23,19 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- SpringBoot 拦截器 -->
+        <!-- SpringBoot インターセプター -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
 
-        <!-- 阿里数据库连接池 -->
+        <!-- Ali Database Connection Pond -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
         </dependency>
 
-        <!-- 验证码 -->
+        <!-- 検証コード -->
         <dependency>
             <groupId>pro.fessional</groupId>
             <artifactId>kaptcha</artifactId>
@@ -47,13 +47,13 @@
             </exclusions>
         </dependency>
 
-        <!-- 获取系统信息 -->
+        <!-- システム情報を取得します -->
         <dependency>
             <groupId>com.github.oshi</groupId>
             <artifactId>oshi-core</artifactId>
         </dependency>
 
-        <!-- 系统模块-->
+        <!-- システムモジュール-->
         <dependency>
             <groupId>com.ruoyi</groupId>
             <artifactId>ruoyi-system</artifactId>
