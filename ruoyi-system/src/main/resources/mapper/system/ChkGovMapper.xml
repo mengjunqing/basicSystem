@@ -8,13 +8,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="id"    column="id"    />
         <result property="name"    column="name"    />
         <result property="createdTime"    column="created_time"    />
-        <result property="desc"    column="desc"    />
+        <result property="describes"    column="describes"    />
         <result property="tel"    column="tel"    />
         <result property="status"    column="status"    />
     </resultMap>
 
     <sql id="selectChkGovVo">
-        select id, name, created_time, desc, tel, status from chk_gov
+        select id, name, created_time, describes, tel, status from chk_gov
     </sql>
 
     <select id="selectChkGovList" parameterType="ChkGov" resultMap="ChkGovResult">
@@ -22,7 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <where>  
             <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
             <if test="createdTime != null "> and created_time = #{createdTime}</if>
-            <if test="desc != null  and desc != ''"> and desc = #{desc}</if>
+            <if test="describes != null  and describes != ''"> and describes = #{describes}</if>
             <if test="tel != null  and tel != ''"> and tel = #{tel}</if>
             <if test="status != null  and status != ''"> and status = #{status}</if>
         </where>
@@ -38,14 +38,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="name != null">name,</if>
             <if test="createdTime != null">created_time,</if>
-            <if test="desc != null">desc,</if>
+            <if test="describes != null">describes,</if>
             <if test="tel != null">tel,</if>
             <if test="status != null">status,</if>
          </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="name != null">#{name},</if>
             <if test="createdTime != null">#{createdTime},</if>
-            <if test="desc != null">#{desc},</if>
+            <if test="describes != null">#{describes},</if>
             <if test="tel != null">#{tel},</if>
             <if test="status != null">#{status},</if>
          </trim>
@@ -56,7 +56,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <trim prefix="SET" suffixOverrides=",">
             <if test="name != null">name = #{name},</if>
             <if test="createdTime != null">created_time = #{createdTime},</if>
-            <if test="desc != null">desc = #{desc},</if>
+            <if test="describes != null">describes = #{describes},</if>
             <if test="tel != null">tel = #{tel},</if>
             <if test="status != null">status = #{status},</if>
         </trim>

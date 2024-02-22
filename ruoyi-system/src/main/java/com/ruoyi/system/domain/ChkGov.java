@@ -30,7 +30,7 @@ public class ChkGov extends BaseEntity
 
     /** $column.columnComment */
     @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
-    private String desc;
+    private String describes;
 
     /** $column.columnComment */
     @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
@@ -67,14 +67,14 @@ public class ChkGov extends BaseEntity
     {
         return createdTime;
     }
-    public void setDesc(String desc) 
+    public void setdescribes(String describes) 
     {
-        this.desc = desc;
+        this.describes = describes;
     }
 
-    public String getDesc() 
+    public String getDescribes() 
     {
-        return desc;
+        return describes;
     }
     public void setTel(String tel) 
     {
@@ -101,7 +101,7 @@ public class ChkGov extends BaseEntity
             .append("id", getId())
             .append("name", getName())
             .append("createdTime", getCreatedTime())
-            .append("desc", getDesc())
+            .append("describes", getDescribes())
             .append("tel", getTel())
             .append("status", getStatus())
             .toString();
