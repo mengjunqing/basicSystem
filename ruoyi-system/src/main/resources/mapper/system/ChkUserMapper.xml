@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.ChkUserMapper">
+    
+    <resultMap type="ChkUser" id="ChkUserResult">
+        <result property="id"    column="id"    />
+        <result property="username"    column="username"    />
+        <result property="createdTime"    column="created_time"    />
+        <result property="govId"    column="gov_id"    />
+        <result property="password"    column="password"    />
+        <result property="role"    column="role"    />
+        <result property="status"    column="status"    />
+    </resultMap>
+
+    <sql id="selectChkUserVo">
+        select id, username, created_time, gov_id, password, role, status from chk_user
+    </sql>
+
+    <select id="selectChkUserList" parameterType="ChkUser" resultMap="ChkUserResult">
+        <include refid="selectChkUserVo"/>
+        <where>  
+            <if test="username != null  and username != ''"> and username like concat('%', #{username}, '%')</if>
+            <if test="createdTime != null "> and created_time = #{createdTime}</if>
+            <if test="govId != null "> and gov_id = #{govId}</if>
+            <if test="password != null  and password != ''"> and password = #{password}</if>
+            <if test="role != null  and role != ''"> and role = #{role}</if>
+            <if test="status != null  and status != ''"> and status = #{status}</if>
+        </where>
+    </select>
+    
+    <select id="selectChkUserById" parameterType="Long" resultMap="ChkUserResult">
+        <include refid="selectChkUserVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertChkUser" parameterType="ChkUser">
+        insert into chk_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="username != null">username,</if>
+            <if test="createdTime != null">created_time,</if>
+            <if test="govId != null">gov_id,</if>
+            <if test="password != null">password,</if>
+            <if test="role != null">role,</if>
+            <if test="status != null">status,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="username != null">#{username},</if>
+            <if test="createdTime != null">#{createdTime},</if>
+            <if test="govId != null">#{govId},</if>
+            <if test="password != null">#{password},</if>
+            <if test="role != null">#{role},</if>
+            <if test="status != null">#{status},</if>
+         </trim>
+    </insert>
+
+    <update id="updateChkUser" parameterType="ChkUser">
+        update chk_user
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="username != null">username = #{username},</if>
+            <if test="createdTime != null">created_time = #{createdTime},</if>
+            <if test="govId != null">gov_id = #{govId},</if>
+            <if test="password != null">password = #{password},</if>
+            <if test="role != null">role = #{role},</if>
+            <if test="status != null">status = #{status},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteChkUserById" parameterType="Long">
+        delete from chk_user where id = #{id}
+    </delete>
+
+    <delete id="deleteChkUserByIds" parameterType="String">
+        delete from chk_user where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

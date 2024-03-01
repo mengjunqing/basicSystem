@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.ChkUserPermissionMapper">
+    
+    <resultMap type="ChkUserPermission" id="ChkUserPermissionResult">
+        <result property="id"    column="id"    />
+        <result property="updatedTime"    column="updated_time"    />
+        <result property="createdTime"    column="created_time"    />
+        <result property="permission"    column="permission"    />
+        <result property="resourceId"    column="resource_id"    />
+        <result property="roleId"    column="role_id"    />
+    </resultMap>
+
+    <sql id="selectChkUserPermissionVo">
+        select id, updated_time, created_time, permission, resource_id, role_id from chk_user_permission
+    </sql>
+
+    <select id="selectChkUserPermissionList" parameterType="ChkUserPermission" resultMap="ChkUserPermissionResult">
+        <include refid="selectChkUserPermissionVo"/>
+        <where>  
+            <if test="updatedTime != null "> and updated_time = #{updatedTime}</if>
+            <if test="createdTime != null "> and created_time = #{createdTime}</if>
+            <if test="permission != null  and permission != ''"> and permission = #{permission}</if>
+            <if test="resourceId != null "> and resource_id = #{resourceId}</if>
+            <if test="roleId != null "> and role_id = #{roleId}</if>
+        </where>
+    </select>
+    
+    <select id="selectChkUserPermissionById" parameterType="Long" resultMap="ChkUserPermissionResult">
+        <include refid="selectChkUserPermissionVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertChkUserPermission" parameterType="ChkUserPermission" useGeneratedKeys="true" keyProperty="id">
+        insert into chk_user_permission
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="updatedTime != null">updated_time,</if>
+            <if test="createdTime != null">created_time,</if>
+            <if test="permission != null">permission,</if>
+            <if test="resourceId != null">resource_id,</if>
+            <if test="roleId != null">role_id,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="updatedTime != null">#{updatedTime},</if>
+            <if test="createdTime != null">#{createdTime},</if>
+            <if test="permission != null">#{permission},</if>
+            <if test="resourceId != null">#{resourceId},</if>
+            <if test="roleId != null">#{roleId},</if>
+         </trim>
+    </insert>
+
+    <update id="updateChkUserPermission" parameterType="ChkUserPermission">
+        update chk_user_permission
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="updatedTime != null">updated_time = #{updatedTime},</if>
+            <if test="createdTime != null">created_time = #{createdTime},</if>
+            <if test="permission != null">permission = #{permission},</if>
+            <if test="resourceId != null">resource_id = #{resourceId},</if>
+            <if test="roleId != null">role_id = #{roleId},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteChkUserPermissionById" parameterType="Long">
+        delete from chk_user_permission where id = #{id}
+    </delete>
+
+    <delete id="deleteChkUserPermissionByIds" parameterType="String">
+        delete from chk_user_permission where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

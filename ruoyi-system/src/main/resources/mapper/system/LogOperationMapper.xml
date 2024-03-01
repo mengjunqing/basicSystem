@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.LogOperationMapper">
+    
+    <resultMap type="LogOperation" id="LogOperationResult">
+        <result property="id"    column="id"    />
+        <result property="createdAt"    column="created_at"    />
+        <result property="item"    column="item"    />
+        <result property="opearator"    column="opearator"    />
+        <result property="type"    column="type"    />
+        <result property="level"    column="level"    />
+        <result property="descrtiption"    column="descrtiption"    />
+    </resultMap>
+
+    <sql id="selectLogOperationVo">
+        select id, created_at, item, opearator, type, level, descrtiption from log_operation
+    </sql>
+
+    <select id="selectLogOperationList" parameterType="LogOperation" resultMap="LogOperationResult">
+        <include refid="selectLogOperationVo"/>
+        <where>  
+            <if test="createdAt != null "> and created_at = #{createdAt}</if>
+            <if test="item != null  and item != ''"> and item = #{item}</if>
+            <if test="opearator != null  and opearator != ''"> and opearator = #{opearator}</if>
+            <if test="type != null  and type != ''"> and type = #{type}</if>
+            <if test="level != null  and level != ''"> and level = #{level}</if>
+            <if test="descrtiption != null  and descrtiption != ''"> and descrtiption = #{descrtiption}</if>
+        </where>
+    </select>
+    
+    <select id="selectLogOperationById" parameterType="Long" resultMap="LogOperationResult">
+        <include refid="selectLogOperationVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertLogOperation" parameterType="LogOperation" useGeneratedKeys="true" keyProperty="id">
+        insert into log_operation
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="createdAt != null">created_at,</if>
+            <if test="item != null">item,</if>
+            <if test="opearator != null">opearator,</if>
+            <if test="type != null">type,</if>
+            <if test="level != null">level,</if>
+            <if test="descrtiption != null">descrtiption,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="createdAt != null">#{createdAt},</if>
+            <if test="item != null">#{item},</if>
+            <if test="opearator != null">#{opearator},</if>
+            <if test="type != null">#{type},</if>
+            <if test="level != null">#{level},</if>
+            <if test="descrtiption != null">#{descrtiption},</if>
+         </trim>
+    </insert>
+
+    <update id="updateLogOperation" parameterType="LogOperation">
+        update log_operation
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="createdAt != null">created_at = #{createdAt},</if>
+            <if test="item != null">item = #{item},</if>
+            <if test="opearator != null">opearator = #{opearator},</if>
+            <if test="type != null">type = #{type},</if>
+            <if test="level != null">level = #{level},</if>
+            <if test="descrtiption != null">descrtiption = #{descrtiption},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteLogOperationById" parameterType="Long">
+        delete from log_operation where id = #{id}
+    </delete>
+
+    <delete id="deleteLogOperationByIds" parameterType="String">
+        delete from log_operation where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>
