@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.ChkServiceFileLimitMapper">
+    
+    <resultMap type="ChkServiceFileLimit" id="ChkServiceFileLimitResult">
+        <result property="id"    column="id"    />
+        <result property="createdAt"    column="created_at"    />
+        <result property="service"    column="service"    />
+        <result property="filename"    column="filename"    />
+        <result property="samplePicture"    column="sample_picture"    />
+        <result property="desctiption"    column="desctiption"    />
+        <result property="fileType"    column="file_type"    />
+        <result property="recommondDpi"    column="recommond_DPI"    />
+        <result property="fileSize"    column="file_size"    />
+        <result property="filenameRule"    column="filename_rule"    />
+        <result property="isOcrSystem"    column="is_OCR_system"    />
+    </resultMap>
+
+    <sql id="selectChkServiceFileLimitVo">
+        select id, created_at, service, filename, sample_picture, desctiption, file_type, recommond_DPI, file_size, filename_rule, is_OCR_system from chk_service_file_limit
+    </sql>
+
+    <select id="selectChkServiceFileLimitList" parameterType="ChkServiceFileLimit" resultMap="ChkServiceFileLimitResult">
+        <include refid="selectChkServiceFileLimitVo"/>
+        <where>  
+            <if test="createdAt != null "> and created_at = #{createdAt}</if>
+            <if test="service != null "> and service = #{service}</if>
+            <if test="filename != null  and filename != ''"> and filename like concat('%', #{filename}, '%')</if>
+            <if test="samplePicture != null  and samplePicture != ''"> and sample_picture = #{samplePicture}</if>
+            <if test="desctiption != null  and desctiption != ''"> and desctiption = #{desctiption}</if>
+            <if test="fileType != null  and fileType != ''"> and file_type = #{fileType}</if>
+            <if test="recommondDpi != null  and recommondDpi != ''"> and recommond_DPI = #{recommondDpi}</if>
+            <if test="fileSize != null  and fileSize != ''"> and file_size = #{fileSize}</if>
+            <if test="filenameRule != null  and filenameRule != ''"> and filename_rule = #{filenameRule}</if>
+            <if test="isOcrSystem != null "> and is_OCR_system = #{isOcrSystem}</if>
+        </where>
+    </select>
+    
+    <select id="selectChkServiceFileLimitById" parameterType="Long" resultMap="ChkServiceFileLimitResult">
+        <include refid="selectChkServiceFileLimitVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertChkServiceFileLimit" parameterType="ChkServiceFileLimit" useGeneratedKeys="true" keyProperty="id">
+        insert into chk_service_file_limit
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="createdAt != null">created_at,</if>
+            <if test="service != null">service,</if>
+            <if test="filename != null">filename,</if>
+            <if test="samplePicture != null">sample_picture,</if>
+            <if test="desctiption != null">desctiption,</if>
+            <if test="fileType != null">file_type,</if>
+            <if test="recommondDpi != null">recommond_DPI,</if>
+            <if test="fileSize != null">file_size,</if>
+            <if test="filenameRule != null">filename_rule,</if>
+            <if test="isOcrSystem != null">is_OCR_system,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="createdAt != null">#{createdAt},</if>
+            <if test="service != null">#{service},</if>
+            <if test="filename != null">#{filename},</if>
+            <if test="samplePicture != null">#{samplePicture},</if>
+            <if test="desctiption != null">#{desctiption},</if>
+            <if test="fileType != null">#{fileType},</if>
+            <if test="recommondDpi != null">#{recommondDpi},</if>
+            <if test="fileSize != null">#{fileSize},</if>
+            <if test="filenameRule != null">#{filenameRule},</if>
+            <if test="isOcrSystem != null">#{isOcrSystem},</if>
+         </trim>
+    </insert>
+
+    <update id="updateChkServiceFileLimit" parameterType="ChkServiceFileLimit">
+        update chk_service_file_limit
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="createdAt != null">created_at = #{createdAt},</if>
+            <if test="service != null">service = #{service},</if>
+            <if test="filename != null">filename = #{filename},</if>
+            <if test="samplePicture != null">sample_picture = #{samplePicture},</if>
+            <if test="desctiption != null">desctiption = #{desctiption},</if>
+            <if test="fileType != null">file_type = #{fileType},</if>
+            <if test="recommondDpi != null">recommond_DPI = #{recommondDpi},</if>
+            <if test="fileSize != null">file_size = #{fileSize},</if>
+            <if test="filenameRule != null">filename_rule = #{filenameRule},</if>
+            <if test="isOcrSystem != null">is_OCR_system = #{isOcrSystem},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteChkServiceFileLimitById" parameterType="Long">
+        delete from chk_service_file_limit where id = #{id}
+    </delete>
+
+    <delete id="deleteChkServiceFileLimitByIds" parameterType="String">
+        delete from chk_service_file_limit where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>
