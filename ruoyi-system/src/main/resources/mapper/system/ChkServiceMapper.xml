@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.ChkServiceMapper">
+    
+    <resultMap type="ChkService" id="ChkServiceResult">
+        <result property="id"    column="id"    />
+        <result property="title"    column="title"    />
+        <result property="createdTime"    column="created_time"    />
+        <result property="description"    column="description"    />
+        <result property="isTrigger"    column="is_trigger"    />
+        <result property="status"    column="status"    />
+        <result property="isEnforceOcr"    column="is_enforce_ocr"    />
+        <result property="isPermitWeb"    column="is_permit_web"    />
+        <result property="isCheckSystem"    column="is_check_system"    />
+    </resultMap>
+
+    <sql id="selectChkServiceVo">
+        select id, title, created_time, description, is_trigger, status, is_enforce_ocr, is_permit_web, is_check_system from chk_service
+    </sql>
+
+    <select id="selectChkServiceList" parameterType="ChkService" resultMap="ChkServiceResult">
+        <include refid="selectChkServiceVo"/>
+        <where>  
+            <if test="title != null  and title != ''"> and title = #{title}</if>
+            <if test="createdTime != null "> and created_time = #{createdTime}</if>
+            <if test="description != null  and description != ''"> and description = #{description}</if>
+            <if test="isTrigger != null "> and is_trigger = #{isTrigger}</if>
+            <if test="status != null  and status != ''"> and status = #{status}</if>
+            <if test="isEnforceOcr != null "> and is_enforce_ocr = #{isEnforceOcr}</if>
+            <if test="isPermitWeb != null "> and is_permit_web = #{isPermitWeb}</if>
+            <if test="isCheckSystem != null "> and is_check_system = #{isCheckSystem}</if>
+        </where>
+    </select>
+    
+    <select id="selectChkServiceById" parameterType="Long" resultMap="ChkServiceResult">
+        <include refid="selectChkServiceVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertChkService" parameterType="ChkService" useGeneratedKeys="true" keyProperty="id">
+        insert into chk_service
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="title != null">title,</if>
+            <if test="createdTime != null">created_time,</if>
+            <if test="description != null">description,</if>
+            <if test="isTrigger != null">is_trigger,</if>
+            <if test="status != null">status,</if>
+            <if test="isEnforceOcr != null">is_enforce_ocr,</if>
+            <if test="isPermitWeb != null">is_permit_web,</if>
+            <if test="isCheckSystem != null">is_check_system,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="title != null">#{title},</if>
+            <if test="createdTime != null">#{createdTime},</if>
+            <if test="description != null">#{description},</if>
+            <if test="isTrigger != null">#{isTrigger},</if>
+            <if test="status != null">#{status},</if>
+            <if test="isEnforceOcr != null">#{isEnforceOcr},</if>
+            <if test="isPermitWeb != null">#{isPermitWeb},</if>
+            <if test="isCheckSystem != null">#{isCheckSystem},</if>
+         </trim>
+    </insert>
+
+    <update id="updateChkService" parameterType="ChkService">
+        update chk_service
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="title != null">title = #{title},</if>
+            <if test="createdTime != null">created_time = #{createdTime},</if>
+            <if test="description != null">description = #{description},</if>
+            <if test="isTrigger != null">is_trigger = #{isTrigger},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="isEnforceOcr != null">is_enforce_ocr = #{isEnforceOcr},</if>
+            <if test="isPermitWeb != null">is_permit_web = #{isPermitWeb},</if>
+            <if test="isCheckSystem != null">is_check_system = #{isCheckSystem},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteChkServiceById" parameterType="Long">
+        delete from chk_service where id = #{id}
+    </delete>
+
+    <delete id="deleteChkServiceByIds" parameterType="String">
+        delete from chk_service where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>
