@@ -22,20 +22,20 @@ import com.ruoyi.common.utils.poi.ExcelUtil;
 import com.ruoyi.common.core.page.TableDataInfo;
 
 /**
- * 【関数名に記入してください】Controller
+ * service_file_limitController
  * 
- * @author ruoyi
- * @date 2024-03-01
+ * @author jc.men
+ * @date 2024-03-04
  */
 @RestController
-@RequestMapping("/system/limit")
+@RequestMapping("/system/service/limit")
 public class ChkServiceFileLimitController extends BaseController
 {
     @Autowired
     private IChkServiceFileLimitService chkServiceFileLimitService;
 
     /**
-     * 查询【関数名に記入してください】列表
+     * 查询service_file_limit列表
      */
     @PreAuthorize("@ss.hasPermi('system:limit:list')")
     @GetMapping("/list")
@@ -47,20 +47,20 @@ public class ChkServiceFileLimitController extends BaseController
     }
 
     /**
-     * 导出【関数名に記入してください】列表
+     * 导出service_file_limit列表
      */
     @PreAuthorize("@ss.hasPermi('system:limit:export')")
-    @Log(title = "【関数名に記入してください】", businessType = BusinessType.EXPORT)
+    @Log(title = "service_file_limit", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
     public void export(HttpServletResponse response, ChkServiceFileLimit chkServiceFileLimit)
     {
         List<ChkServiceFileLimit> list = chkServiceFileLimitService.selectChkServiceFileLimitList(chkServiceFileLimit);
         ExcelUtil<ChkServiceFileLimit> util = new ExcelUtil<ChkServiceFileLimit>(ChkServiceFileLimit.class);
-        util.exportExcel(response, list, "【関数名に記入してください】数据");
+        util.exportExcel(response, list, "service_file_limit数据");
     }
 
     /**
-     * 获取【関数名に記入してください】详细信息
+     * 获取service_file_limit详细信息
      */
     @PreAuthorize("@ss.hasPermi('system:limit:query')")
     @GetMapping(value = "/{id}")
@@ -70,10 +70,10 @@ public class ChkServiceFileLimitController extends BaseController
     }
 
     /**
-     * 新增【関数名に記入してください】
+     * 新增service_file_limit
      */
     @PreAuthorize("@ss.hasPermi('system:limit:add')")
-    @Log(title = "【関数名に記入してください】", businessType = BusinessType.INSERT)
+    @Log(title = "service_file_limit", businessType = BusinessType.INSERT)
     @PostMapping
     public AjaxResult add(@RequestBody ChkServiceFileLimit chkServiceFileLimit)
     {
@@ -81,10 +81,10 @@ public class ChkServiceFileLimitController extends BaseController
     }
 
     /**
-     * 修改【関数名に記入してください】
+     * 修改service_file_limit
      */
     @PreAuthorize("@ss.hasPermi('system:limit:edit')")
-    @Log(title = "【関数名に記入してください】", businessType = BusinessType.UPDATE)
+    @Log(title = "service_file_limit", businessType = BusinessType.UPDATE)
     @PutMapping
     public AjaxResult edit(@RequestBody ChkServiceFileLimit chkServiceFileLimit)
     {
@@ -92,10 +92,10 @@ public class ChkServiceFileLimitController extends BaseController
     }
 
     /**
-     * 删除【関数名に記入してください】
+     * 删除service_file_limit
      */
     @PreAuthorize("@ss.hasPermi('system:limit:remove')")
-    @Log(title = "【関数名に記入してください】", businessType = BusinessType.DELETE)
+    @Log(title = "service_file_limit", businessType = BusinessType.DELETE)
 	@DeleteMapping("/{ids}")
     public AjaxResult remove(@PathVariable Long[] ids)
     {

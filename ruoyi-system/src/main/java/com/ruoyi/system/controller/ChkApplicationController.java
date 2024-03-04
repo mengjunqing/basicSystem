@@ -22,10 +22,10 @@ import com.ruoyi.common.utils.poi.ExcelUtil;
 import com.ruoyi.common.core.page.TableDataInfo;
 
 /**
- * 【関数名に記入してください】Controller
+ * applicationController
  * 
- * @author ruoyi
- * @date 2024-03-01
+ * @author jc.men
+ * @date 2024-03-04
  */
 @RestController
 @RequestMapping("/system/application")
@@ -35,7 +35,7 @@ public class ChkApplicationController extends BaseController
     private IChkApplicationService chkApplicationService;
 
     /**
-     * 查询【関数名に記入してください】列表
+     * 查询application列表
      */
     @PreAuthorize("@ss.hasPermi('system:application:list')")
     @GetMapping("/list")
@@ -47,20 +47,20 @@ public class ChkApplicationController extends BaseController
     }
 
     /**
-     * 导出【関数名に記入してください】列表
+     * 导出application列表
      */
     @PreAuthorize("@ss.hasPermi('system:application:export')")
-    @Log(title = "【関数名に記入してください】", businessType = BusinessType.EXPORT)
+    @Log(title = "application", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
     public void export(HttpServletResponse response, ChkApplication chkApplication)
     {
         List<ChkApplication> list = chkApplicationService.selectChkApplicationList(chkApplication);
         ExcelUtil<ChkApplication> util = new ExcelUtil<ChkApplication>(ChkApplication.class);
-        util.exportExcel(response, list, "【関数名に記入してください】数据");
+        util.exportExcel(response, list, "application数据");
     }
 
     /**
-     * 获取【関数名に記入してください】详细信息
+     * 获取application详细信息
      */
     @PreAuthorize("@ss.hasPermi('system:application:query')")
     @GetMapping(value = "/{id}")
@@ -70,10 +70,10 @@ public class ChkApplicationController extends BaseController
     }
 
     /**
-     * 新增【関数名に記入してください】
+     * 新增application
      */
     @PreAuthorize("@ss.hasPermi('system:application:add')")
-    @Log(title = "【関数名に記入してください】", businessType = BusinessType.INSERT)
+    @Log(title = "application", businessType = BusinessType.INSERT)
     @PostMapping
     public AjaxResult add(@RequestBody ChkApplication chkApplication)
     {
@@ -81,10 +81,10 @@ public class ChkApplicationController extends BaseController
     }
 
     /**
-     * 修改【関数名に記入してください】
+     * 修改application
      */
     @PreAuthorize("@ss.hasPermi('system:application:edit')")
-    @Log(title = "【関数名に記入してください】", businessType = BusinessType.UPDATE)
+    @Log(title = "application", businessType = BusinessType.UPDATE)
     @PutMapping
     public AjaxResult edit(@RequestBody ChkApplication chkApplication)
     {
@@ -92,10 +92,10 @@ public class ChkApplicationController extends BaseController
     }
 
     /**
-     * 删除【関数名に記入してください】
+     * 删除application
      */
     @PreAuthorize("@ss.hasPermi('system:application:remove')")
-    @Log(title = "【関数名に記入してください】", businessType = BusinessType.DELETE)
+    @Log(title = "application", businessType = BusinessType.DELETE)
 	@DeleteMapping("/{ids}")
     public AjaxResult remove(@PathVariable String[] ids)
     {

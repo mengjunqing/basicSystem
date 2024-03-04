@@ -8,10 +8,10 @@ import com.ruoyi.system.domain.ChkApplication;
 import com.ruoyi.system.service.IChkApplicationService;
 
 /**
- * 【関数名に記入してください】Service业务层处理
+ * applicationService业务层处理
  * 
- * @author ruoyi
- * @date 2024-03-01
+ * @author jc.men
+ * @date 2024-03-04
  */
 @Service
 public class ChkApplicationServiceImpl implements IChkApplicationService 
@@ -20,10 +20,10 @@ public class ChkApplicationServiceImpl implements IChkApplicationService
     private ChkApplicationMapper chkApplicationMapper;
 
     /**
-     * 查询【関数名に記入してください】
+     * 查询application
      * 
-     * @param id 【関数名に記入してください】主键
-     * @return 【関数名に記入してください】
+     * @param id application主键
+     * @return application
      */
     @Override
     public ChkApplication selectChkApplicationById(String id)
@@ -32,10 +32,10 @@ public class ChkApplicationServiceImpl implements IChkApplicationService
     }
 
     /**
-     * 查询【関数名に記入してください】列表
+     * 查询application列表
      * 
-     * @param chkApplication 【関数名に記入してください】
-     * @return 【関数名に記入してください】
+     * @param chkApplication application
+     * @return application
      */
     @Override
     public List<ChkApplication> selectChkApplicationList(ChkApplication chkApplication)
@@ -44,9 +44,9 @@ public class ChkApplicationServiceImpl implements IChkApplicationService
     }
 
     /**
-     * 新增【関数名に記入してください】
+     * 新增application
      * 
-     * @param chkApplication 【関数名に記入してください】
+     * @param chkApplication application
      * @return 结果
      */
     @Override
@@ -56,9 +56,9 @@ public class ChkApplicationServiceImpl implements IChkApplicationService
     }
 
     /**
-     * 修改【関数名に記入してください】
+     * 修改application
      * 
-     * @param chkApplication 【関数名に記入してください】
+     * @param chkApplication application
      * @return 结果
      */
     @Override
@@ -68,9 +68,9 @@ public class ChkApplicationServiceImpl implements IChkApplicationService
     }
 
     /**
-     * 批量删除【関数名に記入してください】
+     * 批量删除application
      * 
-     * @param ids 需要删除的【関数名に記入してください】主键
+     * @param ids 需要删除的application主键
      * @return 结果
      */
     @Override
@@ -80,9 +80,9 @@ public class ChkApplicationServiceImpl implements IChkApplicationService
     }
 
     /**
-     * 删除【関数名に記入してください】信息
+     * 删除application信息
      * 
-     * @param id 【関数名に記入してください】主键
+     * @param id application主键
      * @return 结果
      */
     @Override

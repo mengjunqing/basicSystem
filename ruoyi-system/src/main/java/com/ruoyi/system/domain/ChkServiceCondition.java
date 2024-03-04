@@ -8,37 +8,41 @@ import com.ruoyi.common.annotation.Excel;
 import com.ruoyi.common.core.domain.BaseEntity;
 
 /**
- * application对象 chk_application
+ * service_condition对象 chk_service_condition
  * 
  * @author jc.men
  * @date 2024-03-04
  */
-public class ChkApplication extends BaseEntity
+public class ChkServiceCondition extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
-    /** $column.columnComment */
-    private String id;
+    /** ID */
+    private Long id;
 
     /** 作成時間 */
     @JsonFormat(pattern = "yyyy-MM-dd")
     @Excel(name = "作成時間", width = 30, dateFormat = "yyyy-MM-dd")
     private Date createdTime;
 
-    /** 用户ID */
-    @Excel(name = "用户ID")
-    private Long userId;
-
-    /** 関連業務ID */
-    @Excel(name = "関連業務ID")
+    /** 関連サービス */
+    @Excel(name = "関連サービス")
     private Long serviceId;
 
-    public void setId(String id) 
+    /** 強制的なのか */
+    @Excel(name = "強制的なのか")
+    private Integer isCompulsory;
+
+    /** 説明 */
+    @Excel(name = "説明")
+    private String description;
+
+    public void setId(Long id) 
     {
         this.id = id;
     }
 
-    public String getId() 
+    public Long getId() 
     {
         return id;
     }
@@ -51,15 +55,6 @@ public class ChkApplication extends BaseEntity
     {
         return createdTime;
     }
-    public void setUserId(Long userId) 
-    {
-        this.userId = userId;
-    }
-
-    public Long getUserId() 
-    {
-        return userId;
-    }
     public void setServiceId(Long serviceId) 
     {
         this.serviceId = serviceId;
@@ -69,14 +64,33 @@ public class ChkApplication extends BaseEntity
     {
         return serviceId;
     }
+    public void setIsCompulsory(Integer isCompulsory) 
+    {
+        this.isCompulsory = isCompulsory;
+    }
+
+    public Integer getIsCompulsory() 
+    {
+        return isCompulsory;
+    }
+    public void setDescription(String description) 
+    {
+        this.description = description;
+    }
+
+    public String getDescription() 
+    {
+        return description;
+    }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
             .append("id", getId())
             .append("createdTime", getCreatedTime())
-            .append("userId", getUserId())
             .append("serviceId", getServiceId())
+            .append("isCompulsory", getIsCompulsory())
+            .append("description", getDescription())
             .toString();
     }
 }

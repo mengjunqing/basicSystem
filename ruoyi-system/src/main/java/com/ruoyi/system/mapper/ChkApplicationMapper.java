@@ -4,55 +4,55 @@ import java.util.List;
 import com.ruoyi.system.domain.ChkApplication;
 
 /**
- * 【関数名に記入してください】Mapper接口
+ * applicationMapper接口
  * 
- * @author ruoyi
- * @date 2024-03-01
+ * @author jc.men
+ * @date 2024-03-04
  */
 public interface ChkApplicationMapper 
 {
     /**
-     * 查询【関数名に記入してください】
+     * 查询application
      * 
-     * @param id 【関数名に記入してください】主键
-     * @return 【関数名に記入してください】
+     * @param id application主键
+     * @return application
      */
     public ChkApplication selectChkApplicationById(String id);
 
     /**
-     * 查询【関数名に記入してください】列表
+     * 查询application列表
      * 
-     * @param chkApplication 【関数名に記入してください】
-     * @return 【関数名に記入してください】集合
+     * @param chkApplication application
+     * @return application集合
      */
     public List<ChkApplication> selectChkApplicationList(ChkApplication chkApplication);
 
     /**
-     * 新增【関数名に記入してください】
+     * 新增application
      * 
-     * @param chkApplication 【関数名に記入してください】
+     * @param chkApplication application
      * @return 结果
      */
     public int insertChkApplication(ChkApplication chkApplication);
 
     /**
-     * 修改【関数名に記入してください】
+     * 修改application
      * 
-     * @param chkApplication 【関数名に記入してください】
+     * @param chkApplication application
      * @return 结果
      */
     public int updateChkApplication(ChkApplication chkApplication);
 
     /**
-     * 删除【関数名に記入してください】
+     * 删除application
      * 
-     * @param id 【関数名に記入してください】主键
+     * @param id application主键
      * @return 结果
      */
     public int deleteChkApplicationById(String id);
 
     /**
-     * 批量删除【関数名に記入してください】
+     * 批量删除application
      * 
      * @param ids 需要删除的数据主键集合
      * @return 结果

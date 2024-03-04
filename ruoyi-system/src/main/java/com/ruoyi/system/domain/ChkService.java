@@ -8,48 +8,49 @@ import com.ruoyi.common.annotation.Excel;
 import com.ruoyi.common.core.domain.BaseEntity;
 
 /**
- * 【関数名に記入してください】对象 chk_service
+ * service对象 chk_service
  * 
- * @author ruoyi
- * @date 2024-03-01
+ * @author jc.men
+ * @date 2024-03-04
  */
 public class ChkService extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
-    /** $column.columnComment */
+    /** ID */
     private Long id;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** 業務名 */
+    @Excel(name = "業務名")
     private String title;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** 作成時間 */
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    @Excel(name = "作成時間", width = 30, dateFormat = "yyyy-MM-dd")
     private Date createdTime;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** 説明 */
+    @Excel(name = "説明")
     private String description;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** トリガー */
+    @Excel(name = "トリガー")
     private Integer isTrigger;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
-    private String status;
+    /** ステータス */
+    @Excel(name = "ステータス")
+    private Integer status;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** 強制的なOCRを実行するか */
+    @Excel(name = "強制的なOCRを実行するか")
     private Integer isEnforceOcr;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** webで実行できるか */
+    @Excel(name = "webで実行できるか")
     private Integer isPermitWeb;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** 審査システム実行するか */
+    @Excel(name = "審査システム実行するか")
     private Integer isCheckSystem;
 
     public void setId(Long id) 
@@ -97,12 +98,12 @@ public class ChkService extends BaseEntity
     {
         return isTrigger;
     }
-    public void setStatus(String status) 
+    public void setStatus(Integer status) 
     {
         this.status = status;
     }
 
-    public String getStatus() 
+    public Integer getStatus() 
     {
         return status;
     }

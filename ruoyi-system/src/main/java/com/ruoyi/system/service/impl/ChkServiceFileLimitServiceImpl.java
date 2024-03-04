@@ -8,10 +8,10 @@ import com.ruoyi.system.domain.ChkServiceFileLimit;
 import com.ruoyi.system.service.IChkServiceFileLimitService;
 
 /**
- * 【関数名に記入してください】Service业务层处理
+ * service_file_limitService业务层处理
  * 
- * @author ruoyi
- * @date 2024-03-01
+ * @author jc.men
+ * @date 2024-03-04
  */
 @Service
 public class ChkServiceFileLimitServiceImpl implements IChkServiceFileLimitService 
@@ -20,10 +20,10 @@ public class ChkServiceFileLimitServiceImpl implements IChkServiceFileLimitServi
     private ChkServiceFileLimitMapper chkServiceFileLimitMapper;
 
     /**
-     * 查询【関数名に記入してください】
+     * 查询service_file_limit
      * 
-     * @param id 【関数名に記入してください】主键
-     * @return 【関数名に記入してください】
+     * @param id service_file_limit主键
+     * @return service_file_limit
      */
     @Override
     public ChkServiceFileLimit selectChkServiceFileLimitById(Long id)
@@ -32,10 +32,10 @@ public class ChkServiceFileLimitServiceImpl implements IChkServiceFileLimitServi
     }
 
     /**
-     * 查询【関数名に記入してください】列表
+     * 查询service_file_limit列表
      * 
-     * @param chkServiceFileLimit 【関数名に記入してください】
-     * @return 【関数名に記入してください】
+     * @param chkServiceFileLimit service_file_limit
+     * @return service_file_limit
      */
     @Override
     public List<ChkServiceFileLimit> selectChkServiceFileLimitList(ChkServiceFileLimit chkServiceFileLimit)
@@ -44,9 +44,9 @@ public class ChkServiceFileLimitServiceImpl implements IChkServiceFileLimitServi
     }
 
     /**
-     * 新增【関数名に記入してください】
+     * 新增service_file_limit
      * 
-     * @param chkServiceFileLimit 【関数名に記入してください】
+     * @param chkServiceFileLimit service_file_limit
      * @return 结果
      */
     @Override
@@ -56,9 +56,9 @@ public class ChkServiceFileLimitServiceImpl implements IChkServiceFileLimitServi
     }
 
     /**
-     * 修改【関数名に記入してください】
+     * 修改service_file_limit
      * 
-     * @param chkServiceFileLimit 【関数名に記入してください】
+     * @param chkServiceFileLimit service_file_limit
      * @return 结果
      */
     @Override
@@ -68,9 +68,9 @@ public class ChkServiceFileLimitServiceImpl implements IChkServiceFileLimitServi
     }
 
     /**
-     * 批量删除【関数名に記入してください】
+     * 批量删除service_file_limit
      * 
-     * @param ids 需要删除的【関数名に記入してください】主键
+     * @param ids 需要删除的service_file_limit主键
      * @return 结果
      */
     @Override
@@ -80,9 +80,9 @@ public class ChkServiceFileLimitServiceImpl implements IChkServiceFileLimitServi
     }
 
     /**
-     * 删除【関数名に記入してください】信息
+     * 删除service_file_limit信息
      * 
-     * @param id 【関数名に記入してください】主键
+     * @param id service_file_limit主键
      * @return 结果
      */
     @Override

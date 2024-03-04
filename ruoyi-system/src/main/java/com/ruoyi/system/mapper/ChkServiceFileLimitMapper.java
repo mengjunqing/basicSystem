@@ -4,55 +4,55 @@ import java.util.List;
 import com.ruoyi.system.domain.ChkServiceFileLimit;
 
 /**
- * 【関数名に記入してください】Mapper接口
+ * service_file_limitMapper接口
  * 
- * @author ruoyi
- * @date 2024-03-01
+ * @author jc.men
+ * @date 2024-03-04
  */
 public interface ChkServiceFileLimitMapper 
 {
     /**
-     * 查询【関数名に記入してください】
+     * 查询service_file_limit
      * 
-     * @param id 【関数名に記入してください】主键
-     * @return 【関数名に記入してください】
+     * @param id service_file_limit主键
+     * @return service_file_limit
      */
     public ChkServiceFileLimit selectChkServiceFileLimitById(Long id);
 
     /**
-     * 查询【関数名に記入してください】列表
+     * 查询service_file_limit列表
      * 
-     * @param chkServiceFileLimit 【関数名に記入してください】
-     * @return 【関数名に記入してください】集合
+     * @param chkServiceFileLimit service_file_limit
+     * @return service_file_limit集合
      */
     public List<ChkServiceFileLimit> selectChkServiceFileLimitList(ChkServiceFileLimit chkServiceFileLimit);
 
     /**
-     * 新增【関数名に記入してください】
+     * 新增service_file_limit
      * 
-     * @param chkServiceFileLimit 【関数名に記入してください】
+     * @param chkServiceFileLimit service_file_limit
      * @return 结果
      */
     public int insertChkServiceFileLimit(ChkServiceFileLimit chkServiceFileLimit);
 
     /**
-     * 修改【関数名に記入してください】
+     * 修改service_file_limit
      * 
-     * @param chkServiceFileLimit 【関数名に記入してください】
+     * @param chkServiceFileLimit service_file_limit
      * @return 结果
      */
     public int updateChkServiceFileLimit(ChkServiceFileLimit chkServiceFileLimit);
 
     /**
-     * 删除【関数名に記入してください】
+     * 删除service_file_limit
      * 
-     * @param id 【関数名に記入してください】主键
+     * @param id service_file_limit主键
      * @return 结果
      */
     public int deleteChkServiceFileLimitById(Long id);
 
     /**
-     * 批量删除【関数名に記入してください】
+     * 批量删除service_file_limit
      * 
      * @param ids 需要删除的数据主键集合
      * @return 结果

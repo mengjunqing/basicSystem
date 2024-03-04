@@ -8,56 +8,57 @@ import com.ruoyi.common.annotation.Excel;
 import com.ruoyi.common.core.domain.BaseEntity;
 
 /**
- * 【関数名に記入してください】对象 chk_service_file_limit
+ * service_file_limit对象 chk_service_file_limit
  * 
- * @author ruoyi
- * @date 2024-03-01
+ * @author jc.men
+ * @date 2024-03-04
  */
 public class ChkServiceFileLimit extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
-    /** $column.columnComment */
+    /** ID */
     private Long id;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
-    private Date createdAt;
+    /** 作成日時 */
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    @Excel(name = "作成日時", width = 30, dateFormat = "yyyy-MM-dd")
+    private Date createdTime;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
-    private Long service;
+    /** 関連サービス */
+    @Excel(name = "関連サービス")
+    private Long serviceId;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** ファイル名 */
+    @Excel(name = "ファイル名")
     private String filename;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** サンプル画像 */
+    @Excel(name = "サンプル画像")
     private String samplePicture;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
-    private String desctiption;
+    /** 説明 */
+    @Excel(name = "説明")
+    private String description;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** ファイルタイプ */
+    @Excel(name = "ファイルタイプ")
     private String fileType;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** 推奨DPI */
+    @Excel(name = "推奨DPI")
     private String recommondDpi;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** ファイルサイズ */
+    @Excel(name = "ファイルサイズ")
     private String fileSize;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** ファイル名のルール */
+    @Excel(name = "ファイル名のルール")
     private String filenameRule;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** OCRシステムかどうか */
+    @Excel(name = "OCRシステムかどうか")
     private Integer isOcrSystem;
 
     public void setId(Long id) 
@@ -69,23 +70,23 @@ public class ChkServiceFileLimit extends BaseEntity
     {
         return id;
     }
-    public void setCreatedAt(Date createdAt) 
+    public void setCreatedTime(Date createdTime) 
     {
-        this.createdAt = createdAt;
+        this.createdTime = createdTime;
     }
 
-    public Date getCreatedAt() 
+    public Date getCreatedTime() 
     {
-        return createdAt;
+        return createdTime;
     }
-    public void setService(Long service) 
+    public void setServiceId(Long serviceId) 
     {
-        this.service = service;
+        this.serviceId = serviceId;
     }
 
-    public Long getService() 
+    public Long getServiceId() 
     {
-        return service;
+        return serviceId;
     }
     public void setFilename(String filename) 
     {
@@ -105,14 +106,14 @@ public class ChkServiceFileLimit extends BaseEntity
     {
         return samplePicture;
     }
-    public void setDesctiption(String desctiption) 
+    public void setDescription(String description) 
     {
-        this.desctiption = desctiption;
+        this.description = description;
     }
 
-    public String getDesctiption() 
+    public String getDescription() 
     {
-        return desctiption;
+        return description;
     }
     public void setFileType(String fileType) 
     {
@@ -164,11 +165,11 @@ public class ChkServiceFileLimit extends BaseEntity
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
             .append("id", getId())
-            .append("createdAt", getCreatedAt())
-            .append("service", getService())
+            .append("createdTime", getCreatedTime())
+            .append("serviceId", getServiceId())
             .append("filename", getFilename())
             .append("samplePicture", getSamplePicture())
-            .append("desctiption", getDesctiption())
+            .append("description", getDescription())
             .append("fileType", getFileType())
             .append("recommondDpi", getRecommondDpi())
             .append("fileSize", getFileSize())

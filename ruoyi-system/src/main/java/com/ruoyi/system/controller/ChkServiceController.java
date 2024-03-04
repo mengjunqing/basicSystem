@@ -22,10 +22,10 @@ import com.ruoyi.common.utils.poi.ExcelUtil;
 import com.ruoyi.common.core.page.TableDataInfo;
 
 /**
- * 【関数名に記入してください】Controller
+ * serviceController
  * 
- * @author ruoyi
- * @date 2024-03-01
+ * @author jc.men
+ * @date 2024-03-04
  */
 @RestController
 @RequestMapping("/system/service")
@@ -35,7 +35,7 @@ public class ChkServiceController extends BaseController
     private IChkServiceService chkServiceService;
 
     /**
-     * 查询【関数名に記入してください】列表
+     * 查询service列表
      */
     @PreAuthorize("@ss.hasPermi('system:service:list')")
     @GetMapping("/list")
@@ -47,20 +47,20 @@ public class ChkServiceController extends BaseController
     }
 
     /**
-     * 导出【関数名に記入してください】列表
+     * 导出service列表
      */
     @PreAuthorize("@ss.hasPermi('system:service:export')")
-    @Log(title = "【関数名に記入してください】", businessType = BusinessType.EXPORT)
+    @Log(title = "service", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
     public void export(HttpServletResponse response, ChkService chkService)
     {
         List<ChkService> list = chkServiceService.selectChkServiceList(chkService);
         ExcelUtil<ChkService> util = new ExcelUtil<ChkService>(ChkService.class);
-        util.exportExcel(response, list, "【関数名に記入してください】数据");
+        util.exportExcel(response, list, "service数据");
     }
 
     /**
-     * 获取【関数名に記入してください】详细信息
+     * 获取service详细信息
      */
     @PreAuthorize("@ss.hasPermi('system:service:query')")
     @GetMapping(value = "/{id}")
@@ -70,10 +70,10 @@ public class ChkServiceController extends BaseController
     }
 
     /**
-     * 新增【関数名に記入してください】
+     * 新增service
      */
     @PreAuthorize("@ss.hasPermi('system:service:add')")
-    @Log(title = "【関数名に記入してください】", businessType = BusinessType.INSERT)
+    @Log(title = "service", businessType = BusinessType.INSERT)
     @PostMapping
     public AjaxResult add(@RequestBody ChkService chkService)
     {
@@ -81,10 +81,10 @@ public class ChkServiceController extends BaseController
     }
 
     /**
-     * 修改【関数名に記入してください】
+     * 修改service
      */
     @PreAuthorize("@ss.hasPermi('system:service:edit')")
-    @Log(title = "【関数名に記入してください】", businessType = BusinessType.UPDATE)
+    @Log(title = "service", businessType = BusinessType.UPDATE)
     @PutMapping
     public AjaxResult edit(@RequestBody ChkService chkService)
     {
@@ -92,10 +92,10 @@ public class ChkServiceController extends BaseController
     }
 
     /**
-     * 删除【関数名に記入してください】
+     * 删除service
      */
     @PreAuthorize("@ss.hasPermi('system:service:remove')")
-    @Log(title = "【関数名に記入してください】", businessType = BusinessType.DELETE)
+    @Log(title = "service", businessType = BusinessType.DELETE)
 	@DeleteMapping("/{ids}")
     public AjaxResult remove(@PathVariable Long[] ids)
     {
